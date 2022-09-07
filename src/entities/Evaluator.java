@@ -6,9 +6,9 @@ public class Evaluator {
 	private Address address;
 	
 	public void Evalutator(String name, String CPF, Address address) {
-		this.name = name;
-		this.CPF = CPF; 
-		this.address = address;
+		this.setName(name);
+		this.setCPF(CPF);
+		this.setAddress(address);
 	}
 	
 	public String getName() {
@@ -35,6 +35,16 @@ public class Evaluator {
 		return false;
 	}
 	
+	public Address getAddress() {
+		return this.address;
+	}
+
+	public void setAddress(Address address) {
+		if(address != null) {
+			this.address = address;
+		}
+	}
+
 	@Override
 	public String toString() {
 		return "Evaluator [name=" + name + ", CPF=" + CPF + ", address=" + address + "]";
