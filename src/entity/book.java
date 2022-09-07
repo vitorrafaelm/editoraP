@@ -2,7 +2,7 @@ package entity;
 
 import java.util.Calendar;
 
-class Book {
+public class Book {
 
     private Author author;
     //private Evaluator evaluator; 
