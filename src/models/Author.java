@@ -1,4 +1,4 @@
-package entity;
+package models;
 
 public class Author {
 	private String nome;
@@ -30,7 +30,7 @@ public class Author {
 		if(!adress.isEmpty()) {
 			this.adress = adress;
 		}else { 
-			System.out.println("Endereço Invalido");
+			System.out.println("Endereï¿½o Invalido");
 		}
 	}
 	public String getCpf() {
@@ -54,7 +54,7 @@ public class Author {
 		setCpf(cpf);
 	}
 	public void Excluir (String status){
-		//exclui um livro já cadastrado
+		//exclui um livro jï¿½ cadastrado
 	}
 	public String Login (String email) {
 		return "";
