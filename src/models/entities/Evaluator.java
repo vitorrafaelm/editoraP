@@ -17,7 +17,7 @@ public class Evaluator {
 	}
 
 	public void setId(int Id){
-		if(Id != 0){
+		if(Id > 0){
 			this.id = Id;
 		}
 	}
