@@ -17,7 +17,9 @@ public class Evaluator {
 	}
 
 	public void setId(int Id){
-		this.id = Id;
+		if(Id != 0){
+			this.id = Id;
+		}
 	}
 	
 	public String getName() {
