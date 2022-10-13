@@ -1,4 +1,4 @@
-package models;
+package models.entities;
 
 public class Author {
 	private String nome;

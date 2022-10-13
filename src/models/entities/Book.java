@@ -1,4 +1,4 @@
-package models;
+package models.entities;
 
 import java.util.Calendar;
 
