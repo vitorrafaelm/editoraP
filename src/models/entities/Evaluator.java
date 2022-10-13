@@ -1,4 +1,4 @@
-package models;
+package models.entities;
 
 public class Evaluator {
 	private String name; 
