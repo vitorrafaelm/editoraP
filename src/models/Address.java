@@ -1,4 +1,4 @@
-package entities;
+package models;
 
 public class Address {
 	private String id, street, neightboohood, number, zipcode;
