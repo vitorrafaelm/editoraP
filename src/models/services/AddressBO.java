@@ -1,0 +1,79 @@
+package models.services;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import models.dao.AddressDao;
+import models.entities.Address;
+import models.dao.BaseInterDAO;
+
+public class AddressBO {
+	BaseInterDAO<Address> dao;
+	
+	public AddressBO(AddressDao dao) throws SQLException {
+        this.dao = dao;
+    }
+		
+	public boolean adicionar(Address address) {
+		if(dao.inserir(address) == true) {
+			return true;
+		} else {
+			return false;
+		}	
+		
+	}
+	
+	public List<Address> listar(){
+		List<Address> addresses = new ArrayList<Address>();
+		ResultSet rs = dao.findAll();
+		try {
+			while(rs.next()) {
+				Address address = new Address();
+				address.setStreet(null);
+				address.setNeightboohood(null);
+				address.setNumber(null);
+				address.setZipcode("");
+				
+				addresses.add(address);
+			}
+			return addresses;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public boolean atualizar (Address address) {
+		ResultSet rs = dao.findBySpecifiedField(address, "cpf");
+		try {
+			if(rs!=null && rs.next() ) {
+				if(dao.alterar(address) == true)
+					return true;
+					else return false;
+			}
+			else return false;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}	
+	}
+	public boolean apagar (Address address) {
+		ResultSet rs = dao.findBySpecifiedField(address, "id");
+		try {
+			if(rs!=null && rs.next() ) {
+				if(dao.deletar(address) == true)
+					return true;
+					else return false;
+			}
+			else return false;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}	
+	}
+}
