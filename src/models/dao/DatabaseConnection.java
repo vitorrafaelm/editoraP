@@ -16,13 +16,13 @@ public class DatabaseConnection {
 
     private static DatabaseConnection instance;
     private Connection connection;
-    private String url = "jdbc:mysql://sql10.freesqldatabase.com";
+    private String url = "jdbc:mysql://sql10.freesqldatabase.com/sql10526312";
     private String username = "sql10526312";
     private String password = "TM7BCIzHzz";
 
     public DatabaseConnection() throws SQLException {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             this.connection = DriverManager.getConnection(url, username, password);
         } catch (ClassNotFoundException ex) {
             System.out.println("Database Connection Creation Failed : " + ex.getMessage());

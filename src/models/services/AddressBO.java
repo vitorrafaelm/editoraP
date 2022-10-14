@@ -28,14 +28,14 @@ public class AddressBO {
 	public List<Address> listar(){
 		List<Address> addresses = new ArrayList<Address>();
 		ResultSet rs = dao.findAll();
-		try {
+		try {	
 			while(rs.next()) {
 				Address address = new Address();
-				address.setStreet(null);
-				address.setNeightboohood(null);
-				address.setNumber(null);
-				address.setZipcode("");
-				
+				address.setStreet(rs.getString("street"));
+				address.setNeightboohood(rs.getString("neightboohood"));
+				address.setNumber(rs.getString("number"));
+				address.setZipcode(rs.getString("zipcode"));
+				address.setId(rs.getString("id"));
 				addresses.add(address);
 			}
 			return addresses;
