@@ -3,15 +3,6 @@ package models.entities;
 public class Address {
 	private String id, street, neightboohood, number, zipcode;
 	
-	public Address(String id, String street, String neightboohood, String number, String zipcode) {
-		super();
-		this.setId(id);
-		this.setNeightboohood(neightboohood);
-		this.setNumber(number);
-		this.setStreet(street);
-		this.setZipcode(zipcode);
-	}
-
 	public String getId() {
 		return this.id;
 	}
