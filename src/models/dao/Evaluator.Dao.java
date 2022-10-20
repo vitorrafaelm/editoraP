@@ -17,7 +17,7 @@ public class EvaluatorDao extends BaseDao<Evaluator> {
     }
 	
 	public boolean inserir (Evaluator evaluator) {
-		String sql = "INSERT INTO tb_address (street,neightboohood,number,zipcode) VALUES (?,?,?,?);";
+		String sql = "INSERT INTO tb_evaluator (id,name,cpf,address) VALUES (?,?,?,?);";
 		try {
 			PreparedStatement pst = this.connection.prepareStatement(sql);
 			pst.setString(1, evaluator.getId());
@@ -35,7 +35,7 @@ public class EvaluatorDao extends BaseDao<Evaluator> {
 	}
 	
 	public boolean deletar(Evaluator evaluator) {
-		String sql = "DELETE FROM tb_address WHERE id=?;";
+		String sql = "DELETE FROM tb_evaluator WHERE id=?;";
 		try {
 			PreparedStatement pst = this.connection.prepareStatement(sql);
 			pst.setString(1, evaluator.getId());
@@ -51,7 +51,7 @@ public class EvaluatorDao extends BaseDao<Evaluator> {
 	}
 	
 	public boolean alterar(Evaluator evaluator) {
-		String sql = "UPDATE tb_address SET street=?,neightboohood=?,number=?,zipcode=? WHERE id=? ";
+		String sql = "UPDATE tb_evaluator SET id=?,name=?,cpf=?,address=? WHERE id=? ";
 		try {
 			PreparedStatement pst = this.connection.prepareStatement(sql);
 			pst.setString(1, evaluator.getId());
@@ -70,7 +70,7 @@ public class EvaluatorDao extends BaseDao<Evaluator> {
 	}
 	
 	public Evaluator findById(Evaluator evaluator) {
-		String sql = "SELECT * FROM tb_address WHERE id=? ;";
+		String sql = "SELECT * FROM tb_evaluator WHERE id=? ;";
 		try {
 			PreparedStatement pst = this.connection.prepareStatement(sql);
 			ResultSet rs = pst.executeQuery();
@@ -93,7 +93,7 @@ public class EvaluatorDao extends BaseDao<Evaluator> {
 	}
 
 	public ResultSet findAll() {
-		String sql = "SELECT * FROM tb_address;";
+		String sql = "SELECT * FROM tb_evaluator;";
 		try {
 			PreparedStatement pst = this.connection.prepareStatement(sql);
 			ResultSet rs = pst.executeQuery();
