@@ -16,9 +16,9 @@ public class DatabaseConnection {
 
     private static DatabaseConnection instance;
     private Connection connection;
-    private String url = "jdbc:mysql://sql10.freesqldatabase.com/sql10526312";
-    private String username = "sql10526312";
-    private String password = "TM7BCIzHzz";
+    private String url = "jdbc:postgres://babar.db.elephantsql.com";
+    private String username = "ezqfghax";
+    private String password = "gL-UzfP6oPWdBugUz6l8s_plk5FExRO_";
 
     public DatabaseConnection() throws SQLException {
         try {

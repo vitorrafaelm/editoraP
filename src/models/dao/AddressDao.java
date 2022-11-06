@@ -11,8 +11,13 @@ public class AddressDao extends BaseDao<Address> {
 	
 	Connection connection;
 	
-	public AddressDao(Connection connection) throws SQLException {
-        this.connection = connection;
+	public AddressDao() {
+		try {
+			this.connection = new DatabaseConnection().getConnection();;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+        
     }
 	
 	public boolean inserir (Address address) {

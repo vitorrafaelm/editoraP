@@ -5,18 +5,17 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import controllers.dto.AddressDTO;
 import models.dao.AddressDao;
 import models.entities.Address;
 import models.dao.BaseInterDAO;
 
 public class AddressBO {
-	BaseInterDAO<Address> dao;
-	
-	public AddressBO(AddressDao dao) throws SQLException {
-        this.dao = dao;
-    }
+	BaseInterDAO<Address> dao = new AddressDao();
 		
-	public boolean adicionar(Address address) {
+	public boolean adicionar(AddressDTO dto) {
+		Address address = Address.converter(dto);
+		
 		if(dao.inserir(address) == true) {
 			return true;
 		} else {
