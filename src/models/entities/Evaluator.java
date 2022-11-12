@@ -1,6 +1,7 @@
 package models.entities;
 
 public class Evaluator {
+	private int id;
 	private String name; 
 	private String CPF;
 	private Address address;
@@ -9,6 +10,16 @@ public class Evaluator {
 		this.setName(name);
 		this.setCPF(CPF);
 		this.setAddress(address);
+	}
+
+	public int getId(){
+		return this.id;
+	}
+
+	public void setId(int Id){
+		if(Id > 0){
+			this.id = Id;
+		}
 	}
 	
 	public String getName() {
