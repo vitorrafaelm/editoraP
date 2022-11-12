@@ -1,7 +1,9 @@
 package models.entities;
 
+import controllers.dto.AddressDTO;
+
 public class Address {
-	private String id, street, neightboohood, number, zipcode;
+	private String id, street, neightboohood, number, zipcode, city;
 	
 	public String getId() {
 		return this.id;
@@ -43,10 +45,27 @@ public class Address {
 		this.zipcode = zipcode;
 	}
 
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
 	@Override
 	public String toString() {
 		return "Address [id=" + id + ", street=" + street + ", neightboohood=" + neightboohood + ", number=" + number
 				+ ", zipcode=" + zipcode + "]";
 	} 
+	
+	public static Address converter(AddressDTO dto) {
+		Address address = new Address();
+		address.setStreet(dto.getStreet());
+		address.setNeightboohood(dto.getNeightboohood());
+		address.setNumber(dto.getNumber());
+		address.setZipcode(dto.getZipcode());
+		return address;
+	}
 	
 }

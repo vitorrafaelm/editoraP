@@ -1,9 +1,10 @@
 package models.dao;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public interface BaseInterDAO<entity> {
-	public boolean inserir (entity e);
+	public entity inserir (entity e) throws SQLException;
 	public boolean deletar(entity e);
 	public boolean alterar(entity e);
 	public entity findById(entity e);

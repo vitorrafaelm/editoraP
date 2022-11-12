@@ -11,25 +11,41 @@ public class AddressDao extends BaseDao<Address> {
 	
 	Connection connection;
 	
-	public AddressDao(Connection connection) throws SQLException {
-        this.connection = connection;
+	public AddressDao() {
+		try {
+			this.connection = new DatabaseConnection().getConnection();;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+        
     }
 	
-	public boolean inserir (Address address) {
+	public Address inserir (Address address) throws SQLException {
 		String sql = "INSERT INTO tb_address (street,neightboohood,number,zipcode) VALUES (?,?,?,?);";
 		try {
 			PreparedStatement pst = this.connection.prepareStatement(sql);
 			pst.setString(1, address.getStreet());
-			pst.setString(2, address.getNeightboohood() );
+			pst.setString(2, address.getNeightboohood());
 			pst.setString(3, address.getNumber());
 			pst.setString(4, address.getZipcode());
 			pst.execute();
-			return true;		
-		
+			
+			String sqlSelect = "select * from tb_address where street=? and neightboohood=? and number=? and zipcode=?);";
+			PreparedStatement pstSelect = this.connection.prepareStatement(sqlSelect);
+			
+			pstSelect.setString(1, address.getStreet());
+			pstSelect.setString(2, address.getNeightboohood());
+			pstSelect.setString(3, address.getNumber());
+			pstSelect.setString(4, address.getZipcode());
+			ResultSet rd = pstSelect.executeQuery(); 
+			
+			// id deve ser setado do registro
+			address.setId("");
+			return address;		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return false;
+			throw new SQLException();
 		}				
 	}
 	
@@ -106,7 +122,6 @@ public class AddressDao extends BaseDao<Address> {
 	}
 	
 	public ResultSet findBySpecifiedField(Address address, String field) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }
