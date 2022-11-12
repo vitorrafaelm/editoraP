@@ -7,18 +7,13 @@ package models.dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
-/**
- *
- * @author Mateus Lanuce
- */
 public class DatabaseConnection {
 
     private static DatabaseConnection instance;
     private Connection connection;
-    private String url = "jdbc:postgres://ezqfghax:gL-UzfP6oPWdBugUz6l8s_plk5FExRO_@babar.db.elephantsql.com/ezqfghax";
-    private String username = "ezqfghax";
-    private String password = "gL-UzfP6oPWdBugUz6l8s_plk5FExRO_";
+    private String url = "jdbc:mysql://www.db4free.net:3306/editorap";
+    private String username = "ufersa";
+    private String password = "ufersa123";
 
     public DatabaseConnection() throws SQLException {
         try {
