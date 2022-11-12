@@ -41,7 +41,7 @@
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="481.0" prefWidth="525.0" style="-fx-background-color: #D6D1B3;">
          <children>
-            <Label layoutX="137.0" layoutY="9.0" style="-fx-font-weight: 700;" text="Cadasto de Autores" textFill="WHITE" />
+            <Label layoutX="157.0" layoutY="9.0" style="-fx-font-weight: 700;" text="Editar de Autor" textFill="WHITE" />
             <Label layoutX="21.0" layoutY="48.0" style="-fx-font-weight: 700;" text="Informaçoes pessoais" textFill="#7b7b7b">
                <font>
                   <Font size="11.0" />
@@ -122,7 +122,7 @@
                   <Font size="10.0" />
                </font>
             </TextField>
-            <Button layoutX="28.0" layoutY="298.0" mnemonicParsing="false" style="-fx-pref-width: 100px; -fx-background-color: #7B7B7B; -fx-font-weight: 700;" text="Cadastrar" textFill="WHITE">
+            <Button layoutX="28.0" layoutY="298.0" mnemonicParsing="false" style="-fx-pref-width: 100px; -fx-background-color: #7B7B7B; -fx-font-weight: 700;" text="Editar" textFill="WHITE">
                <font>
                   <Font size="10.0" />
                </font>

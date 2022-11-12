@@ -1,7 +1,7 @@
 package controllers.dto;
 
 public class AddressDTO {
-	private String street, neightboohood, number, zipcode;
+	private String street, neightboohood, number, zipcode, city;
 
 	public String getStreet() {
 		return street;
@@ -34,6 +34,12 @@ public class AddressDTO {
 	public void setZipcode(String zipcode) {
 		this.zipcode = zipcode;
 	}
-	
-	
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
 }

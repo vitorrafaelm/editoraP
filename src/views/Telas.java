@@ -37,12 +37,12 @@ public class Telas extends Application {
 		}
 	}
 	
-	public static void registerAuthorScreen() {
+	public static void listAuthorScreen() {
 		try {
-			Parent root = FXMLLoader.load(Telas.class.getResource("resources/registerAuthorScreen.fxml"));
+			Parent root = FXMLLoader.load(Telas.class.getResource("resources/ListAuthors.fxml"));
 			Scene scene = new Scene (root);
 			stage.setScene(scene);
-			stage.setTitle("Tela de cadastro de autor");
+			stage.setTitle("Tela de listagem de autores");
 			stage.show();
 		}
 		catch(Exception e) {

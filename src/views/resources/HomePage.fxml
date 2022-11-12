@@ -21,32 +21,17 @@
                   <Font size="10.0" />
                </font>
             </Button>
-            <Button layoutX="8.0" layoutY="125.0" mnemonicParsing="false" onAction="#navigateToHomePage" style="-fx-pref-width: 150px; -fx-border-width: 0px; -fx-background-color: #D6D1B3;" text="Cadastrar autores" textFill="WHITE">
+            <Button layoutX="8.0" layoutY="125.0" mnemonicParsing="false" onAction="#navigateToHomePage" style="-fx-pref-width: 150px; -fx-border-width: 0px; -fx-background-color: #D6D1B3;" text="Autores" textFill="WHITE">
                <font>
                   <Font size="10.0" />
                </font>
             </Button>
-            <Button layoutX="9.0" layoutY="154.0" mnemonicParsing="false" style="-fx-pref-width: 150px; -fx-border-width: 0px; -fx-background-color: #D6D1B3;" text="Cadastrar livros" textFill="WHITE">
+            <Button layoutX="9.0" layoutY="154.0" mnemonicParsing="false" style="-fx-pref-width: 150px; -fx-border-width: 0px; -fx-background-color: #D6D1B3;" text="Obras" textFill="WHITE">
                <font>
                   <Font size="10.0" />
                </font>
             </Button>
-            <Button layoutX="9.0" layoutY="185.0" mnemonicParsing="false" style="-fx-pref-width: 150px; -fx-border-width: 0px; -fx-background-color: #D6D1B3;" text="Cadastrar avaliadores" textFill="WHITE">
-               <font>
-                  <Font size="10.0" />
-               </font>
-            </Button>
-            <Button layoutX="9.0" layoutY="216.0" mnemonicParsing="false" style="-fx-pref-width: 150px; -fx-border-width: 0px; -fx-background-color: #D6D1B3;" text="Listar autores" textFill="WHITE">
-               <font>
-                  <Font size="10.0" />
-               </font>
-            </Button>
-            <Button layoutX="9.0" layoutY="246.0" mnemonicParsing="false" style="-fx-pref-width: 150px; -fx-border-width: 0px; -fx-background-color: #D6D1B3;" text="Listar obras" textFill="WHITE">
-               <font>
-                  <Font size="10.0" />
-               </font>
-            </Button>
-            <Button layoutX="8.0" layoutY="277.0" mnemonicParsing="false" style="-fx-pref-width: 150px; -fx-border-width: 0px; -fx-background-color: #D6D1B3;" text="Listar avaliadores" textFill="WHITE">
+            <Button layoutX="9.0" layoutY="185.0" mnemonicParsing="false" style="-fx-pref-width: 150px; -fx-border-width: 0px; -fx-background-color: #D6D1B3;" text="Avaliadores" textFill="WHITE">
                <font>
                   <Font size="10.0" />
                </font>

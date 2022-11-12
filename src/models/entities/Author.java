@@ -1,15 +1,12 @@
 package models.entities;
 
+import controllers.dto.AddressDTO;
+import controllers.dto.AuthorDTO;
+
 public class Author {
 	private String nome;
-	private String adress;
+	private Address adress;
 	private String cpf;
-	
-	public Author(String nome, String adress, String cpf) {
-		setNome(nome);
-		setAdress(adress);
-		setCpf(cpf);
-	}
 
 	public String getNome() {
 		return nome;
@@ -22,20 +19,22 @@ public class Author {
 			System.out.println("Nome invalido");
 		}
 	}
-	public String getAdress() {
+	public Address getAdress() {
 		return adress;
 	}
 	
-	public void setAdress(String adress) {
-		if(!adress.isEmpty()) {
+	public void setAdress(Address adress) {
+		if(!adress.getId().isEmpty()) {
 			this.adress = adress;
 		}else { 
 			System.out.println("Endere�o Invalido");
 		}
 	}
+	
 	public String getCpf() {
 		return cpf;
 	}
+	
 	public void setCpf(String cpf) {
 		if(!cpf.isBlank()) {
 			this.cpf = cpf;
@@ -43,20 +42,11 @@ public class Author {
 			System.out.println("CPF invalido");
 		}
 	}
-
-	public void Cadastro (String status){
-		//cadastra um livro
-	}
 	
-	public void Atualizar (Author author) {
-		setNome(nome);
-		setAdress(adress);
-		setCpf(cpf);
-	}
-	public void Excluir (String status){
-		//exclui um livro j� cadastrado
-	}
-	public String Login (String email) {
-		return "";
+	public static Author converter(AuthorDTO dto) {
+		Author author = new Author();
+		author.setNome(dto.getName());
+		author.setCpf(dto.getCpf());
+		return author;
 	}
 }

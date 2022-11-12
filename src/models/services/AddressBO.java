@@ -13,15 +13,15 @@ import models.dao.BaseInterDAO;
 public class AddressBO {
 	BaseInterDAO<Address> dao = new AddressDao();
 		
-	public boolean adicionar(AddressDTO dto) {
+	public Address adicionar(AddressDTO dto) {
 		Address address = Address.converter(dto);
-		
-		if(dao.inserir(address) == true) {
-			return true;
-		} else {
-			return false;
-		}	
-		
+		try {
+			return dao.inserir(address);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 	public List<Address> listar(){

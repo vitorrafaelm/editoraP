@@ -1,12 +1,13 @@
 package models.dao;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class BaseDao<entity> implements BaseInterDAO<entity> {
 	@Override
-	public boolean inserir(entity e) {
+	public entity inserir(entity e) throws SQLException {
 		// TODO Auto-generated method stub
-		return false;
+		return e;
 	}
 
 	@Override

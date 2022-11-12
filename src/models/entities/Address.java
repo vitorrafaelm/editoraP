@@ -3,7 +3,7 @@ package models.entities;
 import controllers.dto.AddressDTO;
 
 public class Address {
-	private String id, street, neightboohood, number, zipcode;
+	private String id, street, neightboohood, number, zipcode, city;
 	
 	public String getId() {
 		return this.id;
@@ -43,6 +43,14 @@ public class Address {
 
 	public void setZipcode(String zipcode) {
 		this.zipcode = zipcode;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
 	}
 
 	@Override

@@ -16,7 +16,7 @@ public class DatabaseConnection {
 
     private static DatabaseConnection instance;
     private Connection connection;
-    private String url = "jdbc:postgres://babar.db.elephantsql.com";
+    private String url = "jdbc:postgres://ezqfghax:gL-UzfP6oPWdBugUz6l8s_plk5FExRO_@babar.db.elephantsql.com/ezqfghax";
     private String username = "ezqfghax";
     private String password = "gL-UzfP6oPWdBugUz6l8s_plk5FExRO_";
 
