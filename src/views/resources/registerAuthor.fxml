@@ -38,6 +38,11 @@
                   <Font size="10.0" />
                </font>
             </Button>
+            <Button layoutX="9.0" layoutY="216.0" mnemonicParsing="false" style="-fx-pref-width: 150px; -fx-border-width: 0px; -fx-background-color: #D6D1B3;" text="Relatorios" textFill="WHITE">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Button>
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="481.0" prefWidth="525.0" style="-fx-background-color: #D6D1B3;">
          <children>
