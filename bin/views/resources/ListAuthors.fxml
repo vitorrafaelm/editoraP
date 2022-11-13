@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.2843" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomePage">
+<SplitPane dividerPositions="0.2843" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ListAuthorScreen">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #FFFFFF;">
          <children>
@@ -55,7 +55,7 @@
                   <Font size="10.0" />
                </font>
             </Button>
-            <Button layoutX="14.0" layoutY="271.0" mnemonicParsing="false" style="-fx-background-color: #7B7B7B; -fx-font-weight: 700;" text="Cadastrar" textFill="WHITE">
+            <Button layoutX="14.0" layoutY="271.0" mnemonicParsing="false" onAction="#navigateToRegisterScreen" style="-fx-background-color: #7B7B7B; -fx-font-weight: 700;" text="Cadastrar" textFill="WHITE">
                <font>
                   <Font size="10.0" />
                </font>
@@ -67,7 +67,7 @@
                   <TableColumn minWidth="0.5" prefWidth="246.0" text="endereço" />
               </columns>
             </TableView>
-            <Button layoutX="88.0" layoutY="271.0" mnemonicParsing="false" style="-fx-background-color: #7B7B7B; -fx-font-weight: 700;" text="Editar" textFill="WHITE">
+            <Button layoutX="88.0" layoutY="271.0" mnemonicParsing="false" onAction="#navigateToEditScreen" style="-fx-background-color: #7B7B7B; -fx-font-weight: 700;" text="Editar" textFill="WHITE">
                <font>
                   <Font size="10.0" />
                </font>
