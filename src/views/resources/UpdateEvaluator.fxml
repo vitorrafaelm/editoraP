@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<SplitPane dividerPositions="0.2843" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AuthorRegister">
+   <items>
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #FFFFFF;">
+         <children>
+            <ImageView disable="true" fitHeight="67.0" fitWidth="70.0" layoutX="49.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../Downloads/logo.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="8.0" layoutY="95.0" mnemonicParsing="false" prefHeight="11.0" style="-fx-pref-width: 150px; -fx-pref-height: 5px; -fx-border-width: 0px; -fx-background-color: #D6D1B3;" text="Inicio" textFill="WHITE">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Button>
+            <Button layoutX="8.0" layoutY="125.0" mnemonicParsing="false" onAction="#navigateToAuthorsScren" style="-fx-pref-width: 150px; -fx-border-width: 0px; -fx-background-color: #D6D1B3;" text="Autores" textFill="WHITE">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Button>
+            <Button layoutX="9.0" layoutY="154.0" mnemonicParsing="false" style="-fx-pref-width: 150px; -fx-border-width: 0px; -fx-background-color: #D6D1B3;" text="Obras" textFill="WHITE">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Button>
+            <Button layoutX="9.0" layoutY="185.0" mnemonicParsing="false" style="-fx-pref-width: 150px; -fx-border-width: 0px; -fx-background-color: #D6D1B3;" text="Avaliadores" textFill="WHITE">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Button>
+            <Button layoutX="9.0" layoutY="216.0" mnemonicParsing="false" style="-fx-pref-width: 150px; -fx-border-width: 0px; -fx-background-color: #D6D1B3;" text="Relatorios" textFill="WHITE">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Button>
+            <Button fx:id="SairBotao" layoutX="9.0" layoutY="246.0" mnemonicParsing="false" style="-fx-pref-width: 150px; -fx-border-width: 0px; -fx-background-color: #7B7B7B;" text="Sair" textFill="WHITE">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="481.0" prefWidth="525.0" style="-fx-background-color: #D6D1B3;">
+         <children>
+            <Label layoutX="137.0" layoutY="9.0" style="-fx-font-weight: 700;" text="Editar Avaliadores" textFill="WHITE" />
+            <Label layoutX="21.0" layoutY="48.0" style="-fx-font-weight: 700;" text="Informaçoes pessoais" textFill="#7b7b7b">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
+            <Label layoutX="22.0" layoutY="69.0" style="-fx-font-weight: 700;" text="Nome" textFill="WHITE">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <TextField fx:id="nameEvaluator" layoutX="22.0" layoutY="86.0" style="-fx-pref-width: 130px; -fx-pref-height: 5px;">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </TextField>
+            <Label layoutX="177.0" layoutY="70.0" style="-fx-font-weight: 700;" text="CPF" textFill="WHITE">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <TextField fx:id="cpfEvaluator" layoutX="177.0" layoutY="86.0" style="-fx-pref-width: 130px; -fx-pref-height: 5px;">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </TextField>
+            <Label layoutX="22.0" layoutY="130.0" style="-fx-font-weight: 700;" text="Endereço" textFill="#7b7b7b">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
+            <Label layoutX="23.0" layoutY="151.0" style="-fx-font-weight: 700;" text="Rua" textFill="WHITE">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <TextField fx:id="streetEvaluator" layoutX="22.0" layoutY="167.0" style="-fx-pref-width: 150px; -fx-pref-height: 5px;">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </TextField>
+            <Label layoutX="190.0" layoutY="152.0" style="-fx-font-weight: 700;" text="Bairro" textFill="WHITE">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <TextField fx:id="neighboorhoodEvaluator" layoutX="188.0" layoutY="167.0" style="-fx-pref-width: 150px; -fx-pref-height: 5px;">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </TextField>
+            <Label layoutX="25.0" layoutY="196.0" style="-fx-font-weight: 700;" text="Numero" textFill="WHITE">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <TextField fx:id="numberEvaluator" layoutX="23.0" layoutY="210.0" style="-fx-pref-width: 150px; -fx-pref-height: 5px;">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </TextField>
+            <Label layoutX="189.0" layoutY="196.0" style="-fx-font-weight: 700;" text="Cidade" textFill="WHITE">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <TextField fx:id="cityEvaluator" layoutX="188.0" layoutY="210.0" style="-fx-pref-width: 150px; -fx-pref-height: 5px;">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </TextField>
+            <Label layoutX="27.0" layoutY="239.0" style="-fx-font-weight: 700;" text="CEP" textFill="WHITE">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <TextField fx:id="zipcodeEvaluator" layoutX="25.0" layoutY="255.0" style="-fx-pref-width: 150px; -fx-pref-height: 5px;">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </TextField>
+            <Button layoutX="22.0" layoutY="295.0" mnemonicParsing="false" onAction="#updateEvaluator" style="-fx-pref-width: 100px; -fx-background-color: #7B7B7B; -fx-font-weight: 700;" text="Editar" textFill="WHITE">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </items>
+</SplitPane>
