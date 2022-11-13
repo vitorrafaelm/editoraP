@@ -114,5 +114,41 @@ public class Telas extends Application {
             e.printStackTrace();
         }
     }
-
+    //telas de avaliadores
+    public static void listEvaluatorScreen() {
+        try {
+            Parent root = FXMLLoader.load(Telas.class.getResource("resources/ListEvaluator.fxml"));
+            Scene scene = new Scene (root);
+            stage.setScene(scene);
+            stage.setTitle("Tela de listagem de avaliadores");
+            stage.show();
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public static void registerEvaluatorScreen() {
+        try {
+            Parent root = FXMLLoader.load(Telas.class.getResource("resources/registerEvaluator.fxml"));
+            Scene scene = new Scene (root);
+            stage.setScene(scene);
+            stage.setTitle("Tela de cadastro de avaliadores");
+            stage.show();
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public static void editEvaluatorScreen() {
+        try {
+            Parent root = FXMLLoader.load(Telas.class.getResource("resources/UpdateEvaluator.fxml"));
+            Scene scene = new Scene (root);
+            stage.setScene(scene);
+            stage.setTitle("Tela de listagem de avaliadores");
+            stage.show();
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
