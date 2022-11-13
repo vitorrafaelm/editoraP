@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.2843" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AuthorRegister">
+<SplitPane dividerPositions="0.2843" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.UpdateAuthor">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #FFFFFF;">
          <children>
@@ -23,7 +23,7 @@
                   <Font size="10.0" />
                </font>
             </Button>
-            <Button layoutX="8.0" layoutY="125.0" mnemonicParsing="false" style="-fx-pref-width: 150px; -fx-border-width: 0px; -fx-background-color: #D6D1B3;" text="Autores" textFill="WHITE">
+            <Button layoutX="8.0" layoutY="125.0" mnemonicParsing="false" onAction="#navigateToListAuthors" style="-fx-pref-width: 150px; -fx-border-width: 0px; -fx-background-color: #D6D1B3;" text="Autores" textFill="WHITE">
                <font>
                   <Font size="10.0" />
                </font>
@@ -127,7 +127,7 @@
                   <Font size="10.0" />
                </font>
             </TextField>
-            <Button layoutX="28.0" layoutY="298.0" mnemonicParsing="false" style="-fx-pref-width: 100px; -fx-background-color: #7B7B7B; -fx-font-weight: 700;" text="Editar" textFill="WHITE">
+            <Button layoutX="28.0" layoutY="298.0" mnemonicParsing="false" onAction="#updateAuthor" style="-fx-pref-width: 100px; -fx-background-color: #7B7B7B; -fx-font-weight: 700;" text="Editar" textFill="WHITE">
                <font>
                   <Font size="10.0" />
                </font>

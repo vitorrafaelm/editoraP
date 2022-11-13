@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import models.entities.Address;
 import models.services.AddressBO;
 import models.services.AuthorBO;
+import views.Telas;
 
 public class AuthorRegister {
 	@FXML private TextField name;
@@ -40,5 +41,10 @@ public class AuthorRegister {
 //		dtoAuthor.setAddress(address);
 //		
 //		boAuthor.adicionar(dtoAuthor);
+	    Telas.listAuthorScreen();
 	}
+	
+	public void navigateToAuthorsScren() {
+        Telas.listAuthorScreen();
+    }
 }
