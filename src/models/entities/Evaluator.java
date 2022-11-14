@@ -1,18 +1,20 @@
 package models.entities;
 
+import controllers.dto.EvaluatorDTO;
+
 public class Evaluator {
-	private int id;
-	private String name; 
+//	private int id;
+	private String nome; 
 	private String CPF;
 	private Address address;
-	
+/*	
 	public void Evalutator(String name, String CPF, Address address) {
 		this.setName(name);
 		this.setCPF(CPF);
 		this.setAddress(address);
 	}
-
-	public int getId(){
+*/
+/*	public int getId(){
 		return this.id;
 	}
 
@@ -21,46 +23,55 @@ public class Evaluator {
 			this.id = Id;
 		}
 	}
-	
-	public String getName() {
-		return this.name;
+*/	
+	public String getNome() {
+		return this.nome;
 	}
 	
-	public void setName(String name) {
-		if(name.length() > 0) {
-			this.name = name;
-		}
-	}
+    public void setNome(String nome) {
+        if(!nome.isEmpty()) {
+            this.nome = nome;
+        }else {
+            System.out.println("Nome invalido");
+        }
+    }
+
 	
 	public String getCPF() {
 		return this.CPF;
 	}
+    public void setCPF(String cpf) {
+        if(!cpf.isBlank()) {
+            this.CPF = cpf;
+        }else {
+            System.out.println("CPF invalido");
+        }
+    }
 	
-	public boolean setCPF(String cPF) {
-		if(cPF.length() == 11) {
-			this.CPF = cPF;
-			return true;
-		}
-		
-		this.CPF = "";
-		return false;
-	}
-	
-	public Address getAddress() {
-		return this.address;
-	}
+    public Address getAdress() {
+        return address;
+    }
+    
+    public void setAddress(Address address) {
+        if(!address.getId().isEmpty()) {
+            this.address = address;
+        }else { 
+            System.out.println("Endereço Invalido");
+        }
+    }
 
-	public void setAddress(Address address) {
-		if(address != null) {
-			this.address = address;
-		}
-	}
 
 	@Override
 	public String toString() {
-		return "Evaluator [name=" + name + ", CPF=" + CPF + ", address=" + address + "]";
+		return "Evaluator [name=" + nome + ", CPF=" + CPF + ", address=" + address + "]";
 	}
-	
+	public static Evaluator converter(EvaluatorDTO dto) {
+	    Evaluator evaluator = new Evaluator();
+	    evaluator.setCPF(dto.getCpf());
+	    evaluator.setAddress(dto.getAddress());
+	    evaluator.setNome(dto.getName());
+	    return evaluator;
+	}
 	
 }
 
