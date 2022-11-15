@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public interface BaseInterDAO<entity> {
 
     public Connection getConnection();
-    public abstract boolean inserir (entity e);
+    public abstract entity inserir (entity e);
 	//public entity inserir (entity e) throws SQLException;
 	public boolean deletar(entity e);
 	public boolean alterar(entity e);

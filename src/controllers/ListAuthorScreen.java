@@ -1,8 +1,6 @@
 package controllers;
 
-import java.net.URL;
 import java.util.List;
-import java.util.ResourceBundle;
 
 import controllers.dto.AuthorDTO;
 import javafx.collections.FXCollections;
@@ -11,7 +9,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import models.entities.Address;
 import models.entities.Author;
 import models.services.AuthorBO;
 import views.Telas;
@@ -54,7 +51,7 @@ public class ListAuthorScreen {
             // TODO: handle exception
         }
         
-       
+      
     }
     
     public void navigateToHomePage() {

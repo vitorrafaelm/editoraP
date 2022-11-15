@@ -20,7 +20,7 @@ public class AddressDao extends BaseDao<Address> {
         
     }
 	
-	public Address inserir (Address address) throws SQLException {
+	public Address inserir (Address address) {
 		String sql = "INSERT INTO tb_address (street,neightboohood,number_house,zipcode,city) VALUES (?,?,?,?,?);";
 		try {
 		    System.out.println(address.getStreet() + address.getNeightboohood() + address.getNumber() + address.getZipcode() + address.getCity());
@@ -50,7 +50,7 @@ public class AddressDao extends BaseDao<Address> {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			throw new SQLException();
+			return null;
 		}				
 	}
 	

@@ -13,16 +13,10 @@ import models.dao.BaseInterDAO;
 public class AddressBO {
 	BaseInterDAO<Address> dao = new AddressDao();
 		
-	public Address adicionar(AddressDTO dto) {
+	public Address adicionar(AddressDTO dto) throws SQLException {
 		Address address = Address.converter(dto);
 		
-		try {
-			return dao.inserir(address);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return null;
-		}
+		return dao.inserir(address);
 	}
 	
 	public List<Address> listar(){
