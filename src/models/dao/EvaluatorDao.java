@@ -9,21 +9,26 @@ import models.entities.Evaluator;
 import models.entities.Address;
 
 public class EvaluatorDao extends BaseDao<Evaluator> {
-	
 	Connection connection;
-	
+/*	
 	public EvaluatorDao(Connection connection) throws SQLException {
         this.connection = connection;
     }
-	
+*/	public EvaluatorDao() {
+    try {
+        this.connection = new DatabaseConnection().getConnection();;
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}
 	public boolean inserir (Evaluator evaluator) {
-		String sql = "INSERT INTO tb_evaluator (id,name,cpf,address) VALUES (?,?,?,?);";
+		String sql = "INSERT INTO tb_evaluator (name,cpf,id_address) VALUES (?,?,?);";
 		try {
 			PreparedStatement pst = this.connection.prepareStatement(sql);
-			pst.setString(1, evaluator.getId());
-			pst.setString(2, evaluator.getName() );
-			pst.setString(3, evaluator.getCPF());
-			pst.setString(4, evaluator.getAddress());
+		//	pst.setString(1, evaluator.getId());
+			pst.setString(1, evaluator.getNome() );
+			pst.setString(2, evaluator.getCPF());
+			pst.setString(3, evaluator.getAdress().getId());
 			pst.execute();
 			return true;		
 		
@@ -35,10 +40,10 @@ public class EvaluatorDao extends BaseDao<Evaluator> {
 	}
 	
 	public boolean deletar(Evaluator evaluator) {
-		String sql = "DELETE FROM tb_evaluator WHERE id=?;";
+		String sql = "DELETE FROM tb_evaluator WHERE cpf=?;";
 		try {
 			PreparedStatement pst = this.connection.prepareStatement(sql);
-			pst.setString(1, evaluator.getId());
+			pst.setString(1, evaluator.getCPF());
 			pst.execute();
 			
 			return true;
@@ -51,13 +56,12 @@ public class EvaluatorDao extends BaseDao<Evaluator> {
 	}
 	
 	public boolean alterar(Evaluator evaluator) {
-		String sql = "UPDATE tb_evaluator SET id=?,name=?,cpf=?,address=? WHERE id=? ";
+		String sql = "UPDATE tb_evaluator SET name=?,cpf=?,address=? WHERE id=? ";
 		try {
 			PreparedStatement pst = this.connection.prepareStatement(sql);
-			pst.setString(1, evaluator.getId());
-			pst.setString(2, evaluator.getName() );
-			pst.setString(3, evaluator.getCPF());
-			pst.setString(4, evaluator.getAddress());
+			pst.setString(1, evaluator.getNome() );
+			pst.setString(2, evaluator.getCPF());
+			pst.setString(3, evaluator.getAddress());
 			pst.executeUpdate();
 			return true;		
 		
@@ -70,17 +74,15 @@ public class EvaluatorDao extends BaseDao<Evaluator> {
 	}
 	
 	public Evaluator findById(Evaluator evaluator) {
-		String sql = "SELECT * FROM tb_evaluator WHERE id=? ;";
+		String sql = "SELECT * FROM tb_evaluator WHERE cpf=? ;";
 		try {
 			PreparedStatement pst = this.connection.prepareStatement(sql);
 			ResultSet rs = pst.executeQuery();
 			if(rs.next()) {
 				Evaluator a = new Evaluator();
-				a.setId(rs.getString("id"));
-				a.setName(rs.getString("nome"));
+				a.setNome(rs.getString("nome"));
 				a.setCPF(rs.getString("CPF"));
-				a.set(rs.getString("address"));
-				a.setId(evaluator.getId());
+				a.setCPF(evaluator.getCPF());
 				return a;
 			}
 			else return null;

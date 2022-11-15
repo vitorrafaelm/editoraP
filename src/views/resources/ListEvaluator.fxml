@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<SplitPane dividerPositions="0.2843" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ListAuthorScreen">
+   <items>
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #FFFFFF;">
+         <children>
+            <ImageView disable="true" fitHeight="67.0" fitWidth="70.0" layoutX="49.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@logo.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="8.0" layoutY="95.0" mnemonicParsing="false" prefHeight="11.0" style="-fx-pref-width: 150px; -fx-pref-height: 5px; -fx-border-width: 0px; -fx-background-color: #D6D1B3;" text="Inicio" textFill="WHITE">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Button>
+            <Button layoutX="8.0" layoutY="125.0" mnemonicParsing="false" onAction="#navigateToHomePage" style="-fx-pref-width: 150px; -fx-border-width: 0px; -fx-background-color: #D6D1B3;" text="Autores" textFill="WHITE">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Button>
+            <Button layoutX="9.0" layoutY="154.0" mnemonicParsing="false" style="-fx-pref-width: 150px; -fx-border-width: 0px; -fx-background-color: #D6D1B3;" text="Obras" textFill="WHITE">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Button>
+            <Button layoutX="9.0" layoutY="185.0" mnemonicParsing="false" style="-fx-pref-width: 150px; -fx-border-width: 0px; -fx-background-color: #D6D1B3;" text="Avaliadores" textFill="WHITE">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Button>
+            <Button layoutX="8.0" layoutY="215.0" mnemonicParsing="false" style="-fx-pref-width: 150px; -fx-border-width: 0px; -fx-background-color: #D6D1B3;" text="Relatorios" textFill="WHITE">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Button>
+            <Button fx:id="SairBotao" layoutX="8.0" layoutY="245.0" mnemonicParsing="false" style="-fx-pref-width: 150px; -fx-border-width: 0px; -fx-background-color: #7B7B7B;" text="Sair" textFill="WHITE">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="481.0" prefWidth="525.0" style="-fx-background-color: #D6D1B3;">
+         <children>
+            <TextField layoutX="9.0" layoutY="51.0" style="-fx-pref-width: 350;" />
+            <Label layoutX="160.0" layoutY="19.0" style="-fx-font-weight: 700;" text="Listar Avaliadores" textFill="WHITE" />
+            <Button fx:id="BotaoPesquisarAvaliadores" layoutX="362.0" layoutY="53.0" mnemonicParsing="false" text="Pesquisar">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Button>
+            <Button layoutX="14.0" layoutY="271.0" mnemonicParsing="false" onAction="#navigateToRegisterScreen" style="-fx-background-color: #7B7B7B; -fx-font-weight: 700;" text="Cadastrar" textFill="WHITE">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Button>
+            <TableView layoutX="12.0" layoutY="89.0" prefHeight="164.0" prefWidth="408.0">
+               <columns>
+                  <TableColumn prefWidth="61.0" text="Nome" />
+                  <TableColumn prefWidth="84.0" text="CPF" />
+                  <TableColumn minWidth="0.0" prefWidth="181.0" text="Endereço" />
+                  <TableColumn text="Ações">
+                     <columns>
+                        <TableColumn onEditStart="#navigateToEditScreen" prefWidth="39.0" text="🗑" />
+                        <TableColumn onEditStart="#deleteEvaluator" prefWidth="41.0" text="✎" />
+                     </columns>
+                  </TableColumn>
+               </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+   </items>
+</SplitPane>

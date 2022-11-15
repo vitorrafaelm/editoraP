@@ -6,47 +6,47 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/home/vitor/Downloads/mysql-connector-java-8.0.30.jar">
+	<classpathentry kind="lib" path="C:/Users/Kuchinawa/OneDrive/Documentos/mysql-connector-java-8.0.30.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/home/vitor/Downloads/javafx-sdk-19/lib/javafx.base.jar">
+	<classpathentry kind="lib" path="C:/Users/Kuchinawa/OneDrive/Documentos/javafx/javafx.base.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/home/vitor/Downloads/javafx-sdk-19/lib/javafx.controls.jar">
+	<classpathentry kind="lib" path="C:/Users/Kuchinawa/OneDrive/Documentos/javafx/javafx.controls.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/home/vitor/Downloads/javafx-sdk-19/lib/javafx.fxml.jar">
+	<classpathentry kind="lib" path="C:/Users/Kuchinawa/OneDrive/Documentos/javafx/javafx.fxml.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/home/vitor/Downloads/javafx-sdk-19/lib/javafx.graphics.jar">
+	<classpathentry kind="lib" path="C:/Users/Kuchinawa/OneDrive/Documentos/javafx/javafx.graphics.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/home/vitor/Downloads/javafx-sdk-19/lib/javafx.media.jar">
+	<classpathentry kind="lib" path="C:/Users/Kuchinawa/OneDrive/Documentos/javafx/javafx.media.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/home/vitor/Downloads/javafx-sdk-19/lib/javafx.swing.jar">
+	<classpathentry kind="lib" path="C:/Users/Kuchinawa/OneDrive/Documentos/javafx/javafx.swing.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/home/vitor/Downloads/javafx-sdk-19/lib/javafx.web.jar">
+	<classpathentry kind="lib" path="C:/Users/Kuchinawa/OneDrive/Documentos/javafx/javafx.web.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/home/vitor/Downloads/javafx-sdk-19/lib/javafx-swt.jar">
+	<classpathentry kind="lib" path="C:/Users/Kuchinawa/OneDrive/Documentos/javafx/javafx-swt.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
