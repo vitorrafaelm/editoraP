@@ -31,26 +31,21 @@ public class AuthorBO {
 	    List<AuthorDTO> authors = new ArrayList<AuthorDTO>();
         ResultSet rs = dao.findAll();
         
-       
-        
         try {
-            System.out.print(rs.next());
             while(rs.next()) {
                 AuthorDTO author = new AuthorDTO();
-//                Address address = new Address();
-//                
-//                address.setCity(rs.getString("city"));
-//                address.setNeightboohood(rs.getString("neightboohood"));
-//                address.setNumber(rs.getString("number_house"));
-//                address.setStreet(rs.getString("street"));
-//                address.setZipcode(rs.getString("zipcode"));
+                Address address = new Address();
                 
-                author.setCpf(rs.getString("cpf"));
-//                author.setAddress(address);
+                address.setCity(rs.getString("city"));
+                address.setNeightboohood(rs.getString("neightboohood"));
+                address.setNumber(rs.getString("number_house"));
+                address.setStreet(rs.getString("street"));
+                address.setZipcode(rs.getString("zipcode"));
+                
+                author.setCpf(rs.getString("taxId"));
+                author.setAddress(address);
                 author.setName(rs.getString("name"));
                 author.setId(rs.getInt("id"));
-                
-                System.out.print(author.toString());
                 
                 authors.add(author);
             }
@@ -60,5 +55,16 @@ public class AuthorBO {
             e.printStackTrace();
             return null;
         }
+	}
+	
+	public boolean deletar(Author author) {
+	    try {
+            return dao.deletar(author);
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+            return false;
+        }
+	    
 	}
 }

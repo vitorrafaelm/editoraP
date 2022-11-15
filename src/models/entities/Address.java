@@ -56,8 +56,8 @@ public class Address {
 
 	@Override
 	public String toString() {
-		return "Address [id=" + id + ", street=" + street + ", neightboohood=" + neightboohood + ", number=" + number
-				+ ", zipcode=" + zipcode + "]";
+		return this.street + ", " + this.neightboohood + ", " + this.number
+				+ ", " + this.city;
 	} 
 	
 	public static Address converter(AddressDTO dto) {

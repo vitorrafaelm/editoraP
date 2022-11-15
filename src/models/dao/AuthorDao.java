@@ -20,10 +20,7 @@ public class AuthorDao extends BaseDao<Author> {
 	
 	@Override
     public ResultSet findAll() {
-        String sql = "SELECT *, td2.id as id_address_table FROM tb_authors ta \n"
-                + "LEFT JOIN tb_address ta2 ON ta2.id = ta.address_id;";
-        
-//        String sql = "SELECT * FROM tb_authors;";
+        String sql = "SELECT * FROM tb_authors ta LEFT JOIN tb_address ta2 ON ta2.id = ta.address_id;";
         
         try {
             PreparedStatement pst = this.connection.prepareStatement(sql);
@@ -52,4 +49,22 @@ public class AuthorDao extends BaseDao<Author> {
 			throw new SQLException();
 		}				
 	}
+	
+	public boolean deletar(Author author) {
+	    String sql = "DELETE FROM tb_authors WHERE taxId=?;";
+        try {
+            PreparedStatement pst = this.connection.prepareStatement(sql);
+            pst.setString(1, author.getCpf());
+            pst.execute();
+            
+            return true;
+        
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+	
 }

@@ -11,6 +11,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import models.entities.Address;
+import models.entities.Author;
 import models.services.AuthorBO;
 import views.Telas;
 
@@ -22,7 +24,7 @@ public class ListAuthorScreen {
     private AuthorBO authorBO = new AuthorBO();
     private ObservableList<AuthorDTO> listAuthors;
     
-    public void initialize(URL arg0, ResourceBundle arg1) {
+    public void initialize() {
         // TODO Auto-generated method stub
         listAuthors();
     }
@@ -37,6 +39,24 @@ public class ListAuthorScreen {
         tableAuthor.setItems(listAuthors);
     }
     
+    public void deleteAuthor() {
+        try {
+            Author author = new Author(); 
+            
+            String cpf = tableAuthor.getSelectionModel().getSelectedItem().getCpf();
+            author.setCpf(cpf);
+            authorBO.deletar(author); 
+            
+            tableAuthor.getItems().removeAll(
+                    tableAuthor.getSelectionModel().getSelectedItems()
+            );
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+        
+       
+    }
+    
     public void navigateToHomePage() {
         Telas.listAuthorScreen();
     }
@@ -49,8 +69,5 @@ public class ListAuthorScreen {
         Telas.editAuthorScreen();
     }
     
-    public void deleteAuthor() {
-        // toda a lógica para deletar author e no final redireciona para a listagem
-        Telas.listAuthorScreen();
-    }
+    
 }
