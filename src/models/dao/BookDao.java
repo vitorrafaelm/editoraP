@@ -37,14 +37,15 @@ public class BookDao extends BaseDao<Book> {
     }
 	
 	public Book inserir (Book book) throws SQLException {
-		String sql = "INSERT INTO tb_books (title, description, gender, dateLaunch, status_register) VALUES (?,?,?,?,?);";
+		String sql = "INSERT INTO tb_books (author, title, description, gender, dateLaunch, status_register) VALUES (?,?,?,?,?,?);";
 		try {
 			PreparedStatement pst = this.connection.prepareStatement(sql);
-			pst.setString(1, book.getTitle());
-			pst.setString(2, book.getDescription());
-			pst.setString(3, book.getGender());
-            pst.setString(4, book.getDateLaunch());
-			pst.setString(5, book.getStatus_register());
+            pst.setString(1, book.getAuthor());
+			pst.setString(2, book.getTitle());
+			pst.setString(3, book.getDescription());
+			pst.setString(4, book.getGender());
+            pst.setString(5, book.getDateLaunch());
+			pst.setString(6, book.getStatus_register());
             pst.execute();
 			
 			return book;		
@@ -56,7 +57,7 @@ public class BookDao extends BaseDao<Book> {
 	}
 	
 	public boolean deletar(Book book) {
-	    String sql = "DELETE FROM tb_books WHERE taxId=?;";
+	    String sql = "DELETE FROM tb_books WHERE title=?;";
         try {
             PreparedStatement pst = this.connection.prepareStatement(sql);
             pst.setString(1, book.getTitle());
@@ -75,11 +76,12 @@ public class BookDao extends BaseDao<Book> {
         String sql = "UPDATE tb_books SET title=?,description=?,gender=?,dateLaunch=?, status_register=? WHERE title=? ";
         try {
             PreparedStatement pst = this.connection.prepareStatement(sql);
-            pst.setString(1, book.getTitle());
-			pst.setString(2, book.getDescription());
-			pst.setString(3, book.getGender());
-            pst.setString(4, book.getDateLaunch());
-			pst.setString(5, book.getStatus_register());
+            pst.setString(1, book.getAuthor());
+			pst.setString(2, book.getTitle());
+			pst.setString(3, book.getDescription());
+			pst.setString(4, book.getGender());
+            pst.setString(5, book.getDateLaunch());
+			pst.setString(6, book.getStatus_register());
             pst.executeUpdate();
             return true;        
         
@@ -101,6 +103,7 @@ public class BookDao extends BaseDao<Book> {
                 a.setTitle(rs.getString("title"));
                 a.setDescription(rs.getString("description"));
                 a.setGender(rs.getString("gender"));
+                a.setDateLaunch(null);
               /*a.setDateLaunch(rs.getString("dateLaunch"));
                 como faz pra dateLaunch ser reconhecido como string?*/
                 a.setStatus_register(rs.getString("status_register"));
