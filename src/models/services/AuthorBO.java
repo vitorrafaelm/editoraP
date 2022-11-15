@@ -15,16 +15,10 @@ import models.entities.Author;
 public class AuthorBO {
 	BaseInterDAO<Author> dao = new AuthorDao();
 	
-	public Author adicionar(AuthorDTO dto) {
+	public Author adicionar(AuthorDTO dto) throws SQLException {
 		Author author = Author.converter(dto);
 		
-		try {
-			return dao.inserir(author);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return null;
-		}	
+		return dao.inserir(author);	
 	}
 	
 	public List<AuthorDTO> listar() {

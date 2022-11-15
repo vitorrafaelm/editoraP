@@ -35,7 +35,7 @@ public class AuthorDao extends BaseDao<Author> {
         }
     }
 	
-	public Author inserir (Author author) throws SQLException {
+	public Author inserir (Author author) {
 		String sql = "INSERT INTO tb_authors (name, taxId, address_id) VALUES (?,?,?);";
 		try {
 			PreparedStatement pst = this.connection.prepareStatement(sql);
@@ -48,7 +48,7 @@ public class AuthorDao extends BaseDao<Author> {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			throw new SQLException();
+			return null;
 		}				
 	}
 	
@@ -74,7 +74,7 @@ public class AuthorDao extends BaseDao<Author> {
             PreparedStatement pst = this.connection.prepareStatement(sql);
             pst.setString(1, author.getNome());
             pst.setString(2, author.getCpf() );
-            pst.setString(3, author.getAdress().getId());
+            pst.setInt(3, author.getAdress().getId());
             pst.executeUpdate();
             return true;        
         
@@ -109,24 +109,8 @@ public class AuthorDao extends BaseDao<Author> {
         }
     }
 
-    public ResultSet findAll() {
-        String sql = "SELECT * FROM tb_author;";
-        try {
-            PreparedStatement pst = this.connection.prepareStatement(sql);
-            ResultSet rs = pst.executeQuery();
-            return rs;
-        
-        } catch (SQLException ex) {
-            // TODO Auto-generated catch block
-            ex.printStackTrace();
-            return null;
-        }
-    }
-
     public ResultSet findBySpecifiedField(Author author, String field) {
         return null;
     }
 }
 
-	
-}
