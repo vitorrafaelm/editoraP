@@ -30,7 +30,7 @@
                   <Font size="10.0" />
                </font>
             </Button>
-            <Button layoutX="9.0" layoutY="154.0" mnemonicParsing="false" style="-fx-pref-width: 150px; -fx-border-width: 0px; -fx-background-color: #D6D1B3;" text="Obras" textFill="WHITE">
+            <Button layoutX="9.0" layoutY="154.0" mnemonicParsing="false" onAction="#navigateToListBook" style="-fx-pref-width: 150px; -fx-border-width: 0px; -fx-background-color: #D6D1B3;" text="Obras" textFill="WHITE">
                <font>
                   <Font size="10.0" />
                </font>
@@ -97,7 +97,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Text>
-            <Button layoutX="15.0" layoutY="365.0" mnemonicParsing="false" onAction="#editarObra" style="-fx-pref-width: 140; -fx-border-width: 0px; -fx-background-color: #7B7B7B;" text="Editar" textFill="WHITE">
+            <Button layoutX="15.0" layoutY="365.0" mnemonicParsing="false" onAction="#updateBook" style="-fx-pref-width: 140; -fx-border-width: 0px; -fx-background-color: #7B7B7B;" text="Editar" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="10.0" />
                </font>

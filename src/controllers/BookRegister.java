@@ -31,8 +31,12 @@ public class BookRegister {
 		dto.setNumber(genero.getText());
 		dto.setZipcode(ano.getText());
 		
-        
+        //Sem autor e avaliador por enquanto :(
 		bo.adicionar(dto); 
 		
 	}
+
+	public void navigateToBookScr() {
+        Telas.listBookScreen();
+    }
 }
