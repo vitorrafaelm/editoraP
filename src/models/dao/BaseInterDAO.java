@@ -11,6 +11,7 @@ public interface BaseInterDAO<entity> {
 	//public entity inserir (entity e) throws SQLException;
 	public boolean deletar(entity e);
 	public boolean alterar(entity e);
+	public boolean alterar(entity e, String search);
 	public entity findById(entity e);
 	public ResultSet findAll();
 	public ResultSet findBySpecifiedField(entity e, String field);

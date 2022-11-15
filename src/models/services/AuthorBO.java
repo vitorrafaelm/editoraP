@@ -59,6 +59,27 @@ public class AuthorBO {
             e.printStackTrace();
             return false;
         }
+	}
+	
+	public Author findAuthorUnique(Author author) {
+	    try {
+            return dao.findById(author);
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+            return null;
+        }
+	}
+	
+	public boolean updateAuthor(AuthorDTO author, String cpf) {
+	    Author ath = Author.converter(author);
 	    
+	    try {
+            return dao.alterar(ath, cpf);
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+            return false;
+        }
 	}
 }

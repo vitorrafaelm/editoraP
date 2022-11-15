@@ -14,6 +14,9 @@ import models.services.AuthorBO;
 import views.Telas;
 
 public class ListAuthorScreen {
+    
+    public static Author currentAuthorToEdit; 
+    
     @FXML private TableView<AuthorDTO> tableAuthor;
     @FXML private TableColumn<AuthorDTO, String> columnName;
     @FXML private TableColumn<AuthorDTO, String> columnCpf;
@@ -63,6 +66,13 @@ public class ListAuthorScreen {
     }
     
     public void navigateToEditScreen() {
+        
+        Author author = new Author(); 
+        
+        String cpf = tableAuthor.getSelectionModel().getSelectedItem().getCpf();
+        author.setCpf(cpf);
+        
+        currentAuthorToEdit = author;
         Telas.editAuthorScreen();
     }
     

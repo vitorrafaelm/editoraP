@@ -68,13 +68,13 @@ public class AuthorDao extends BaseDao<Author> {
         }   
     }
 
-    public boolean alterar(Author author) {
-        String sql = "UPDATE tb_author SET name=?,cpf=?,id_address=? WHERE cpf=? ";
+    public boolean alterar(Author author, String cpf) {
+        String sql = "UPDATE tb_authors SET name=?,taxId=? WHERE taxId=? ";
         try {
             PreparedStatement pst = this.connection.prepareStatement(sql);
             pst.setString(1, author.getNome());
-            pst.setString(2, author.getCpf() );
-            pst.setInt(3, author.getAdress().getId());
+            pst.setString(2, author.getCpf());
+            pst.setString(3, cpf);
             pst.executeUpdate();
             return true;        
         
@@ -87,18 +87,27 @@ public class AuthorDao extends BaseDao<Author> {
     }
 
     public Author findById(Author author) {
-        String sql = "SELECT * FROM tb_author WHERE cpf=? ;";
+        String sql = "SELECT * FROM tb_authors as ath LEFT JOIN tb_address as tba on tba.id = ath.address_id WHERE ath.taxId=? ;";
         try {
             PreparedStatement pst = this.connection.prepareStatement(sql);
+            pst.setString(1, author.getCpf());
             ResultSet rs = pst.executeQuery();
             if(rs.next()) {
-                Author a = new Author();
-                a.setNome(rs.getString("name"));
-                a.setCpf(rs.getString("cpf"));
-              /*a.setAdress(rs.getString("adress"));
-                como faz pra endereço ser reconhecido como string?*/
+                Author author2 = new Author();
+                Address address = new Address();
+                
+                address.setId(rs.getInt("address_id"));
+                address.setCity(rs.getString("city"));
+                address.setNeightboohood(rs.getString("neightboohood"));
+                address.setNumber(rs.getString("number_house"));
+                address.setStreet(rs.getString("street"));
+                address.setZipcode(rs.getString("zipcode"));
+                
+                author2.setNome(rs.getString("name"));
+                author2.setCpf(rs.getString("taxId"));
+                author2.setAdress(address);
 
-                return a;
+                return author2;
             }
             else return null;
         

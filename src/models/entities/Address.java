@@ -67,6 +67,7 @@ public class Address {
 		address.setNumber(dto.getNumber());
 		address.setZipcode(dto.getZipcode());
 		address.setCity(dto.getCity());
+		address.setId(dto.getId());
 		return address;
 	}
 	

@@ -25,7 +25,6 @@ public class AuthorRegister {
 	private AuthorBO boAuthor = new AuthorBO();
 	
 	public void register() throws SQLException{
-	    System.out.println(name.getText() + cpf.getText() + street.getText() + neighboorhood.getText() + number.getText() + city.getText() + zipcode.getText());
 		AddressDTO dto = new AddressDTO();
 		
 		dto.setStreet(street.getText());
@@ -44,7 +43,6 @@ public class AuthorRegister {
 		
 		Author auth = boAuthor.adicionar(dtoAuthor);
 		
-		System.out.print(auth.toString() + "author in controller");
 	    Telas.listAuthorScreen();
 	}
 	
