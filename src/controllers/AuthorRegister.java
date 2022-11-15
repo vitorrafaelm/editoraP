@@ -24,7 +24,7 @@ public class AuthorRegister {
 	private AddressBO bo = new AddressBO();
 	private AuthorBO boAuthor = new AuthorBO();
 	
-	public void register(){
+	public void register() throws SQLException{
 	    System.out.println(name.getText() + cpf.getText() + street.getText() + neighboorhood.getText() + number.getText() + city.getText() + zipcode.getText());
 		AddressDTO dto = new AddressDTO();
 		

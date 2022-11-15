@@ -1,6 +1,8 @@
 package controllers;
 
 
+import java.sql.SQLException;
+
 import controllers.dto.AddressDTO;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -13,7 +15,7 @@ public class AddressRegister {
 	@FXML private TextField zipcode;
 	private AddressBO bo = new AddressBO();
 	
-	public void cadastrar() {
+	public void cadastrar() throws SQLException {
 		AddressDTO dto = new AddressDTO();
 		dto.setStreet(street.getText());
 		dto.setNeightboohood(neightboohood.getText());

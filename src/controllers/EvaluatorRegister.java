@@ -1,5 +1,7 @@
 package controllers;
 
+import java.sql.SQLException;
+
 import controllers.dto.AddressDTO;
 import controllers.dto.EvaluatorDTO;
 import javafx.fxml.FXML;
@@ -20,7 +22,7 @@ public class EvaluatorRegister {
           private EvaluatorBO bo= new EvaluatorBO();
           private AddressBO boA = new AddressBO();
     
-    public void cadastrar() {
+    public void cadastrar() throws SQLException {
      AddressDTO dtoA = new AddressDTO();
       
      dtoA.setStreet(rua.getText());

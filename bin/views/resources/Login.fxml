@@ -12,7 +12,7 @@
    <children>
       <ImageView fitHeight="84.0" fitWidth="87.0" layoutX="262.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../Downloads/editora.png" />
+                  <Image url="@logo.png" />
          </image>
       </ImageView>
       <TextField layoutX="206.0" layoutY="153.0" style="-fx-pref-width: 200;" />
