@@ -1,9 +1,9 @@
 package controllers;
 
-import java.awt.TextField;
 
 import controllers.dto.AddressDTO;
 import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
 import models.services.AddressBO;
 
 public class AddressRegister {
