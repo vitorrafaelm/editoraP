@@ -127,7 +127,7 @@
                   <Font size="10.0" />
                </font>
             </TextField>
-            <Button layoutX="28.0" layoutY="298.0" mnemonicParsing="false" onAction="#navigateToAuthorsScren" style="-fx-pref-width: 100px; -fx-background-color: #7B7B7B; -fx-font-weight: 700;" text="Cadastrar" textFill="WHITE">
+            <Button layoutX="28.0" layoutY="298.0" mnemonicParsing="false" onAction="#register" style="-fx-pref-width: 100px; -fx-background-color: #7B7B7B; -fx-font-weight: 700;" text="Cadastrar" textFill="WHITE">
                <font>
                   <Font size="10.0" />
                </font>

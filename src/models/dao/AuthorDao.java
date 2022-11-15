@@ -14,20 +14,34 @@ public class AuthorDao extends BaseDao<Author> {
 	
 	public AuthorDao() {
 		try {
-			this.connection = new DatabaseConnection().getConnection();;
+			this.connection = new DatabaseConnection().getConnection();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+    }
+	
+	@Override
+    public ResultSet findAll() {
+        String sql = "SELECT * FROM tb_authors ta LEFT JOIN tb_address ta2 ON ta2.id = ta.address_id;";
         
+        try {
+            PreparedStatement pst = this.connection.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+            return rs;
+        } catch (SQLException ex) {
+            // TODO Auto-generated catch block
+            ex.printStackTrace();
+            return null;
+        }
     }
 	
 	public Author inserir (Author author) throws SQLException {
-		String sql = "INSERT INTO tb_author (name, cpf, id_address) VALUES (?,?,?);";
+		String sql = "INSERT INTO tb_authors (name, taxId, address_id) VALUES (?,?,?);";
 		try {
 			PreparedStatement pst = this.connection.prepareStatement(sql);
 			pst.setString(1, author.getNome());
 			pst.setString(2, author.getCpf());
-			pst.setString(3, author.getAdress().getId());
+			pst.setInt(3, author.getAdress().getId());
 			pst.execute();
 			
 			return author;		
@@ -37,9 +51,9 @@ public class AuthorDao extends BaseDao<Author> {
 			throw new SQLException();
 		}				
 	}
-
-    public boolean deletar(Author author) {
-        String sql = "DELETE FROM tb_author WHERE cpf=?;";
+	
+	public boolean deletar(Author author) {
+	    String sql = "DELETE FROM tb_authors WHERE taxId=?;";
         try {
             PreparedStatement pst = this.connection.prepareStatement(sql);
             pst.setString(1, author.getCpf());
@@ -114,5 +128,5 @@ public class AuthorDao extends BaseDao<Author> {
     }
 }
 
-// onde o dt deve ser retornado ?
-// essa é a melhor forma de pegar exceptions ?
+	
+}

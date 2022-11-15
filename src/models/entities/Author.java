@@ -24,11 +24,11 @@ public class Author {
 	}
 	
 	public void setAdress(Address adress) {
-		if(!adress.getId().isEmpty()) {
+//		if(!adress.getId().isEmpty()) {
 			this.adress = adress;
-		}else { 
-			System.out.println("Endere�o Invalido");
-		}
+//		}else { 
+//			System.out.println("Endere�o Invalido");
+//		}
 	}
 	
 	public String getCpf() {
@@ -47,6 +47,7 @@ public class Author {
 		Author author = new Author();
 		author.setNome(dto.getName());
 		author.setCpf(dto.getCpf());
+		author.setAdress(dto.getAddress());
 		return author;
 	}
 }
