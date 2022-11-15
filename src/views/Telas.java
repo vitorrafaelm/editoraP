@@ -151,4 +151,45 @@ public class Telas extends Application {
             e.printStackTrace();
         }
     }
+
+    //Telas de Obras
+    public static void editBookScreen(){
+        try {
+            Parent root = FXMLLoader.load(Telas.class.getResource("resources/UpdateBook.fxml"));
+            Scene scene = new Scene (root);
+            stage.setScene(scene);
+            stage.setTitle("Tela de Edicao de Obras");
+            stage.show();
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void listBookScreen(){
+        try {
+            Parent root = FXMLLoader.load(Telas.class.getResource("resources/ListBook.fxml"));
+            Scene scene = new Scene (root);
+            stage.setScene(scene);
+            stage.setTitle("Tela de listagem de Obras");
+            stage.show();
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void registerBookScreen(){
+        try {
+            Parent root = FXMLLoader.load(Telas.class.getResource("resources/registerBook.fxml"));
+            Scene scene = new Scene (root);
+            stage.setScene(scene);
+            stage.setTitle("Tela de cadastro de Obras");
+            stage.show();
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }
