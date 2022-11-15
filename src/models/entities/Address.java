@@ -3,13 +3,14 @@ package models.entities;
 import controllers.dto.AddressDTO;
 
 public class Address {
-	private String id, street, neightboohood, number, zipcode, city;
+	private String street, neightboohood, number, zipcode, city;
+	private int id;
 	
-	public String getId() {
+	public int getId() {
 		return this.id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -65,6 +66,7 @@ public class Address {
 		address.setNeightboohood(dto.getNeightboohood());
 		address.setNumber(dto.getNumber());
 		address.setZipcode(dto.getZipcode());
+		address.setCity(dto.getCity());
 		return address;
 	}
 	

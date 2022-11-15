@@ -7,6 +7,7 @@ import controllers.dto.AddressDTO;
 import controllers.dto.AuthorDTO;
 import javafx.fxml.FXML;
 import models.entities.Address;
+import models.entities.Author;
 import models.services.AddressBO;
 import models.services.AuthorBO;
 import views.Telas;
@@ -20,27 +21,30 @@ public class AuthorRegister {
 	@FXML private TextField city;
 	@FXML private TextField zipcode;
 	
-//	private AddressBO bo = new AddressBO();
-//	private AuthorBO boAuthor = new AuthorBO();
+	private AddressBO bo = new AddressBO();
+	private AuthorBO boAuthor = new AuthorBO();
 	
 	public void register(){
-//		AddressDTO dto = new AddressDTO();
-//		
-//		dto.setStreet(street.getText());
-//		dto.setNeightboohood(neighboorhood.getText());
-//		dto.setNumber(street.getText());
-//		dto.setZipcode(street.getText());
-//		dto.setCity(city.getText());
-//		
-//		Address address = bo.adicionar(dto);
-//		
-//		AuthorDTO dtoAuthor = new AuthorDTO(); 
-//		
-//		dtoAuthor.setName(name.getText());
-//		dtoAuthor.setCpf(cpf.getText());
-//		dtoAuthor.setAddress(address);
-//		
-//		boAuthor.adicionar(dtoAuthor);
+	    System.out.println(name.getText() + cpf.getText() + street.getText() + neighboorhood.getText() + number.getText() + city.getText() + zipcode.getText());
+		AddressDTO dto = new AddressDTO();
+		
+		dto.setStreet(street.getText());
+		dto.setNeightboohood(neighboorhood.getText());
+		dto.setNumber(number.getText());
+		dto.setZipcode(zipcode.getText());
+		dto.setCity(city.getText());
+		
+		Address address = bo.adicionar(dto);
+		
+		AuthorDTO dtoAuthor = new AuthorDTO(); 
+		
+		dtoAuthor.setName(name.getText());
+		dtoAuthor.setCpf(cpf.getText());
+		dtoAuthor.setAddress(address);
+		
+		Author auth = boAuthor.adicionar(dtoAuthor);
+		
+		System.out.print(auth.toString() + "author in controller");
 	    Telas.listAuthorScreen();
 	}
 	

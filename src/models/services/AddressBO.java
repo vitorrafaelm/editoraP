@@ -15,6 +15,7 @@ public class AddressBO {
 		
 	public Address adicionar(AddressDTO dto) {
 		Address address = Address.converter(dto);
+		
 		try {
 			return dao.inserir(address);
 		} catch (SQLException e) {
@@ -34,7 +35,7 @@ public class AddressBO {
 				address.setNeightboohood(rs.getString("neightboohood"));
 				address.setNumber(rs.getString("number"));
 				address.setZipcode(rs.getString("zipcode"));
-				address.setId(rs.getString("id"));
+				address.setId(rs.getInt("id"));
 				addresses.add(address);
 			}
 			return addresses;
