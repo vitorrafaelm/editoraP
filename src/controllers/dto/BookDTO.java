@@ -1,8 +1,9 @@
 package controllers.dto;
 
 import java.util.Calendar;
-import models.entities.Book;
 import models.entities.Author;
+import models.entities.Evaluator;
+
 
 public class BookDTO {
     private Author author;
@@ -11,7 +12,7 @@ public class BookDTO {
     private String gender;
     private Calendar dateLaunch;
     private String status_register;
-	private 
+    private Evaluator evaluator;
 
 	public String getTitle() {
         return title;
@@ -35,6 +36,10 @@ public class BookDTO {
 
     public Author getAuthor() {
         return author;
+    }
+
+    public Evaluator getEvaluator() {
+        return evaluator;
     }
 
     public void setDescription(String description) {

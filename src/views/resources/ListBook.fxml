@@ -64,7 +64,7 @@
                   <Font size="10.0" />
                </font>
             </Button>
-            <TableView layoutX="9.0" layoutY="99.0" prefHeight="164.0" prefWidth="408.0">
+            <TableView fx:id="tableBook" layoutX="9.0" layoutY="99.0" prefHeight="164.0" prefWidth="408.0">
               <columns>
                 <TableColumn fx:id="columnTitulo" prefWidth="77.3333740234375" text="Título" />
                 <TableColumn fx:id="columnAno" prefWidth="37.33331298828125" text="Ano" />
