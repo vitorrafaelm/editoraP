@@ -28,7 +28,7 @@ public class EvaluatorDao extends BaseDao<Evaluator> {
 		//	pst.setString(1, evaluator.getId());
 			pst.setString(1, evaluator.getNome() );
 			pst.setString(2, evaluator.getCPF());
-			pst.setString(3, evaluator.getAdress().getId());
+			pst.setString(3, evaluator.getAdress());
 			pst.execute();
 			return true;		
 		
