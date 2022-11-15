@@ -40,6 +40,11 @@ public class BaseDao<entity> implements BaseInterDAO<entity> {
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
+	public boolean alterar(entity e, String search) {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
 	@Override
 	public entity findById(entity e) {

@@ -2,8 +2,17 @@ package controllers.dto;
 
 public class AddressDTO {
 	private String street, neightboohood, number, zipcode, city;
+	private int id;
 
-	public String getStreet() {
+	public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getStreet() {
 		return street;
 	}
 
