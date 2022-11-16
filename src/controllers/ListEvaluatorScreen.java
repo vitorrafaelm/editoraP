@@ -1,8 +1,8 @@
-package api.controllers;
+package controllers;
 
 import java.util.List;
 
-import api.dto.EvaluatorDTO;
+import controllers.dto.EvaluatorDTO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;

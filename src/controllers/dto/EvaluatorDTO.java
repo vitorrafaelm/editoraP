@@ -1,4 +1,4 @@
-package api.dto;
+package controllers.dto;
 
 import models.entities.Address;
 

@@ -1,4 +1,4 @@
-package api.controllers;
+package controllers;
 
 import views.Telas;
 

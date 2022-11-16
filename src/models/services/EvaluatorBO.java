@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import api.dto.EvaluatorDTO;
+import controllers.dto.EvaluatorDTO;
 import models.dao.BaseInterDAO;
 import models.dao.EvaluatorDao;
 import models.entities.Address;

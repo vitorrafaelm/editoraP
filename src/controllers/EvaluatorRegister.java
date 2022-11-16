@@ -1,9 +1,9 @@
-package api.controllers;
+package controllers;
 
 import java.sql.SQLException;
 
-import api.dto.AddressDTO;
-import api.dto.EvaluatorDTO;
+import controllers.dto.AddressDTO;
+import controllers.dto.EvaluatorDTO;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import models.entities.Address;

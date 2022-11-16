@@ -1,6 +1,6 @@
 package models.entities;
 
-import api.dto.EvaluatorDTO;
+import controllers.dto.EvaluatorDTO;
 
 public class Evaluator {
     private int id;
