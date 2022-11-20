@@ -12,9 +12,9 @@ public class Login {
     public String newPss;
     
     public void authenticateUser() {
-        if(this.password.getText().isEmpty() == false && this.cpf.getText().isEmpty() == false) {
+//        if(this.password.getText().isEmpty() == false && this.cpf.getText().isEmpty() == false) {
             Telas.telaHomePage();
-        }
+//        }
          // Pegar password e user
          // Tentar autenticar
          // Caso de erro exibir mensagem para o usuário

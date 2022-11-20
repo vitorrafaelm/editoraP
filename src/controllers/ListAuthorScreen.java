@@ -32,6 +32,8 @@ public class ListAuthorScreen {
     public void listAuthors() {
         List<AuthorDTO> authors = authorBO.listar();
         
+        // transformar de entidade para dto no controller
+        
         listAuthors = FXCollections.observableArrayList(authors);
         columnCpf.setCellValueFactory(new PropertyValueFactory<>("cpf"));
         columnName.setCellValueFactory(new PropertyValueFactory<>("name"));
