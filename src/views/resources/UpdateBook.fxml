@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -30,7 +29,7 @@
                   <Font size="10.0" />
                </font>
             </Button>
-            <Button layoutX="9.0" layoutY="154.0" mnemonicParsing="false" style="-fx-pref-width: 150px; -fx-border-width: 0px; -fx-background-color: #D6D1B3;" text="Obras" textFill="WHITE">
+            <Button layoutX="9.0" layoutY="154.0" mnemonicParsing="false" onAction="#navigateToListBook" style="-fx-pref-width: 150px; -fx-border-width: 0px; -fx-background-color: #D6D1B3;" text="Obras" textFill="WHITE">
                <font>
                   <Font size="10.0" />
                </font>
@@ -97,7 +96,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Text>
-            <Button layoutX="15.0" layoutY="365.0" mnemonicParsing="false" onAction="#editarObra" style="-fx-pref-width: 140; -fx-border-width: 0px; -fx-background-color: #7B7B7B;" text="Editar" textFill="WHITE">
+            <Button layoutX="15.0" layoutY="365.0" mnemonicParsing="false" onAction="#updateBook" style="-fx-pref-width: 140; -fx-border-width: 0px; -fx-background-color: #7B7B7B;" text="Editar" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="10.0" />
                </font>
@@ -112,18 +111,8 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Text>
-            <SplitMenuButton fx:id="autor" layoutX="15.0" layoutY="88.0" mnemonicParsing="false" style="-fx-pref-width: 140;">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-                <MenuItem mnemonicParsing="false" text="Action 2" />
-              </items>
-            </SplitMenuButton>
-            <SplitMenuButton fx:id="avaliador" layoutX="15.0" layoutY="328.0" mnemonicParsing="false" style="-fx-pref-width: 140;">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Action 1" />
-                  <MenuItem mnemonicParsing="false" text="Action 2" />
-               </items>
-            </SplitMenuButton>
+            <ChoiceBox fx:id="autor" layoutX="15.0" layoutY="88.0" prefWidth="150.0" />
+            <ChoiceBox fx:id="avaliador" layoutX="15.0" layoutY="328.0" prefWidth="150.0" />
          </children></AnchorPane>
   </items>
 </SplitPane>

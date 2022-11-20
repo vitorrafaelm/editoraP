@@ -1,12 +1,12 @@
 package controllers;
 
+import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-import javafx.scene.control.SplitMenuButton;
+import javafx.scene.control.ChoiceBox;
 import java.sql.SQLException;
 
 import controllers.dto.BookDTO;
 import controllers.dto.AuthorDTO;
-import javafx.fxml.FXML;
 import models.entities.Book;
 import models.services.BookBO;
 import models.entities.Author;
@@ -19,8 +19,8 @@ public class BookRegister {
 	@FXML private TextField descricao;
 	@FXML private TextField genero;
 	@FXML private TextField ano;
-    @FXML private SplitMenuButton autor;
-    @FXML private SplitMenuButton avaliador;
+    @FXML private ChoiceBox<String> autor;
+    @FXML private ChoiceBox<String> avaliador;
 
 	private BookBO bo = new BookBO();
 	
@@ -31,8 +31,12 @@ public class BookRegister {
 		dto.setNumber(genero.getText());
 		dto.setZipcode(ano.getText());
 		
-        
+        //Sem autor e avaliador por enquanto :(
 		bo.adicionar(dto); 
 		
 	}
+
+	public void navigateToBookScr() {
+        Telas.listBookScreen();
+    }
 }
