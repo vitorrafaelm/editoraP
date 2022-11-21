@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import models.entities.Admin;
 import models.entities.Evaluator;
 
 public class EvaluatorDao extends BaseDao<Evaluator> {
@@ -109,4 +110,38 @@ public class EvaluatorDao extends BaseDao<Evaluator> {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	public Evaluator findBySpecifiedFieldAdmin(Evaluator e, String field) {
+        String sql = "SELECT * FROM tb_evaluator WHERE " + field +"=? ;";
+        try {
+            PreparedStatement pst = getConnection().prepareStatement(sql);
+            switch (field) {
+            case "email":
+                pst.setString(1, e.getEmail());
+                break;
+            default: 
+                pst.setInt(1, e.getId());
+            }
+            
+            ResultSet rs = pst.executeQuery();
+            
+            if(rs.next()) {
+                Evaluator evaluator = new Evaluator();
+                evaluator.setEmail(rs.getString("email"));
+                evaluator.setPassword(rs.getString("password"));
+                evaluator.setNome(rs.getString("name"));
+                evaluator.setId(rs.getInt("id"));
+                return evaluator;
+            }
+            
+            return null;
+        
+        } catch (SQLException ex) {
+            // TODO Auto-generated catch block
+            ex.printStackTrace();
+            return null;
+        }
+    }
+	
+	
 }

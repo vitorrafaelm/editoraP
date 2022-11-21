@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import exceptions.AuthenticationException;
+
 public interface BaseInterDAO<entity> {
 
     public Connection getConnection();
@@ -15,4 +17,5 @@ public interface BaseInterDAO<entity> {
 	public entity findById(entity e);
 	public ResultSet findAll();
 	public ResultSet findBySpecifiedField(entity e, String field);
+	public entity findBySpecifiedFieldAdmin(entity e, String field);
 }

@@ -7,6 +7,7 @@ import views.Telas;
 public class Login {
     @FXML private TextField password;
     @FXML private TextField cpf;
+    @FXML private TextField error;
     
     @FXML private TextField cpfInRecoverPasswordScreen;
     public String newPss;

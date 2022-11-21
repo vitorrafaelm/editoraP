@@ -1,19 +1,16 @@
 package models.entities;
 
 import controllers.dto.EvaluatorDTO;
+import controllers.dto.UserDTO;
 
 public class Evaluator {
     private int id;
     private String nome; 
     private String CPF;
     private Address address;
-/*  
-    public void Evalutator(String name, String CPF, Address address) {
-        this.setName(name);
-        this.setCPF(CPF);
-        this.setAddress(address);
-    }
-*/
+    private String email;
+    private String password;
+
     public int getId(){
         return this.id;
     }
@@ -36,7 +33,6 @@ public class Evaluator {
         }
     }
 
-    
     public String getCPF() {
         return this.CPF;
     }
@@ -60,6 +56,25 @@ public class Evaluator {
       //  }
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
 
     @Override
     public String toString() {
@@ -71,6 +86,13 @@ public class Evaluator {
         evaluator.setId(dto.getId());
         evaluator.setCPF(dto.getCpf());
         evaluator.setAddress(dto.getAddress());
+        return evaluator;
+    }
+    
+    public static Evaluator converter(UserDTO dto) {
+        Evaluator evaluator = new Evaluator();
+        evaluator.setEmail(dto.getEmail());
+        evaluator.setPassword(dto.getPassword());
         return evaluator;
     }
     
