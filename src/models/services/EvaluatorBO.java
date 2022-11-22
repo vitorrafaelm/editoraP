@@ -6,13 +6,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 import controllers.dto.EvaluatorDTO;
+import controllers.dto.UserDTO;
+import exceptions.AuthError;
+import exceptions.AuthenticationException;
 import models.dao.BaseInterDAO;
 import models.dao.EvaluatorDao;
 import models.entities.Address;
+import models.entities.Admin;
 import models.entities.Evaluator;
 
 public class EvaluatorBO {
-    BaseInterDAO<Evaluator> dao = new EvaluatorDao();
+   BaseInterDAO<Evaluator> dao = new EvaluatorDao();
+   
+   public Evaluator authenticate(UserDTO data) throws AuthenticationException, SQLException {
+       Evaluator evaluator = Evaluator.converter(data);
+       
+       Evaluator user = this.dao.findBySpecifiedFieldAdmin(evaluator, "email");
+
+       if (user == null)
+           throw new AuthenticationException(AuthError.NOT_FOUND);
+       if (!data.getPassword().equals(user.getPassword()))
+           throw new AuthenticationException(AuthError.WRONG_PASSWORD);
+       
+       return user;
+   }
        
    public Evaluator adicionar(EvaluatorDTO dto) throws SQLException {
         Evaluator evaluator = Evaluator.converter(dto);
