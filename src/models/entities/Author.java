@@ -7,8 +7,17 @@ public class Author {
 	private String nome;
 	private Address adress;
 	private String cpf;
+	private int id;
 
-	public String getNome() {
+	public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNome() {
 		return nome;
 	}
 	

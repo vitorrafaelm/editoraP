@@ -28,27 +28,27 @@ public class ListBookScreen {
     }
     
     public void listBooks() {
-        List<BookDTO> books = bookBO.listar();
+        //List<BookDTO> books = bookBO.listar();
         
-        listBooks = FXCollections.observableArrayList(books);
-        columnTitulo.setCellValueFactory(new PropertyValueFactory<>("titulo"));
-        columnAno.setCellValueFactory(new PropertyValueFactory<>("ano"));
-        columnAvaliador.setCellValueFactory(new PropertyValueFactory<>("avaliador"));
-        columnEndereco.setCellValueFactory(new PropertyValueFactory<>("endereco"));
-        tableBook.setItems(listBooks);
+        //listBooks = FXCollections.observableArrayList(books);
+        //columnTitulo.setCellValueFactory(new PropertyValueFactory<>("titulo"));
+        //columnAno.setCellValueFactory(new PropertyValueFactory<>("ano"));
+        //columnAvaliador.setCellValueFactory(new PropertyValueFactory<>("avaliador"));
+        //columnEndereco.setCellValueFactory(new PropertyValueFactory<>("endereco"));
+        //tableBook.setItems(listBooks);
     }
     
     public void deleteBook() {
         try {
-            Book book = new Book(); 
+            //Book book = new Book(); 
             
-            String titulo = tableBook.getSelectionModel().getSelectedItem().getCpf();
-            book.setTitle(titulo);
-            BookBO.deletar(book); 
+            //String titulo = tableBook.getSelectionModel().getSelectedItem().getCpf();
+            //book.setTitle(titulo);
+            //BookBO.deletar(book); 
             
-            tableBook.getItems().removeAll(
-                    tableBook.getSelectionModel().getSelectedItems()
-            );
+            //tableBook.getItems().removeAll(
+                    //tableBook.getSelectionModel().getSelectedItems()
+            //);
         } catch (Exception e) {
             // TODO: handle exception
         }
@@ -68,4 +68,7 @@ public class ListBookScreen {
         Telas.editBookScreen();
     }
     
+    public void pesquisarObra() {
+        
+    }
 }

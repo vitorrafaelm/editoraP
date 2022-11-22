@@ -6,11 +6,28 @@ import models.entities.Evaluator;
 
 
 public class BookDTO {
+    private int id;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
+
+    public void setEvaluator(Evaluator evaluator) {
+        this.evaluator = evaluator;
+    }
+
     private Author author;
 	private String title;
     private String description;
     private String gender;
-    private Calendar dateLaunch;
+    private String dateLaunch;
     private String status_register;
     private Evaluator evaluator;
 
@@ -26,7 +43,7 @@ public class BookDTO {
         return gender;
     }
 
-    public Calendar getDateLaunch() {
+    public String getDateLaunch() {
         return dateLaunch;
     }
     
@@ -60,7 +77,7 @@ public class BookDTO {
         this.title = title;
     }
 
-    public void setDateLaunch(Calendar dateLaunch) {
+    public void setDateLaunch(String dateLaunch) {
         this.dateLaunch = dateLaunch;
     }
 

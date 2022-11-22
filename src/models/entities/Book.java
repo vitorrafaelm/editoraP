@@ -5,28 +5,41 @@ import java.util.Calendar;
 import controllers.dto.BookDTO;
 
 public class Book {
-
+    
+    private int id;
     private Author author;
-    //private Evaluator evaluator; 
+    private Evaluator evaluator; 
     private String title;
     private String description;
     private String gender;
-    private Calendar dateLaunch;
+    private String dateLaunch;
     private String status_register; //aprovado, em analise, nao aprovado
 
-    //constructor que faz o cadastro do livro
-    public Book() {
-        setTitle(title);
-        setDescription(description);
-        setGender(gender);
-        setDateLaunch(dateLaunch);
-        this.author = author;
-        this.status_register = "em analise";
-    }
+    
 
     //getters
     public String getTitle() {
         return title;
+    }
+    
+    public Evaluator getEvaluator() {
+        return evaluator;
+    }
+
+    public void setEvaluator(Evaluator evaluator) {
+        this.evaluator = evaluator;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getDescription() {
@@ -37,7 +50,7 @@ public class Book {
         return gender;
     }
 
-    public Calendar getDateLaunch() {
+    public String getDateLaunch() {
         return dateLaunch;
     }
     
@@ -86,7 +99,7 @@ public class Book {
             System.out.println("O titulo nao pode ser vazio");
     }
 
-    public void setDateLaunch(Calendar dateLaunch) {
+    public void setDateLaunch(String dateLaunch) {
         this.dateLaunch = dateLaunch;
     }
 
@@ -96,6 +109,10 @@ public class Book {
 		book.setDescription(dto.getDescription());
 		book.setGender(dto.getGender());
         book.setDateLaunch(dto.getDateLaunch());
+        book.setId(dto.getId());
+        book.setAuthor(dto.getAuthor());
+        book.setEvaluator(dto.getEvaluator());
+        
         dto.getAuthor();
         
 		return book;

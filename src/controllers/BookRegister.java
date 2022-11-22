@@ -25,15 +25,25 @@ public class BookRegister {
 	private BookBO bo = new BookBO();
 	
 	public void cadastrar() throws SQLException {
-		BookDTO dto = new BookDTO();
-		dto.setTitle(titulo.getText());
-		dto.setNeightboohood(descricao.getText());
-		dto.setNumber(genero.getText());
-		dto.setZipcode(ano.getText());
+		//BookDTO dto = new BookDTO();
+		//dto.setTitle(titulo.getText());
+		//dto.setNeightboohood(descricao.getText());
+		//dto.setNumber(genero.getText());
+		//dto.setZipcode(ano.getText());
 		
         //Sem autor e avaliador por enquanto :(
-		bo.adicionar(dto); 
+		//bo.adicionar(dto); 
+	    Telas.listBookScreen();
 		
+	}
+	
+	public void initialize() {
+        // TODO Auto-generated method stub
+        listBooks();
+    }
+	
+	public void adicionarInformacoes() {
+	    autor.setItems(FXCollections.observableArrayList("New Document", "Open ", new Separator(), "Save", "Save as"))
 	}
 
 	public void navigateToBookScr() {

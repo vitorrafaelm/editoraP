@@ -36,28 +36,48 @@ public class BookDao extends BaseDao<Book> {
         }
     }
 	
-	public Book inserir (Book book) throws SQLException {
-		String sql = "INSERT INTO tb_books (author, title, description, gender, dateLaunch, status_register) VALUES (?,?,?,?,?,?);";
+	public Book inserir (Book book){
+		String sql = "INSERT INTO tb_books(title,description,gender, year, status_register, id_author)VALUES (?,?,?,?,?,?);";
+		String sql2 = "INSERT INTO books_evaluators(id_evaluator,id_book) VALUES(?,?);";
 		try {
 			PreparedStatement pst = this.connection.prepareStatement(sql);
-            pst.setString(1, book.getAuthor());
-			pst.setString(2, book.getTitle());
-			pst.setString(3, book.getDescription());
-			pst.setString(4, book.getGender());
-            pst.setString(5, book.getDateLaunch());
-			pst.setString(6, book.getStatus_register());
+            pst.setString(1, book.getTitle());
+			pst.setString(2, book.getDescription());
+			pst.setString(3, book.getGender());
+			pst.setString(4, book.getDateLaunch());
+            pst.setString(5, book.getStatus_register());
+			pst.setInt(6, book.getAuthor().getId());
             pst.execute();
+            
+            String sqlSelect = "select * from tb_books where title=? and description=?;";
+            PreparedStatement pstSelect = this.connection.prepareStatement(sqlSelect);
+            
+            pstSelect.setString(1, book.getTitle());
+            pstSelect.setString(2, book.getDescription());
+      
+            ResultSet rs = pstSelect.executeQuery(); 
+            
+            if(rs.next()) {
+                book.setId(rs.getInt("id"));
+                PreparedStatement pstSelect1 = this.connection.prepareStatement(sql2);
+                
+                pstSelect1.setInt(1, book.getEvaluator().getId());
+                pstSelect1.setInt(2, book.getId());
+                pstSelect1.execute();
+            }
+            
+            
 			
 			return book;		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			throw new SQLException();
+			return null;
 		}				
 	}
 	
 	public boolean deletar(Book book) {
-	    String sql = "DELETE FROM tb_books WHERE title=?;";
+	    String sql = "DELETE FROM tb_books WHERE id=?;";
         try {
             PreparedStatement pst = this.connection.prepareStatement(sql);
             pst.setString(1, book.getTitle());
