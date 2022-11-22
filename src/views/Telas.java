@@ -37,32 +37,6 @@ public class Telas extends Application {
 		}
 	}
 	
-	public static void RecoverPasswordScreen() {
-        try {
-            Parent root = FXMLLoader.load(Telas.class.getResource("resources/RecoverPassword.fxml"));
-            Scene scene = new Scene (root);
-            stage.setScene(scene);
-            stage.setTitle("Tela de recuperação de senha");
-            stage.show();
-        }
-        catch(Exception e) {
-            e.printStackTrace();
-        }
-    }
-	
-	public static void PasswordInformationScreen() {
-        try {
-            Parent root = FXMLLoader.load(Telas.class.getResource("resources/PasswordInformation.fxml"));
-            Scene scene = new Scene (root);
-            stage.setScene(scene);
-            stage.setTitle("Tela de senha gerada");
-            stage.show();
-        }
-        catch(Exception e) {
-            e.printStackTrace();
-        }
-    }
-	
 	public static void telaHomePage() {
         try {
             Parent root = FXMLLoader.load(Telas.class.getResource("resources/HomePage.fxml"));
@@ -114,6 +88,7 @@ public class Telas extends Application {
             e.printStackTrace();
         }
     }
+    
     //telas de avaliadores
     public static void listEvaluatorScreen() {
         try {
@@ -129,7 +104,7 @@ public class Telas extends Application {
     }
     public static void registerEvaluatorScreen() {
         try {
-            Parent root = FXMLLoader.load(Telas.class.getResource("resources/registerEvaluator.fxml"));
+            Parent root = FXMLLoader.load(Telas.class.getResource("resources/registerEvaluator2.fxml"));
             Scene scene = new Scene (root);
             stage.setScene(scene);
             stage.setTitle("Tela de cadastro de avaliadores");
@@ -141,10 +116,10 @@ public class Telas extends Application {
     }
     public static void editEvaluatorScreen() {
         try {
-            Parent root = FXMLLoader.load(Telas.class.getResource("resources/UpdateEvaluator.fxml"));
+            Parent root = FXMLLoader.load(Telas.class.getResource("resources/updateEvaluators2.fxml"));
             Scene scene = new Scene (root);
             stage.setScene(scene);
-            stage.setTitle("Tela de listagem de avaliadores");
+            stage.setTitle("Tela de atualização de avaliadores");
             stage.show();
         }
         catch(Exception e) {
@@ -179,7 +154,7 @@ public class Telas extends Application {
         }
     }
 
-    public static void registerBookScreen(){
+    public static void registerBookScreen() {
         try {
             Parent root = FXMLLoader.load(Telas.class.getResource("resources/registerBook.fxml"));
             Scene scene = new Scene (root);

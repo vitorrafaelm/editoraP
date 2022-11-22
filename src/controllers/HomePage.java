@@ -4,17 +4,20 @@ import views.Telas;
 
 public class HomePage {
 	
-	public void navigateToHomePageAuthors() {
+	public void navigateToListAuthorsScreen() {
 		Telas.listAuthorScreen();
 	}
-
-	public void navigateToHomePageBooks() {
-		Telas.listBookScreen();
-	}
-
-	public void navigateToHomePageEvaluators() {
-		Telas.listEvaluatorScreen();
-	}
-
 	
+	public void navigateToListBooksScreen() {
+        Telas.listBookScreen();
+    }
+	
+	public void navigateToListEvaluatorsScreen() {
+        Telas.listEvaluatorScreen();
+    }
+	
+	public void navigateToListRelatoryScreen() {
+	    // tela ainda não existe
+        Telas.listAuthorScreen();
+    }
 }

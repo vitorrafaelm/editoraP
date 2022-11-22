@@ -56,4 +56,20 @@ public class ListEvaluatorScreen {
             // TODO: handle exception
         }
     }
+    
+    public void navigateToListAuthorsScreen() {
+        Telas.listAuthorScreen();
+    }
+    
+    public void navigateToListBooksScreen() {
+        Telas.listBookScreen();
+    }
+    
+    public void navigateToListEvaluatorsScreen() {
+        Telas.listEvaluatorScreen();
+    }
+    
+    public void navigateToListRelatoryScreen() {
+        Telas.listAuthorScreen();
+    }
 }

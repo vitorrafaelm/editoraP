@@ -28,11 +28,6 @@
             <Font size="10.0" />
          </font>
       </Label>
-      <Button layoutX="201.0" layoutY="230.0" mnemonicParsing="false" onAction="#navigateToRecoverPasswordScreem" style="-fx-border-width: 0px; -fx-background-color: transparent; -fx-pref-height: 10;" text="Recuperar senha" textFill="WHITE">
-         <font>
-            <Font size="10.0" />
-         </font>
-      </Button>
       <Label fx:id="error" layoutX="456.0" layoutY="47.0" />
    </children>
 </Pane>
