@@ -60,8 +60,4 @@ public class AuthController {
             error.setText(e.getMessage());
         }
     }
-    
-    public void navigateToRecoverPasswordScreem() {
-        Telas.RecoverPasswordScreen();
-    }
 }

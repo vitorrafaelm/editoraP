@@ -25,16 +25,4 @@ public class Login {
     public void goToLoginScreen() {
         Telas.telaLogin();
     }
-    
-    public void navigateToRecoverPasswordScreem() {
-        Telas.RecoverPasswordScreen();
-    }
-    
-    public void generateNewPasswordAndNavigate() {
-        if(cpfInRecoverPasswordScreen.getText().isEmpty() == false) {
-            this.newPss = "123456";
-            Telas.PasswordInformationScreen();
-        }
-        
-    }
 }

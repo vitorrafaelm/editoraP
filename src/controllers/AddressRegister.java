@@ -7,6 +7,7 @@ import controllers.dto.AddressDTO;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import models.services.AddressBO;
+import views.Telas;
 
 public class AddressRegister {
 	@FXML private TextField street;
@@ -23,7 +24,23 @@ public class AddressRegister {
 		dto.setZipcode(zipcode.getText());
 		
 		bo.adicionar(dto); 
-		
 	}
+	
+	public void navigateToListAuthorsScreen() {
+        Telas.listAuthorScreen();
+    }
+    
+    public void navigateToListBooksScreen() {
+        Telas.listBookScreen();
+    }
+    
+    public void navigateToListEvaluatorsScreen() {
+        Telas.listBookScreen();
+    }
+    
+    public void navigateToListRelatoryScreen() {
+        Telas.listAuthorScreen();
+    }
+	
 	
 }

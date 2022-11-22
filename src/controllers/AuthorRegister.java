@@ -49,4 +49,20 @@ public class AuthorRegister {
 	public void navigateToAuthorsScren() {
         Telas.listAuthorScreen();
     }
+	
+	public void navigateToListAuthorsScreen() {
+        Telas.listAuthorScreen();
+    }
+    
+    public void navigateToListBooksScreen() {
+        Telas.listBookScreen();
+    }
+    
+    public void navigateToListEvaluatorsScreen() {
+        Telas.listBookScreen();
+    }
+    
+    public void navigateToListRelatoryScreen() {
+        Telas.listAuthorScreen();
+    }
 }
