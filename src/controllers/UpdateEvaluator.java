@@ -47,6 +47,8 @@ public class UpdateEvaluator {
         
         dtoEvaluator.setName(nome.getText());
         dtoEvaluator.setCpf(cpf.getText());
+        dtoEvaluator.setEmail(email.getText());
+        dtoEvaluator.setSenha(senha.getText());
         
         boEvaluator.atualizar(dtoEvaluator, this.currentCpf);
         Telas.listEvaluatorScreen();
@@ -55,6 +57,9 @@ public class UpdateEvaluator {
     public void getEvaluatorsInformations() {
         Evaluator evaluator = boEvaluator.findEvaluatorUnique(ListEvaluatorScreen.currentEvaliatorToEdit);
         
+        this.cpf.setText(evaluator.getCPF());
+        this.email.setText(evaluator.getEmail());
+        this.senha.setText(evaluator.getPassword());
         this.nome.setText(evaluator.getNome());
         this.rua.setText(evaluator.getAddress().getStreet());
         this.bairro.setText(evaluator.getAddress().getNeightboohood());

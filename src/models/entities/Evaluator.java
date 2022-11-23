@@ -86,6 +86,8 @@ public class Evaluator {
         evaluator.setId(dto.getId());
         evaluator.setCPF(dto.getCpf());
         evaluator.setAddress(dto.getAddress());
+        evaluator.setEmail(dto.getEmail());
+        evaluator.setPassword(dto.getSenha());
         return evaluator;
     }
     

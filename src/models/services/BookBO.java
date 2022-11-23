@@ -27,8 +27,7 @@ public class BookBO{
     public List<BookDTO> listar(){
         List<BookDTO> books = new ArrayList<BookDTO>();
         ResultSet rs = dao.findAll();
-        try {   
-            System.out.println(rs.next());
+        try {
             while (rs.next()) {
                 BookDTO book = new BookDTO();
                 Author author = new Author(); 
@@ -54,11 +53,9 @@ public class BookBO{
                 books.add(book);
                 
             }
-            System.out.print("saiu do while");
             return books;
         } catch (SQLException e) {
             // TODO Auto-generated catch block
-            System.out.print("deu erro aqui");
             e.printStackTrace();
             return null;
         }
