@@ -154,7 +154,7 @@ public class Telas extends Application {
     
     public static void EvaluatorScreen() {
         try {
-            Parent root = FXMLLoader.load(Telas.class.getResource("resources/Evaluators.fxml"));
+            Parent root = FXMLLoader.load(Telas.class.getResource("resources/Evaluator.fxml"));
             Scene scene = new Scene (root);
             stage.setScene(scene);
             stage.setTitle("Tela de Avaliar Obras");

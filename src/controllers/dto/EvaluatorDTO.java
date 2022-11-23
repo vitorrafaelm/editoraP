@@ -27,7 +27,7 @@ public class EvaluatorDTO {
         return address;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setAddress(AddressDTO address) {
+        //this.address = address;
     }
 }
