@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import controllers.dto.BookDTO;
 import controllers.dto.AuthorDTO;
@@ -49,6 +51,16 @@ public class BookRegister {
         bo.adicionar(dto);
 	    Telas.listBookScreen();
 		
+	    String authr = autor.getSelectionModel().getSelectedItem();
+	    String evaluat = avaliador.getSelectionModel().getSelectedItem();
+	    System.out.println(authr);
+	    System.out.println(evaluat);
+	    
+	    Pattern pattern = Pattern.compile("(\\d*)\\s*-", Pattern.CASE_INSENSITIVE);
+	    Matcher matcher = pattern.matcher(authr);
+	    
+	    System.out.println(matcher.group());
+	    matcher = pattern.matcher(evaluat);
 	}
 	
 	public void initialize() {
