@@ -52,7 +52,12 @@ public class Author {
 		}
 	}
 	
-	public static Author converter(AuthorDTO dto) {
+	@Override
+    public String toString() {
+        return nome;
+    }
+
+    public static Author converter(AuthorDTO dto) {
 		Author author = new Author();
 		author.setNome(dto.getName());
 		author.setCpf(dto.getCpf());

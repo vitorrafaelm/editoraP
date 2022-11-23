@@ -23,7 +23,7 @@ public class BookDao extends BaseDao<Book> {
 	
 	@Override
     public ResultSet findAll() {
-        String sql = "SELECT * FROM tb_books RIGHT JOIN tb_authors ta on ta.id = tb_books.id_author RIGHT JOIN books_evaluators eval on eval.id_book = tb_books.id RIGHT JOIN tb_evaluator te on te.id = eval.id_evaluator;";
+        String sql = "SELECT  *, ta.id as idAuhtor, ta.name as authorName, te.name as evalName FROM tb_books RIGHT JOIN tb_authors ta on ta.id = tb_books.id_author RIGHT JOIN books_evaluators eval on eval.id_book = tb_books.id RIGHT JOIN tb_evaluator te on te.id = eval.id_evaluator;";
         
         try {
             PreparedStatement pst = this.connection.prepareStatement(sql);

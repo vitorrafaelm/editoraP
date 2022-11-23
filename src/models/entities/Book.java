@@ -78,7 +78,7 @@ public class Book {
     public void setStatus_register(String status_register) {
 
         status_register = status_register.toLowerCase();
-
+        
         if (
             status_register.compareTo("aprovado") == 0 ||
             status_register.compareTo("analise") == 0 ||

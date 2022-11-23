@@ -15,6 +15,7 @@ import views.Telas;
 
 public class ListBookScreen {
     @FXML private TableView<BookDTO> tableBook;
+    @FXML private TableColumn<BookDTO, String> columnId;
     @FXML private TableColumn<BookDTO, String> columnTitulo;
     @FXML private TableColumn<BookDTO, String> columnAno;
     @FXML private TableColumn<BookDTO, String> columnAvaliador;
@@ -28,14 +29,15 @@ public class ListBookScreen {
     }
     
     public void listBooks() {
-        //List<BookDTO> books = bookBO.listar();
-        
-        //listBooks = FXCollections.observableArrayList(books);
-        //columnTitulo.setCellValueFactory(new PropertyValueFactory<>("titulo"));
-        //columnAno.setCellValueFactory(new PropertyValueFactory<>("ano"));
-        //columnAvaliador.setCellValueFactory(new PropertyValueFactory<>("avaliador"));
-        //columnEndereco.setCellValueFactory(new PropertyValueFactory<>("endereco"));
-        //tableBook.setItems(listBooks);
+        List<BookDTO> books = bookBO.listar();
+             
+        listBooks = FXCollections.observableArrayList(books);
+        columnId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        columnTitulo.setCellValueFactory(new PropertyValueFactory<>("title"));
+        columnAno.setCellValueFactory(new PropertyValueFactory<>("dateLaunch"));
+        columnAvaliador.setCellValueFactory(new PropertyValueFactory<>("evaluator"));
+        columnEndereco.setCellValueFactory(new PropertyValueFactory<>("author"));
+        tableBook.setItems(listBooks);
     }
     
     public void deleteBook() {

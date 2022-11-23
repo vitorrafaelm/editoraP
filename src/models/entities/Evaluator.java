@@ -78,7 +78,7 @@ public class Evaluator {
 
     @Override
     public String toString() {
-        return "Evaluator [name=" + nome + ", CPF=" + CPF + ", address=" + address + "]";
+        return nome;
     }
     public static Evaluator converter(EvaluatorDTO dto) {
         Evaluator evaluator = new Evaluator();

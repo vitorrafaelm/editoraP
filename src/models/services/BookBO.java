@@ -13,6 +13,7 @@ import models.dao.BaseInterDAO;
 import models.entities.Book;
 import models.entities.Evaluator;
 import models.entities.Address;
+import models.entities.Author;
 
 public class BookBO{
     BaseInterDAO<Book> dao = new BookDao();
@@ -23,25 +24,41 @@ public class BookBO{
         return dao.inserir(book);
     }
     
-    public List<Book> listar(){
-        List<Book> books = new ArrayList<Book>();
+    public List<BookDTO> listar(){
+        List<BookDTO> books = new ArrayList<BookDTO>();
         ResultSet rs = dao.findAll();
         try {   
-            while(rs.next()) {
-                Book book = new Book();
-                book.getTitle();
-                book.getDescription();
-                book.getGender();
-                book.getDateLaunch();
-                book.getStatus_register();
-                book.getAuthor().getId();
-                book.getEvaluator().getId();
-                book.getId();
+            System.out.println(rs.next());
+            while (rs.next()) {
+                BookDTO book = new BookDTO();
+                Author author = new Author(); 
+                Evaluator eval = new Evaluator();
+                   
+                System.out.print(rs.getString("title"));
+                System.out.print(rs.getString("description"));
+                System.out.print(rs.getString("authorName"));
+                
+                book.setTitle(rs.getString("title"));
+                book.setDescription(rs.getString("description"));
+                book.setId(rs.getInt("id"));
+                book.setGender(rs.getString("gender"));
+                book.setDateLaunch(rs.getString("year"));
+                book.setStatus_register(rs.getString("status_register"));
+                
+                author.setNome(rs.getString("authorName"));
+                eval.setNome(rs.getString("evalName"));
+               
+                book.setAuthor(author);
+                book.setEvaluator(eval);
+                
+                books.add(book);
                 
             }
+            System.out.print("saiu do while");
             return books;
         } catch (SQLException e) {
             // TODO Auto-generated catch block
+            System.out.print("deu erro aqui");
             e.printStackTrace();
             return null;
         }
