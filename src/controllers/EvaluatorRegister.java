@@ -38,6 +38,8 @@ public class EvaluatorRegister {
         
          EvaluatorDTO dtoEvaluator = new EvaluatorDTO();
          dtoEvaluator.setName(nome.getText());
+         dtoEvaluator.setEmail(email.getText());
+         dtoEvaluator.setSenha(senha.getText());
          dtoEvaluator.setCpf(cpf.getText());
          dtoEvaluator.setAddress(address);
          
