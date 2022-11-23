@@ -4,20 +4,27 @@ import views.Telas;
 
 public class HomePage {
 	
-	public void navigateToListAuthorsScreen() {
-		Telas.listAuthorScreen();
-	}
-	
-	public void navigateToListBooksScreen() {
+    public void navigateToHomeScreen() {
+        Telas.telaHomePage();
+    }
+    
+    public void navigateToListAuthorsScreen() {
+        Telas.listAuthorScreen();
+    }
+    
+    public void navigateToListBooksScreen() {
         Telas.listBookScreen();
     }
-	
-	public void navigateToListEvaluatorsScreen() {
+    
+    public void navigateToListEvaluatorsScreen() {
         Telas.listEvaluatorScreen();
     }
-	
-	public void navigateToListRelatoryScreen() {
-	    // tela ainda não existe
-        Telas.listAuthorScreen();
+    
+    public void navigateToListRelatoryScreen() {
+        // adicionar tela de relatório
+    }
+    
+    public void logout() {
+        Telas.telaLogin();
     }
 }

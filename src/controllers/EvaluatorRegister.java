@@ -48,6 +48,10 @@ public class EvaluatorRegister {
         Telas.listEvaluatorScreen();
     }
     
+    public void navigateToHomeScreen() {
+        Telas.telaHomePage();
+    }
+    
     public void navigateToListAuthorsScreen() {
         Telas.listAuthorScreen();
     }
@@ -57,10 +61,14 @@ public class EvaluatorRegister {
     }
     
     public void navigateToListEvaluatorsScreen() {
-        Telas.listBookScreen();
+        Telas.listEvaluatorScreen();
     }
     
     public void navigateToListRelatoryScreen() {
-        Telas.listAuthorScreen();
+        // adicionar tela de relatórios
+    }
+    
+    public void logout() {
+        Telas.telaLogin();
     }
 }

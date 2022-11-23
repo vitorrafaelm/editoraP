@@ -26,6 +26,10 @@ public class AddressRegister {
 		bo.adicionar(dto); 
 	}
 	
+	public void navigateToHomeScreen() {
+	    Telas.telaHomePage();
+	}
+	
 	public void navigateToListAuthorsScreen() {
         Telas.listAuthorScreen();
     }
@@ -35,11 +39,15 @@ public class AddressRegister {
     }
     
     public void navigateToListEvaluatorsScreen() {
-        Telas.listBookScreen();
+        Telas.listEvaluatorScreen();
     }
     
     public void navigateToListRelatoryScreen() {
-        Telas.listAuthorScreen();
+        // adicionar tela de relatório
+    }
+    
+    public void logout() {
+        Telas.telaLogin();
     }
 	
 	

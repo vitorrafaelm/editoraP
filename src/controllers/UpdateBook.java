@@ -2,30 +2,33 @@ package controllers;
 
 import views.Telas;
 
-public class UpdateBook {
-    public void navigateToListBook() {
-        Telas.listBookScreen();
-    }
-    
+public class UpdateBook {  
     public void updateBook() {
         // deve conter toda a lógica para atualizar a obra
         Telas.listBookScreen();
     }
     
-    public void navigateToBookScr() {
-        Telas.listBookScreen();
+    public void navigateToHomeScreen() {
+        Telas.telaHomePage();
     }
     
     public void navigateToListAuthorsScreen() {
         Telas.listAuthorScreen();
     }
     
-    
-    public void navigateToListEvaluatorsScreen() {
+    public void navigateToListBooksScreen() {
         Telas.listBookScreen();
     }
     
+    public void navigateToListEvaluatorsScreen() {
+        Telas.listEvaluatorScreen();
+    }
+    
     public void navigateToListRelatoryScreen() {
-        Telas.listAuthorScreen();
+        // adicionar tela de relatorios
+    }
+    
+    public void logout() {
+        Telas.telaLogin();
     }
 }

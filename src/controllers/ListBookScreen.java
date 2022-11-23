@@ -54,10 +54,6 @@ public class ListBookScreen {
         }
     }
     
-    public void navigateToHomePage() {
-        Telas.listBookScreen();
-    }
-    
     public void navigateToRegisterScreen() {
         Telas.registerBookScreen();
     }
@@ -70,15 +66,27 @@ public class ListBookScreen {
         
     }
     
+    public void navigateToHomeScreen() {
+        Telas.telaHomePage();
+    }
+    
     public void navigateToListAuthorsScreen() {
         Telas.listAuthorScreen();
     }
     
-    public void navigateToListEvaluatorsScreen() {
+    public void navigateToListBooksScreen() {
         Telas.listBookScreen();
     }
     
+    public void navigateToListEvaluatorsScreen() {
+        Telas.listEvaluatorScreen();
+    }
+    
     public void navigateToListRelatoryScreen() {
-        Telas.listAuthorScreen();
+        // adicionar tela derelatório;
+    }
+    
+    public void logout() {
+        Telas.telaLogin();
     }
 }

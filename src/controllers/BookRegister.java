@@ -62,11 +62,11 @@ public class BookRegister {
 	   // falta adicionar os avaliadores, segue o mesmo padrão
 	}
 
-	public void navigateToBookScr() {
-        Telas.listBookScreen();
+	public void navigateToHomeScreen() {
+        Telas.telaHomePage();
     }
-	
-	public void navigateToListAuthorsScreen() {
+    
+    public void navigateToListAuthorsScreen() {
         Telas.listAuthorScreen();
     }
     
@@ -75,10 +75,14 @@ public class BookRegister {
     }
     
     public void navigateToListEvaluatorsScreen() {
-        Telas.listBookScreen();
+        Telas.listEvaluatorScreen();;
     }
     
     public void navigateToListRelatoryScreen() {
-        Telas.listAuthorScreen();
+        // adicionar tela de relatório
+    }
+    
+    public void logout() {
+        Telas.telaLogin();
     }
 }

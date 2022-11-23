@@ -74,4 +74,28 @@ public class UpdateAuthor {
         this.addressId = author.getAdress().getId();
         this.currentCpf = author.getCpf(); 
     }
+    
+    public void navigateToHomeScreen() {
+        Telas.telaHomePage();
+    }
+    
+    public void navigateToListAuthorsScreen() {
+        Telas.listAuthorScreen();
+    }
+    
+    public void navigateToListBooksScreen() {
+        Telas.listBookScreen();
+    }
+    
+    public void navigateToListEvaluatorsScreen() {
+        Telas.listEvaluatorScreen();
+    }
+    
+    public void navigateToListRelatoryScreen() {
+        // adicionar telas de relatorio
+    }
+    
+    public void logout() {
+        Telas.telaLogin();
+    }
 }

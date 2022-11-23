@@ -20,12 +20,13 @@ public class UpdateEvaluator {
     private EvaluatorBO boEvaluator= new EvaluatorBO();
     private AddressBO bo = new AddressBO();
     
-    public void navigateToListEvaluator() {
-        Telas.listEvaluatorScreen();
-    }
     public void updateEvaluator() {
         // deve conter toda a lógica para atualizar author
         Telas.listEvaluatorScreen();
+    }
+    
+    public void navigateToHomeScreen() {
+        Telas.telaHomePage();
     }
     
     public void navigateToListAuthorsScreen() {
@@ -41,6 +42,10 @@ public class UpdateEvaluator {
     }
     
     public void navigateToListRelatoryScreen() {
-        Telas.listAuthorScreen();
+        // adicionar tela de relatório
+    }
+    
+    public void logout() {
+        Telas.telaLogin();
     }
 }

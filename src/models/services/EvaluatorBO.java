@@ -66,7 +66,6 @@ public class EvaluatorBO {
     }
 
     public boolean atualizar (Evaluator evaluator) {
-        
         ResultSet rs = dao.findBySpecifiedField(evaluator, "cpf");
         try {
             if(rs!=null && rs.next() ) {

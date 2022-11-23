@@ -57,6 +57,10 @@ public class ListEvaluatorScreen {
         }
     }
     
+    public void navigateToHomeScreen() {
+        Telas.telaHomePage();
+    }
+    
     public void navigateToListAuthorsScreen() {
         Telas.listAuthorScreen();
     }
@@ -70,6 +74,10 @@ public class ListEvaluatorScreen {
     }
     
     public void navigateToListRelatoryScreen() {
-        Telas.listAuthorScreen();
+        // adicionar tela de relatŕoio
+    }
+    
+    public void logout() {
+        Telas.telaLogin();
     }
 }

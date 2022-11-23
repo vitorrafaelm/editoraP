@@ -46,11 +46,11 @@ public class AuthorRegister {
 	    Telas.listAuthorScreen();
 	}
 	
-	public void navigateToAuthorsScren() {
-        Telas.listAuthorScreen();
+	public void navigateToHomeScreen() {
+        Telas.telaHomePage();
     }
-	
-	public void navigateToListAuthorsScreen() {
+    
+    public void navigateToListAuthorsScreen() {
         Telas.listAuthorScreen();
     }
     
@@ -59,10 +59,14 @@ public class AuthorRegister {
     }
     
     public void navigateToListEvaluatorsScreen() {
-        Telas.listBookScreen();
+        Telas.listEvaluatorScreen();
     }
     
     public void navigateToListRelatoryScreen() {
-        Telas.listAuthorScreen();
+        // adicionar tela de relatorio
+    }
+    
+    public void logout() {
+        Telas.telaLogin();
     }
 }

@@ -25,10 +25,6 @@ public class AuthController {
     }
     
     public void authenticate() {
-//        if (error.getText().length() != 0) {
-//            error.setText("");
-//        }
-
         try {
             UserDTO user = new UserDTO(); 
             
