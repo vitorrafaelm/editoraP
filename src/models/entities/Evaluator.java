@@ -52,7 +52,7 @@ public class Evaluator {
      //   if(!address.getId().isEmpty()) {
             this.address = address;
  //       }else { 
-    //.out.println("Endereço Invalido");
+    //.out.println("EndereÃ§o Invalido");
       //  }
     }
 
@@ -95,6 +95,5 @@ public class Evaluator {
         evaluator.setPassword(dto.getPassword());
         return evaluator;
     }
-    
 }
 
