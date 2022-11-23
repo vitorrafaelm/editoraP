@@ -52,8 +52,6 @@ public class ListBookScreen {
         } catch (Exception e) {
             // TODO: handle exception
         }
-        
-      
     }
     
     public void navigateToHomePage() {
@@ -70,5 +68,17 @@ public class ListBookScreen {
     
     public void pesquisarObra() {
         
+    }
+    
+    public void navigateToListAuthorsScreen() {
+        Telas.listAuthorScreen();
+    }
+    
+    public void navigateToListEvaluatorsScreen() {
+        Telas.listBookScreen();
+    }
+    
+    public void navigateToListRelatoryScreen() {
+        Telas.listAuthorScreen();
     }
 }

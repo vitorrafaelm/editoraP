@@ -1,14 +1,19 @@
 package controllers;
 
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ChoiceBox;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import controllers.dto.BookDTO;
 import controllers.dto.AuthorDTO;
 import models.entities.Book;
 import models.services.BookBO;
+import models.services.EvaluatorBO;
 import models.entities.Author;
 import models.services.AuthorBO;
 import views.Telas;
@@ -23,6 +28,8 @@ public class BookRegister {
     @FXML private ChoiceBox<String> avaliador;
 
 	private BookBO bo = new BookBO();
+	private AuthorBO boAuthor = new AuthorBO();
+	private EvaluatorBO boevaluator = new EvaluatorBO();
 	
 	public void cadastrar() throws SQLException {
 		//BookDTO dto = new BookDTO();
@@ -39,11 +46,20 @@ public class BookRegister {
 	
 	public void initialize() {
         // TODO Auto-generated method stub
-        listBooks();
+	    adicionarInformacoes();
     }
 	
 	public void adicionarInformacoes() {
-	    autor.setItems(FXCollections.observableArrayList("New Document", "Open ", new Separator(), "Save", "Save as"))
+	   List<AuthorDTO> dtoAuthor = boAuthor.listar();
+	   Map<Integer, String> authors = new HashMap<Integer, String>();
+	   
+	   for (int i = 0; i < dtoAuthor.size(); i++) {
+	       authors.put(i , dtoAuthor.get(i).getId() + " - " + dtoAuthor.get(i).getName());
+	   }
+	   
+	   autor.setItems(FXCollections.observableArrayList(authors.values()));
+	   
+	   // falta adicionar os avaliadores, segue o mesmo padrão
 	}
 
 	public void navigateToBookScr() {

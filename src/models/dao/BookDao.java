@@ -23,7 +23,7 @@ public class BookDao extends BaseDao<Book> {
 	
 	@Override
     public ResultSet findAll() {
-        String sql = "SELECT * FROM tb_books ta LEFT JOIN tb_address ta2 ON ta2.id = ta.address_id;";
+        String sql = "SELECT * FROM tb_books RIGHT JOIN tb_authors ta on ta.id = tb_books.id_author RIGHT JOIN books_evaluators eval on eval.id_book = tb_books.id RIGHT JOIN tb_evaluator te on te.id = eval.id_evaluator;";
         
         try {
             PreparedStatement pst = this.connection.prepareStatement(sql);
@@ -66,8 +66,6 @@ public class BookDao extends BaseDao<Book> {
                 pstSelect1.execute();
             }
             
-            
-			
 			return book;		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -80,7 +78,7 @@ public class BookDao extends BaseDao<Book> {
 	    String sql = "DELETE FROM tb_books WHERE id=?;";
         try {
             PreparedStatement pst = this.connection.prepareStatement(sql);
-            pst.setString(1, book.getTitle());
+            pst.setInt(1, book.getId());
             pst.execute();
             
             return true;
@@ -93,16 +91,25 @@ public class BookDao extends BaseDao<Book> {
     }
 
     public boolean alterar(Book book) {
-        String sql = "UPDATE tb_books SET title=?,description=?,gender=?,dateLaunch=?, status_register=? WHERE title=? ";
+        // (id_evaluator,id_book) VALUES(?,?)
+        String sql = "UPDATE tb_books SET title=?,description=?,gender=?,year=?, status_register=?, id_author=? WHERE id=? ";
+        String sql2 = "UPDATE books_evaluators SET id_book=?, id_evaluator=? WHERE id_book=?;";
         try {
             PreparedStatement pst = this.connection.prepareStatement(sql);
-            pst.setString(1, book.getAuthor());
-			pst.setString(2, book.getTitle());
-			pst.setString(3, book.getDescription());
-			pst.setString(4, book.getGender());
-            pst.setString(5, book.getDateLaunch());
-			pst.setString(6, book.getStatus_register());
+            pst.setString(1, book.getTitle());
+			pst.setString(2, book.getDescription());
+			pst.setString(3, book.getGender());
+			pst.setString(4, book.getDateLaunch());
+            pst.setString(5, book.getStatus_register());
+			pst.setInt(6, book.getAuthor().getId());
+			pst.setInt(6, book.getId());
             pst.executeUpdate();
+            
+            PreparedStatement pst2 = this.connection.prepareStatement(sql2);
+            pst2.setInt(1, book.getId());
+            pst2.setInt(1, book.getEvaluator().getId());
+            
+            
             return true;        
         
         } catch (SQLException e) {
@@ -124,26 +131,11 @@ public class BookDao extends BaseDao<Book> {
                 a.setDescription(rs.getString("description"));
                 a.setGender(rs.getString("gender"));
                 a.setDateLaunch(null);
-              /*a.setDateLaunch(rs.getString("dateLaunch"));
-                como faz pra dateLaunch ser reconhecido como string?*/
+                
                 a.setStatus_register(rs.getString("status_register"));
                 return a;
             }
             else return null;
-        
-        } catch (SQLException ex) {
-            // TODO Auto-generated catch block
-            ex.printStackTrace();
-            return null;
-        }
-    }
-
-    public ResultSet findAll() {
-        String sql = "SELECT * FROM tb_books;";
-        try {
-            PreparedStatement pst = this.connection.prepareStatement(sql);
-            ResultSet rs = pst.executeQuery();
-            return rs;
         
         } catch (SQLException ex) {
             // TODO Auto-generated catch block
