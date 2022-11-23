@@ -110,10 +110,9 @@ public class Book {
 		book.setGender(dto.getGender());
         book.setDateLaunch(dto.getDateLaunch());
         book.setId(dto.getId());
+        book.setStatus_register(dto.getStatus_register());
         book.setAuthor(dto.getAuthor());
         book.setEvaluator(dto.getEvaluator());
-        
-        dto.getAuthor();
         
 		return book;
 	}
