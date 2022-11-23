@@ -7,7 +7,6 @@ import controllers.dto.EvaluatorDTO;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import models.entities.Address;
-import models.entities.Evaluator;
 import models.services.AddressBO;
 import models.services.EvaluatorBO;
 import views.Telas;
@@ -28,24 +27,23 @@ public class EvaluatorRegister {
     
     public void cadastrar() throws SQLException {
   
-//        AddressDTO dtoA = new AddressDTO();
-//      
-//         dtoA.setStreet(rua.getText());
-//         dtoA.setNeightboohood(bairro.getText());
-//         dtoA.setNumber(numero.getText());
-//         dtoA.setCity(cidade.getText());
-//         dtoA.setZipcode(cep.getText());
-//         Address address = bo.adicionar(dtoA);
-//         
-//         EvaluatorDTO dtoEvaluator = new EvaluatorDTO();
-//         dtoEvaluator.setName(nome.getText());
-//         dtoEvaluator.setCpf(cpf.getText());
-//         dtoEvaluator.setAddress(address);
-//         
-//         Evaluator eval = boEvaluator.adicionar(dtoEvaluator);
-//         boEvaluator.adicionar(dtoEvaluator);
-            
-        Telas.listEvaluatorScreen();
+        AddressDTO dtoA = new AddressDTO();
+          
+        dtoA.setStreet(rua.getText());
+        dtoA.setNeightboohood(bairro.getText());
+        dtoA.setNumber(numero.getText());
+        dtoA.setCity(cidade.getText());
+        dtoA.setZipcode(cep.getText());
+        Address address = bo.adicionar(dtoA);
+        
+         EvaluatorDTO dtoEvaluator = new EvaluatorDTO();
+         dtoEvaluator.setName(nome.getText());
+         dtoEvaluator.setCpf(cpf.getText());
+         dtoEvaluator.setAddress(address);
+         
+         boEvaluator.adicionar(dtoEvaluator);
+                
+         Telas.listEvaluatorScreen();
     }
     
     public void navigateToHomeScreen() {
@@ -65,8 +63,9 @@ public class EvaluatorRegister {
     }
     
     public void navigateToListRelatoryScreen() {
-        // adicionar tela de relatórios
+        // adicionar tela de relatÃ³rios
     }
+    
     
     public void logout() {
         Telas.telaLogin();

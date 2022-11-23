@@ -126,6 +126,19 @@ public class Telas extends Application {
             e.printStackTrace();
         }
     }
+    
+    public static void EvaluatorScreen() {
+        try {
+            Parent root = FXMLLoader.load(Telas.class.getResource("resources/Evaluator.fxml"));
+            Scene scene = new Scene (root);
+            stage.setScene(scene);
+            stage.setTitle("Tela de Avaliar Obras");
+            stage.show();
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     //Telas de Obras
     public static void editBookScreen(){
@@ -166,5 +179,7 @@ public class Telas extends Application {
             e.printStackTrace();
         }
     }
+    
+    
 
 }

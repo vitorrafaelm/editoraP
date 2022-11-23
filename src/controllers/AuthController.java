@@ -44,7 +44,7 @@ public class AuthController {
             try {
                 evaluatorBO.authenticate(user);
                 loggedUser = user; 
-                Telas.telaHomePage();
+                Telas.EvaluatorScreen();
                 return;
             } catch (AuthenticationException e) {
                 if (e.getReason() != AuthError.NOT_FOUND)
