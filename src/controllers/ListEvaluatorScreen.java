@@ -14,6 +14,8 @@ import models.services.EvaluatorBO;
 import views.Telas;
 
 public class ListEvaluatorScreen {
+    
+        public static Evaluator currentEvaliatorToEdit;
     @FXML private TableView<EvaluatorDTO> tabelaAvaliadores;
     @FXML private TableColumn<EvaluatorDTO, String> columnNome;
     @FXML private TableColumn<EvaluatorDTO, String> columnCpf;
@@ -21,7 +23,11 @@ public class ListEvaluatorScreen {
     private EvaluatorBO bo = new EvaluatorBO();
     private ObservableList<EvaluatorDTO> listaDeAvaliadores;
    
-    public void listarAvaliadores() {
+    public void initialize() {
+        listarAvaliadores();
+    }
+  
+  public void listarAvaliadores() {
         List<EvaluatorDTO> evaluators = bo.listar();
         listaDeAvaliadores = FXCollections.observableArrayList(evaluators);
         columnCpf.setCellValueFactory(new PropertyValueFactory<>("cpf"));
@@ -29,15 +35,18 @@ public class ListEvaluatorScreen {
         columnEndereco.setCellValueFactory(new PropertyValueFactory<>("address"));
         tabelaAvaliadores.setItems(listaDeAvaliadores);
     }
-    public void navigateToHomePage() {
-        Telas.listEvaluatorScreen();
-    }
     
     public void navigateToRegisterScreen() {
         Telas.registerEvaluatorScreen();
     }
     
     public void navigateToEditScreen() {
+        Evaluator evaluator = new Evaluator();
+        
+        String cpf = tabelaAvaliadores.getSelectionModel().getSelectedItem().getCpf();
+        evaluator.setCPF(cpf);
+        
+        currentEvaliatorToEdit = evaluator;
         Telas.editEvaluatorScreen();
     }
     
@@ -74,8 +83,9 @@ public class ListEvaluatorScreen {
     }
     
     public void navigateToListRelatoryScreen() {
-        // adicionar tela de relatŕoio
+        // adicionar tela de relatÅ•oio
     }
+    
     
     public void logout() {
         Telas.telaLogin();
