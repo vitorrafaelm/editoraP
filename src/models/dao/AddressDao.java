@@ -20,32 +20,37 @@ public class AddressDao extends BaseDao<Address> {
         
     }
 	
-	public Address inserir (Address address) throws SQLException {
-		String sql = "INSERT INTO tb_address (street,neightboohood,number,zipcode) VALUES (?,?,?,?);";
+	public Address inserir (Address address) {
+		String sql = "INSERT INTO tb_address (street,neightboohood,number_house,zipcode,city) VALUES (?,?,?,?,?);";
 		try {
+		    System.out.println(address.getStreet() + address.getNeightboohood() + address.getNumber() + address.getZipcode() + address.getCity());
 			PreparedStatement pst = this.connection.prepareStatement(sql);
 			pst.setString(1, address.getStreet());
 			pst.setString(2, address.getNeightboohood());
 			pst.setString(3, address.getNumber());
 			pst.setString(4, address.getZipcode());
+			pst.setString(5, address.getCity());
 			pst.execute();
 			
-			String sqlSelect = "select * from tb_address where street=? and neightboohood=? and number=? and zipcode=?);";
+			String sqlSelect = "select * from tb_address where street=? and neightboohood=? and number_house=? and zipcode=?;";
 			PreparedStatement pstSelect = this.connection.prepareStatement(sqlSelect);
 			
 			pstSelect.setString(1, address.getStreet());
 			pstSelect.setString(2, address.getNeightboohood());
 			pstSelect.setString(3, address.getNumber());
 			pstSelect.setString(4, address.getZipcode());
-			ResultSet rd = pstSelect.executeQuery(); 
+			ResultSet rs = pstSelect.executeQuery(); 
 			
-			// id deve ser setado do registro
-			address.setId("");
-			return address;		
+			if(rs.next()) {
+                address.setId(rs.getInt("id"));
+                return address;
+            }
+			
+			return null;		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			throw new SQLException();
+			return null;
 		}				
 	}
 	
@@ -53,7 +58,7 @@ public class AddressDao extends BaseDao<Address> {
 		String sql = "DELETE FROM tb_address WHERE id=?;";
 		try {
 			PreparedStatement pst = this.connection.prepareStatement(sql);
-			pst.setString(1, address.getId());
+			pst.setInt(1, address.getId());
 			pst.execute();
 			
 			return true;
@@ -66,13 +71,15 @@ public class AddressDao extends BaseDao<Address> {
 	}
 	
 	public boolean alterar(Address address) {
-		String sql = "UPDATE tb_address SET street=?,neightboohood=?,number=?,zipcode=? WHERE id=? ";
+		String sql = "UPDATE tb_address SET street=?,neightboohood=?,number_house=?,zipcode=?, city=? WHERE id=? ";
 		try {
 			PreparedStatement pst = this.connection.prepareStatement(sql);
 			pst.setString(1, address.getStreet());
 			pst.setString(2, address.getNeightboohood() );
-			pst.setString(3, address.getZipcode());
-			pst.setString(4, address.getId());
+			pst.setString(3, address.getNumber() );
+			pst.setString(4, address.getZipcode());
+			pst.setString(5, address.getCity());
+			pst.setInt(6, address.getId());
 			pst.executeUpdate();
 			return true;		
 		
@@ -88,14 +95,16 @@ public class AddressDao extends BaseDao<Address> {
 		String sql = "SELECT * FROM tb_address WHERE id=? ;";
 		try {
 			PreparedStatement pst = this.connection.prepareStatement(sql);
+			pst.setInt(1, address.getId());
 			ResultSet rs = pst.executeQuery();
 			if(rs.next()) {
 				Address a = new Address();
 				a.setStreet(rs.getString("street"));
 				a.setNeightboohood(rs.getString("neightboohood"));
-				a.setNumber(rs.getString("number"));
+				a.setNumber(rs.getString("number_house"));
 				a.setZipcode(rs.getString("zipcode"));
 				a.setId(address.getId());
+				a.setCity(rs.getString("city"));
 				return a;
 			}
 			else return null;

@@ -8,17 +8,17 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="601.0" style="-fx-background-color: #D6D1B3;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Login">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="601.0" style="-fx-background-color: #D6D1B3;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AuthController">
    <children>
       <ImageView fitHeight="84.0" fitWidth="87.0" layoutX="262.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../Downloads/editora.png" />
+                  <Image url="@logo.png" />
          </image>
       </ImageView>
-      <TextField layoutX="206.0" layoutY="153.0" style="-fx-pref-width: 200;" />
-      <TextField layoutX="206.0" layoutY="200.0" style="-fx-pref-width: 200;" />
-      <Button layoutX="259.0" layoutY="264.0" mnemonicParsing="false" onAction="#authenticateUser" style="-fx-background-color: #7B7B7B; -fx-font-weight: 700; -fx-pref-width: 100;" text="Entrar" textFill="WHITE" />
-      <Label layoutX="208.0" layoutY="137.0" style="-fx-font-weight: 700;" text="CPF" textFill="WHITE">
+      <TextField fx:id="email" layoutX="206.0" layoutY="153.0" style="-fx-pref-width: 200;" />
+      <TextField fx:id="password" layoutX="206.0" layoutY="200.0" style="-fx-pref-width: 200;" />
+      <Button layoutX="259.0" layoutY="264.0" mnemonicParsing="false" onAction="#authenticate" style="-fx-background-color: #7B7B7B; -fx-font-weight: 700; -fx-pref-width: 100;" text="Entrar" textFill="WHITE" />
+      <Label layoutX="208.0" layoutY="137.0" style="-fx-font-weight: 700;" text="email" textFill="WHITE">
          <font>
             <Font size="10.0" />
          </font>
@@ -28,10 +28,6 @@
             <Font size="10.0" />
          </font>
       </Label>
-      <Button layoutX="201.0" layoutY="230.0" mnemonicParsing="false" onAction="#navigateToRecoverPasswordScreem" style="-fx-border-width: 0px; -fx-background-color: transparent; -fx-pref-height: 10;" text="Recuperar senha" textFill="WHITE">
-         <font>
-            <Font size="10.0" />
-         </font>
-      </Button>
+      <Label fx:id="error" layoutX="456.0" layoutY="47.0" />
    </children>
 </Pane>

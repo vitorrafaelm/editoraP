@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.2843" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.UpdateAuthor">
+<SplitPane dividerPositions="0.2843" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.UpdateEvaluator">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #FFFFFF;">
          <children>
@@ -38,12 +38,12 @@
                   <Font size="10.0" />
                </font>
             </Button>
-            <Button layoutX="9.0" layoutY="215.0" mnemonicParsing="false" onAction="#navigateToListRelatoryScreen" style="-fx-pref-width: 150px; -fx-border-width: 0px; -fx-background-color: #D6D1B3;" text="Relatorios" textFill="WHITE">
+            <Button layoutX="9.0" layoutY="216.0" mnemonicParsing="false" onAction="#navigateToListRelatoryScreen" style="-fx-pref-width: 150px; -fx-border-width: 0px; -fx-background-color: #D6D1B3;" text="Relatorios" textFill="WHITE">
                <font>
                   <Font size="10.0" />
                </font>
             </Button>
-            <Button layoutX="9.0" layoutY="242.0" mnemonicParsing="false" onAction="#logout" style="-fx-pref-width: 150px; -fx-border-width: 0px; -fx-background-color: #7B7B7B;" text="Sair" textFill="WHITE">
+            <Button fx:id="SairBotao" layoutX="9.0" layoutY="246.0" mnemonicParsing="false" onAction="#logout" style="-fx-pref-width: 150px; -fx-border-width: 0px; -fx-background-color: #7B7B7B;" text="Sair" textFill="WHITE">
                <font>
                   <Font size="10.0" />
                </font>
@@ -51,8 +51,8 @@
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="481.0" prefWidth="525.0" style="-fx-background-color: #D6D1B3;">
          <children>
-            <Label layoutX="157.0" layoutY="9.0" style="-fx-font-weight: 700;" text="Editar de Autor" textFill="WHITE" />
-            <Label layoutX="21.0" layoutY="48.0" style="-fx-font-weight: 700;" text="Informaçoes pessoais" textFill="#7b7b7b">
+            <Label layoutX="137.0" layoutY="9.0" style="-fx-font-weight: 700;" text="Atualizaço de Avaliadores" textFill="WHITE" />
+            <Label layoutX="21.0" layoutY="48.0" style="-fx-font-weight: 700;" text="Informações pessoais" textFill="#7b7b7b">
                <font>
                   <Font size="11.0" />
                </font>
@@ -62,7 +62,7 @@
                   <Font size="10.0" />
                </font>
             </Label>
-            <TextField fx:id="name" layoutX="22.0" layoutY="86.0" style="-fx-pref-width: 130px; -fx-pref-height: 5px;">
+            <TextField fx:id="nome" layoutX="22.0" layoutY="86.0" style="-fx-pref-width: 130px; -fx-pref-height: 5px;">
                <font>
                   <Font size="10.0" />
                </font>
@@ -77,66 +77,86 @@
                   <Font size="10.0" />
                </font>
             </TextField>
-            <Label layoutX="22.0" layoutY="130.0" style="-fx-font-weight: 700;" text="Endereço" textFill="#7b7b7b">
+            <Label layoutX="22.0" layoutY="157.0" style="-fx-font-weight: 700;" text="Endereço" textFill="#7b7b7b">
                <font>
                   <Font size="11.0" />
                </font>
             </Label>
-            <Label layoutX="23.0" layoutY="151.0" style="-fx-font-weight: 700;" text="Rua" textFill="WHITE">
+            <Label layoutX="23.0" layoutY="170.0" style="-fx-font-weight: 700;" text="Rua" textFill="WHITE">
                <font>
                   <Font size="10.0" />
                </font>
             </Label>
-            <TextField fx:id="street" layoutX="22.0" layoutY="167.0" style="-fx-pref-width: 150px; -fx-pref-height: 5px;">
+            <TextField fx:id="rua" layoutX="22.0" layoutY="187.0" style="-fx-pref-width: 150px; -fx-pref-height: 5px;">
                <font>
                   <Font size="10.0" />
                </font>
             </TextField>
-            <Label layoutX="190.0" layoutY="152.0" style="-fx-font-weight: 700;" text="Bairro" textFill="WHITE">
+            <Label layoutX="191.0" layoutY="170.0" style="-fx-font-weight: 700;" text="Bairro" textFill="WHITE">
                <font>
                   <Font size="10.0" />
                </font>
             </Label>
-            <TextField fx:id="neighboorhood" layoutX="188.0" layoutY="167.0" style="-fx-pref-width: 150px; -fx-pref-height: 5px;">
+            <TextField fx:id="bairro" layoutX="189.0" layoutY="186.0" style="-fx-pref-width: 150px; -fx-pref-height: 5px;">
                <font>
                   <Font size="10.0" />
                </font>
             </TextField>
-            <Label layoutX="25.0" layoutY="196.0" style="-fx-font-weight: 700;" text="Numero" textFill="WHITE">
+            <Label layoutX="23.0" layoutY="214.0" style="-fx-font-weight: 700;" text="Numero" textFill="WHITE">
                <font>
                   <Font size="10.0" />
                </font>
             </Label>
-            <TextField fx:id="number" layoutX="23.0" layoutY="210.0" style="-fx-pref-width: 150px; -fx-pref-height: 5px;">
+            <TextField fx:id="numero" layoutX="24.0" layoutY="229.0" style="-fx-pref-width: 150px; -fx-pref-height: 5px;">
                <font>
                   <Font size="10.0" />
                </font>
             </TextField>
-            <Label layoutX="189.0" layoutY="196.0" style="-fx-font-weight: 700;" text="Cidade" textFill="WHITE">
+            <Label layoutX="190.0" layoutY="214.0" style="-fx-font-weight: 700;" text="Cidade" textFill="WHITE">
                <font>
                   <Font size="10.0" />
                </font>
             </Label>
-            <TextField fx:id="city" layoutX="188.0" layoutY="210.0" style="-fx-pref-width: 150px; -fx-pref-height: 5px;">
+            <TextField fx:id="cidade" layoutX="187.0" layoutY="229.0" style="-fx-pref-width: 150px; -fx-pref-height: 5px;">
                <font>
                   <Font size="10.0" />
                </font>
             </TextField>
-            <Label layoutX="27.0" layoutY="239.0" style="-fx-font-weight: 700;" text="CEP" textFill="WHITE">
+            <Label layoutX="28.0" layoutY="257.0" style="-fx-font-weight: 700;" text="CEP" textFill="WHITE">
                <font>
                   <Font size="10.0" />
                </font>
             </Label>
-            <TextField fx:id="zipcode" layoutX="25.0" layoutY="255.0" style="-fx-pref-width: 150px; -fx-pref-height: 5px;">
+            <TextField fx:id="cep" layoutX="25.0" layoutY="277.0" style="-fx-pref-width: 150px; -fx-pref-height: 5px;">
                <font>
                   <Font size="10.0" />
                </font>
             </TextField>
-            <Button layoutX="28.0" layoutY="298.0" mnemonicParsing="false" onAction="#updateAuthor" style="-fx-pref-width: 100px; -fx-background-color: #7B7B7B; -fx-font-weight: 700;" text="Editar" textFill="WHITE">
+            <Button layoutX="24.0" layoutY="324.0" mnemonicParsing="false" onAction="#updateEvaluator" style="-fx-pref-width: 100px; -fx-background-color: #7B7B7B; -fx-font-weight: 700;" text="Atualizar" textFill="WHITE">
                <font>
                   <Font size="10.0" />
                </font>
             </Button>
+            <Label layoutX="26.0" layoutY="109.0" style="-fx-font-weight: 700;" text="Email" textFill="WHITE">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <TextField fx:id="email" layoutX="23.0" layoutY="126.0" style="-fx-pref-width: 130px; -fx-pref-height: 5px;">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="senha" layoutX="179.0" layoutY="126.0" style="-fx-pref-width: 130px; -fx-pref-height: 5px;">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </TextField>
+            <Label layoutX="179.0" layoutY="109.0" style="-fx-font-weight: 700;" text="Senha" textFill="WHITE">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
          </children></AnchorPane>
   </items>
 </SplitPane>

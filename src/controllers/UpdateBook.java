@@ -2,8 +2,12 @@ package controllers;
 
 import views.Telas;
 
-public class HomePage {
-	
+public class UpdateBook {  
+    public void updateBook() {
+        // deve conter toda a lógica para atualizar a obra
+        Telas.listBookScreen();
+    }
+    
     public void navigateToHomeScreen() {
         Telas.telaHomePage();
     }
@@ -21,7 +25,7 @@ public class HomePage {
     }
     
     public void navigateToListRelatoryScreen() {
-        // adicionar tela de relatório
+        // adicionar tela de relatorios
     }
     
     public void logout() {

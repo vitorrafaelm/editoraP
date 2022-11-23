@@ -14,32 +14,46 @@ public class AuthorDao extends BaseDao<Author> {
 	
 	public AuthorDao() {
 		try {
-			this.connection = new DatabaseConnection().getConnection();;
+			this.connection = new DatabaseConnection().getConnection();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-        
     }
 	
-	public Author inserir (Author author) throws SQLException {
-		String sql = "INSERT INTO tb_author (name, cpf, id_address) VALUES (?,?,?);";
+	@Override
+    public ResultSet findAll() {
+        String sql = "SELECT * FROM tb_authors ta LEFT JOIN tb_address ta2 ON ta2.id = ta.address_id;";
+        
+        try {
+            PreparedStatement pst = this.connection.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+            return rs;
+        } catch (SQLException ex) {
+            // TODO Auto-generated catch block
+            ex.printStackTrace();
+            return null;
+        }
+    }
+	
+	public Author inserir (Author author) {
+		String sql = "INSERT INTO tb_authors (name, taxId, address_id) VALUES (?,?,?);";
 		try {
 			PreparedStatement pst = this.connection.prepareStatement(sql);
 			pst.setString(1, author.getNome());
 			pst.setString(2, author.getCpf());
-			pst.setString(3, author.getAdress().getId());
+			pst.setInt(3, author.getAdress().getId());
 			pst.execute();
 			
 			return author;		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			throw new SQLException();
+			return null;
 		}				
 	}
-
-    public boolean deletar(Author author) {
-        String sql = "DELETE FROM tb_author WHERE cpf=?;";
+	
+	public boolean deletar(Author author) {
+	    String sql = "DELETE FROM tb_authors WHERE taxId=?;";
         try {
             PreparedStatement pst = this.connection.prepareStatement(sql);
             pst.setString(1, author.getCpf());
@@ -54,13 +68,13 @@ public class AuthorDao extends BaseDao<Author> {
         }   
     }
 
-    public boolean alterar(Author author) {
-        String sql = "UPDATE tb_author SET name=?,cpf=?,id_address=? WHERE cpf=? ";
+    public boolean alterar(Author author, String cpf) {
+        String sql = "UPDATE tb_authors SET name=?,taxId=? WHERE taxId=? ";
         try {
             PreparedStatement pst = this.connection.prepareStatement(sql);
             pst.setString(1, author.getNome());
-            pst.setString(2, author.getCpf() );
-            pst.setString(3, author.getAdress().getId());
+            pst.setString(2, author.getCpf());
+            pst.setString(3, cpf);
             pst.executeUpdate();
             return true;        
         
@@ -73,34 +87,29 @@ public class AuthorDao extends BaseDao<Author> {
     }
 
     public Author findById(Author author) {
-        String sql = "SELECT * FROM tb_author WHERE cpf=? ;";
+        String sql = "SELECT * FROM tb_authors as ath LEFT JOIN tb_address as tba on tba.id = ath.address_id WHERE ath.taxId=? ;";
         try {
             PreparedStatement pst = this.connection.prepareStatement(sql);
+            pst.setString(1, author.getCpf());
             ResultSet rs = pst.executeQuery();
             if(rs.next()) {
-                Author a = new Author();
-                a.setNome(rs.getString("name"));
-                a.setCpf(rs.getString("cpf"));
-              /*a.setAdress(rs.getString("adress"));
-                como faz pra endereço ser reconhecido como string?*/
+                Author author2 = new Author();
+                Address address = new Address();
+                
+                address.setId(rs.getInt("address_id"));
+                address.setCity(rs.getString("city"));
+                address.setNeightboohood(rs.getString("neightboohood"));
+                address.setNumber(rs.getString("number_house"));
+                address.setStreet(rs.getString("street"));
+                address.setZipcode(rs.getString("zipcode"));
+                
+                author2.setNome(rs.getString("name"));
+                author2.setCpf(rs.getString("taxId"));
+                author2.setAdress(address);
 
-                return a;
+                return author2;
             }
             else return null;
-        
-        } catch (SQLException ex) {
-            // TODO Auto-generated catch block
-            ex.printStackTrace();
-            return null;
-        }
-    }
-
-    public ResultSet findAll() {
-        String sql = "SELECT * FROM tb_author;";
-        try {
-            PreparedStatement pst = this.connection.prepareStatement(sql);
-            ResultSet rs = pst.executeQuery();
-            return rs;
         
         } catch (SQLException ex) {
             // TODO Auto-generated catch block
@@ -114,5 +123,3 @@ public class AuthorDao extends BaseDao<Author> {
     }
 }
 
-// onde o dt deve ser retornado ?
-// essa é a melhor forma de pegar exceptions ?

@@ -13,30 +13,35 @@
          <children>
             <ImageView disable="true" fitHeight="67.0" fitWidth="70.0" layoutX="49.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Downloads/editora.png" />
+                  <Image url="@logo.png" />
                </image>
             </ImageView>
-            <Button layoutX="8.0" layoutY="95.0" mnemonicParsing="false" prefHeight="11.0" style="-fx-pref-width: 150px; -fx-pref-height: 5px; -fx-border-width: 0px; -fx-background-color: #D6D1B3;" text="Inicio" textFill="WHITE">
+            <Button layoutX="8.0" layoutY="95.0" mnemonicParsing="false" onAction="#navigateToHomeScreen" prefHeight="11.0" style="-fx-pref-width: 150px; -fx-pref-height: 5px; -fx-border-width: 0px; -fx-background-color: #D6D1B3;" text="Inicio" textFill="WHITE">
                <font>
                   <Font size="10.0" />
                </font>
             </Button>
-            <Button layoutX="8.0" layoutY="125.0" mnemonicParsing="false" onAction="#navigateToHomePage" style="-fx-pref-width: 150px; -fx-border-width: 0px; -fx-background-color: #D6D1B3;" text="Autores" textFill="WHITE">
+            <Button layoutX="8.0" layoutY="125.0" mnemonicParsing="false" onAction="#navigateToListAuthorsScreen" style="-fx-pref-width: 150px; -fx-border-width: 0px; -fx-background-color: #D6D1B3;" text="Autores" textFill="WHITE">
                <font>
                   <Font size="10.0" />
                </font>
             </Button>
-            <Button layoutX="9.0" layoutY="154.0" mnemonicParsing="false" style="-fx-pref-width: 150px; -fx-border-width: 0px; -fx-background-color: #D6D1B3;" text="Obras" textFill="WHITE">
+            <Button layoutX="9.0" layoutY="154.0" mnemonicParsing="false" onAction="#navigateToListBooksScreen" style="-fx-pref-width: 150px; -fx-border-width: 0px; -fx-background-color: #D6D1B3;" text="Obras" textFill="WHITE">
                <font>
                   <Font size="10.0" />
                </font>
             </Button>
-            <Button layoutX="9.0" layoutY="185.0" mnemonicParsing="false" style="-fx-pref-width: 150px; -fx-border-width: 0px; -fx-background-color: #D6D1B3;" text="Avaliadores" textFill="WHITE">
+            <Button layoutX="9.0" layoutY="185.0" mnemonicParsing="false" onAction="#navigateToListEvaluatorsScreen" style="-fx-pref-width: 150px; -fx-border-width: 0px; -fx-background-color: #D6D1B3;" text="Avaliadores" textFill="WHITE">
                <font>
                   <Font size="10.0" />
                </font>
             </Button>
-            <Button layoutX="8.0" layoutY="216.0" mnemonicParsing="false" style="-fx-pref-width: 150px; -fx-border-width: 0px; -fx-background-color: #D6D1B3;" text="Relatorios" textFill="WHITE">
+            <Button layoutX="8.0" layoutY="216.0" mnemonicParsing="false" onAction="#navigateToListRelatoryScreen" style="-fx-pref-width: 150px; -fx-border-width: 0px; -fx-background-color: #D6D1B3;" text="Relatorios" textFill="WHITE">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Button>
+            <Button layoutX="10.0" layoutY="248.0" mnemonicParsing="false" onAction="#logout" style="-fx-pref-width: 150px; -fx-border-width: 0px; -fx-background-color: #7B7B7B;" text="Sair" textFill="WHITE">
                <font>
                   <Font size="10.0" />
                </font>

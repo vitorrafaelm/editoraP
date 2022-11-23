@@ -7,8 +7,17 @@ public class Author {
 	private String nome;
 	private Address adress;
 	private String cpf;
+	private int id;
 
-	public String getNome() {
+	public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNome() {
 		return nome;
 	}
 	
@@ -24,11 +33,11 @@ public class Author {
 	}
 	
 	public void setAdress(Address adress) {
-		if(!adress.getId().isEmpty()) {
+//		if(!adress.getId().isEmpty()) {
 			this.adress = adress;
-		}else { 
-			System.out.println("Endere�o Invalido");
-		}
+//		}else { 
+//			System.out.println("Endere�o Invalido");
+//		}
 	}
 	
 	public String getCpf() {
@@ -47,6 +56,7 @@ public class Author {
 		Author author = new Author();
 		author.setNome(dto.getName());
 		author.setCpf(dto.getCpf());
+		author.setAdress(dto.getAddress());
 		return author;
 	}
 }

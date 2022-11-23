@@ -1,10 +1,13 @@
 package controllers;
 
+import java.sql.SQLException;
+
 import controllers.dto.AddressDTO;
 import controllers.dto.EvaluatorDTO;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import models.entities.Address;
+import models.entities.Evaluator;
 import models.services.AddressBO;
 import models.services.EvaluatorBO;
 import views.Telas;
@@ -17,27 +20,55 @@ public class EvaluatorRegister {
     @FXML private TextField numero;
     @FXML private TextField cidade;
     @FXML private TextField cep;
-          private EvaluatorBO bo= new EvaluatorBO();
-          private AddressBO boA = new AddressBO();
+    @FXML private TextField email;
+    @FXML private TextField senha;
     
-    public void cadastrar() {
-     AddressDTO dtoA = new AddressDTO();
-      
-     dtoA.setStreet(rua.getText());
-     dtoA.setNeightboohood(bairro.getText());
-     dtoA.setNumber(numero.getText());
-     dtoA.setCity(cidade.getText());
-     dtoA.setZipcode(cep.getText());
-     Address address = boA.adicionar(dtoA);
-     
-     EvaluatorDTO dto = new EvaluatorDTO();
-     dto.setName(nome.getText());
-     dto.setCpf(cpf.getText());
-     dto.setAddress(address);
-        bo.adicionar(dto);
+    private EvaluatorBO boEvaluator= new EvaluatorBO();
+    private AddressBO bo = new AddressBO();
+    
+    public void cadastrar() throws SQLException {
+  
+//        AddressDTO dtoA = new AddressDTO();
+//      
+//         dtoA.setStreet(rua.getText());
+//         dtoA.setNeightboohood(bairro.getText());
+//         dtoA.setNumber(numero.getText());
+//         dtoA.setCity(cidade.getText());
+//         dtoA.setZipcode(cep.getText());
+//         Address address = bo.adicionar(dtoA);
+//         
+//         EvaluatorDTO dtoEvaluator = new EvaluatorDTO();
+//         dtoEvaluator.setName(nome.getText());
+//         dtoEvaluator.setCpf(cpf.getText());
+//         dtoEvaluator.setAddress(address);
+//         
+//         Evaluator eval = boEvaluator.adicionar(dtoEvaluator);
+//         boEvaluator.adicionar(dtoEvaluator);
+            
         Telas.listEvaluatorScreen();
     }
-    public void navigateToEvaluatorScren() {
+    
+    public void navigateToHomeScreen() {
+        Telas.telaHomePage();
+    }
+    
+    public void navigateToListAuthorsScreen() {
+        Telas.listAuthorScreen();
+    }
+    
+    public void navigateToListBooksScreen() {
+        Telas.listBookScreen();
+    }
+    
+    public void navigateToListEvaluatorsScreen() {
         Telas.listEvaluatorScreen();
+    }
+    
+    public void navigateToListRelatoryScreen() {
+        // adicionar tela de relatórios
+    }
+    
+    public void logout() {
+        Telas.telaLogin();
     }
 }

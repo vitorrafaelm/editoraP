@@ -13,15 +13,10 @@ import models.dao.BaseInterDAO;
 public class AddressBO {
 	BaseInterDAO<Address> dao = new AddressDao();
 		
-	public Address adicionar(AddressDTO dto) {
+	public Address adicionar(AddressDTO dto) throws SQLException {
 		Address address = Address.converter(dto);
-		try {
-			return dao.inserir(address);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return null;
-		}
+		
+		return dao.inserir(address);
 	}
 	
 	public List<Address> listar(){
@@ -34,7 +29,7 @@ public class AddressBO {
 				address.setNeightboohood(rs.getString("neightboohood"));
 				address.setNumber(rs.getString("number"));
 				address.setZipcode(rs.getString("zipcode"));
-				address.setId(rs.getString("id"));
+				address.setId(rs.getInt("id"));
 				addresses.add(address);
 			}
 			return addresses;
@@ -45,21 +40,21 @@ public class AddressBO {
 		}
 	}
 	
-	public boolean atualizar (Address address) {
-		ResultSet rs = dao.findBySpecifiedField(address, "cpf");
-		try {
-			if(rs!=null && rs.next() ) {
-				if(dao.alterar(address) == true)
-					return true;
-					else return false;
-			}
-			else return false;
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return false;
-		}	
+	public boolean atualizar (AddressDTO address) throws SQLException {
+	    Address adrss = Address.converter(address);
+	    
+	    Address addr = dao.findById(adrss);
+	    
+		if(addr.getNeightboohood().isEmpty()) {
+        	return false; 
+        } else {
+            if(dao.alterar(adrss) == true)
+                return true;
+                else return false;
+        }
 	}
+	
+	
 	public boolean apagar (Address address) {
 		ResultSet rs = dao.findBySpecifiedField(address, "id");
 		try {

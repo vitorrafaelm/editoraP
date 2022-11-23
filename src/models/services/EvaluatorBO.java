@@ -5,53 +5,55 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import controllers.dto.AddressDTO;
 import controllers.dto.EvaluatorDTO;
+import controllers.dto.UserDTO;
+import exceptions.AuthError;
+import exceptions.AuthenticationException;
 import models.dao.BaseInterDAO;
 import models.dao.EvaluatorDao;
 import models.entities.Address;
+import models.entities.Admin;
 import models.entities.Evaluator;
 
 public class EvaluatorBO {
-    BaseInterDAO<Evaluator> dao = new EvaluatorDao();
+   BaseInterDAO<Evaluator> dao = new EvaluatorDao();
+   
+   public Evaluator authenticate(UserDTO data) throws AuthenticationException, SQLException {
+       Evaluator evaluator = Evaluator.converter(data);
        
-    public boolean adicionar (EvaluatorDTO dto) {
-        Evaluator evaluator = Evaluator.converter(dto);
-        ResultSet rs = dao.findBySpecifiedField(evaluator, "cpf");
-        try {
-            if(rs==null || !(rs.next()) ) {
-                if(dao.inserir(evaluator) == true)
-                    return true;
-                    else return false;
-            }
-            else return false;
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            return false;
-        }   
-    }
+       Evaluator user = this.dao.findBySpecifiedFieldAdmin(evaluator, "email");
 
+       if (user == null)
+           throw new AuthenticationException(AuthError.NOT_FOUND);
+       if (!data.getPassword().equals(user.getPassword()))
+           throw new AuthenticationException(AuthError.WRONG_PASSWORD);
+       
+       return user;
+   }
+       
+   public Evaluator adicionar(EvaluatorDTO dto) throws SQLException {
+        Evaluator evaluator = Evaluator.converter(dto);
+        return dao.inserir(evaluator);
+    }
+    
     public List<EvaluatorDTO> listar(){
         List<EvaluatorDTO> evaluators = new ArrayList<EvaluatorDTO>();
         ResultSet rs = dao.findAll();
         try {
             while(rs.next()) {
-                AddressDTO dtoA = new AddressDTO();
+                Address address = new Address();
                 
-                dtoA.setStreet(rs.getString("Rua"));
-                dtoA.setNeightboohood(rs.getString("Bairro"));
-                dtoA.setNumber(rs.getString("número"));
-                dtoA.setCity(rs.getString("Cidade"));
-                dtoA.setZipcode(rs.getString("CEP"));
-                AddressBO temp = new AddressBO();
-               Address address = temp.adicionar(dtoA);
-                
+                address.setStreet(rs.getString("street"));
+                address.setNeightboohood(rs.getString("neightboohood"));
+                address.setNumber(rs.getString("number_house"));
+                address.setCity(rs.getString("city"));
+                address.setZipcode(rs.getString("zipcode"));
+                                
                 EvaluatorDTO evaluator = new EvaluatorDTO();
-                evaluator.setCpf(rs.getString("cpf"));
+                evaluator.setCpf(rs.getString("taxId"));
                 evaluator.setAddress(address);
-                evaluator.setName(rs.getString("nome"));
-                //evaluator.setId(rs.getInt("id"));
+                evaluator.setName(rs.getString("name"));
+                evaluator.setId(rs.getInt("id"));
                 
                 evaluators.add(evaluator);
             }
@@ -64,7 +66,6 @@ public class EvaluatorBO {
     }
 
     public boolean atualizar (Evaluator evaluator) {
-        
         ResultSet rs = dao.findBySpecifiedField(evaluator, "cpf");
         try {
             if(rs!=null && rs.next() ) {
@@ -80,19 +81,46 @@ public class EvaluatorBO {
         }   
     }
 
-    public boolean apagar (Evaluator evaluator) {
-        ResultSet rs = dao.findBySpecifiedField(evaluator, "cpf");
+    public boolean deletar(Evaluator evaluator) {
         try {
-            if(rs!=null && rs.next() ) {
-                if(dao.deletar(evaluator) == true)
-                    return true;
-                    else return false;
-            }
-            else return false;
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
+            return dao.deletar(evaluator);
+        } catch (Exception e) {
+            // TODO: handle exception
             e.printStackTrace();
             return false;
-        }   
+        }
     }
+
 }
+/* public boolean adicionar (EvaluatorDTO dto) {
+Evaluator evaluator = Evaluator.converter(dto);
+ResultSet rs = dao.findBySpecifiedField(evaluator, "cpf");
+try {
+    if(rs==null || !(rs.next()) ) {
+        if(dao.inserir(evaluator) == true)
+            return true;
+            else return false;
+    }
+    else return false;
+} catch (SQLException e) {
+    // TODO Auto-generated catch block
+    e.printStackTrace();
+    return false;
+}   
+}*/
+
+/*    public boolean apagar (Evaluator evaluator) {
+ResultSet rs = dao.findBySpecifiedField(evaluator, "cpf");
+try {
+    if(rs!=null && rs.next() ) {
+        if(dao.deletar(evaluator) == true)
+            return true;
+            else return false;
+    }
+    else return false;
+} catch (SQLException e) {
+    // TODO Auto-generated catch block
+    e.printStackTrace();
+    return false;
+}   
+}*/

@@ -1,13 +1,11 @@
-package models.entities;
+package controllers.dto;
 
-import controllers.dto.AuthorDTO;
-import controllers.dto.UserDTO;
-
-public class Admin {
+public class UserDTO {
     private int id; 
     private String name;
     private String email;
     private String password;
+    private String taxId;
 
     public String getName(){
         return name;
@@ -39,18 +37,20 @@ public class Admin {
     public String getPassword(){
         return password;
     }
+    
+
+    public String getTaxId() {
+        return taxId;
+    }
+
+    public void setTaxId(String taxId) {
+        this.taxId = taxId;
+    }
 
     public void setPassword(String password){
         long cont = password.chars().filter(ch -> ch != ' ').count();
         if(cont > 4 && cont < 13){
             this.password = password;
         }
-    }
-    
-    public static Admin converter(UserDTO dto) {
-        Admin admin = new Admin();
-        admin.setEmail(dto.getEmail());
-        admin.setPassword(dto.getPassword());
-        return admin;
     }
 }

@@ -1,33 +1,30 @@
 package models.entities;
 
 import controllers.dto.EvaluatorDTO;
+import controllers.dto.UserDTO;
 
 public class Evaluator {
-//	private int id;
-	private String nome; 
-	private String CPF;
-	private Address address;
-/*	
-	public void Evalutator(String name, String CPF, Address address) {
-		this.setName(name);
-		this.setCPF(CPF);
-		this.setAddress(address);
-	}
-*/
-/*	public int getId(){
-		return this.id;
-	}
+    private int id;
+    private String nome; 
+    private String CPF;
+    private Address address;
+    private String email;
+    private String password;
 
-	public void setId(int Id){
-		if(Id > 0){
-			this.id = Id;
-		}
-	}
-*/	
-	public String getNome() {
-		return this.nome;
-	}
-	
+    public int getId(){
+        return this.id;
+    }
+
+    public void setId(int Id){
+        if(Id > 0){
+            this.id = Id;
+        }
+    }
+    
+    public String getNome() {
+        return this.nome;
+    }
+    
     public void setNome(String nome) {
         if(!nome.isEmpty()) {
             this.nome = nome;
@@ -36,10 +33,9 @@ public class Evaluator {
         }
     }
 
-	
-	public String getCPF() {
-		return this.CPF;
-	}
+    public String getCPF() {
+        return this.CPF;
+    }
     public void setCPF(String cpf) {
         if(!cpf.isBlank()) {
             this.CPF = cpf;
@@ -47,31 +43,58 @@ public class Evaluator {
             System.out.println("CPF invalido");
         }
     }
-	
+    
     public Address getAdress() {
         return address;
     }
     
     public void setAddress(Address address) {
-        if(!address.getId().isEmpty()) {
+     //   if(!address.getId().isEmpty()) {
             this.address = address;
-        }else { 
-            System.out.println("Endereço Invalido");
-        }
+ //       }else { 
+    //.out.println("Endereço Invalido");
+      //  }
     }
 
+    public String getEmail() {
+        return email;
+    }
 
-	@Override
-	public String toString() {
-		return "Evaluator [name=" + nome + ", CPF=" + CPF + ", address=" + address + "]";
-	}
-	public static Evaluator converter(EvaluatorDTO dto) {
-	    Evaluator evaluator = new Evaluator();
-	    evaluator.setCPF(dto.getCpf());
-	    evaluator.setAddress(dto.getAddress());
-	    evaluator.setNome(dto.getName());
-	    return evaluator;
-	}
-	
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    @Override
+    public String toString() {
+        return "Evaluator [name=" + nome + ", CPF=" + CPF + ", address=" + address + "]";
+    }
+    public static Evaluator converter(EvaluatorDTO dto) {
+        Evaluator evaluator = new Evaluator();
+        evaluator.setNome(dto.getName());
+        evaluator.setId(dto.getId());
+        evaluator.setCPF(dto.getCpf());
+        evaluator.setAddress(dto.getAddress());
+        return evaluator;
+    }
+    
+    public static Evaluator converter(UserDTO dto) {
+        Evaluator evaluator = new Evaluator();
+        evaluator.setEmail(dto.getEmail());
+        evaluator.setPassword(dto.getPassword());
+        return evaluator;
+    }
+    
 }
 

@@ -11,8 +11,8 @@ public class DatabaseConnection {
 
     private static DatabaseConnection instance;
     private Connection connection;
-    private String url = "jdbc:mysql://localhost/editorap";
- //   private String url = "jdbc:mysql://www.db4free.net:3306/editorap";
+    // private String url = "jdbc:mysql://localhost/editorap";
+    private String url = "jdbc:mysql://www.db4free.net:3306/editorap";
     private String username = "ufersa";
     private String password = "ufersa123";
 

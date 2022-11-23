@@ -4,9 +4,18 @@ import models.entities.Address;
 
 public class AuthorDTO {
 	private String name, cpf;
+	private int id;
 	private Address address;
 
-	public String getName() {
+	public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
 		return name;
 	}
 
