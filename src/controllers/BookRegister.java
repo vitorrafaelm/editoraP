@@ -43,24 +43,18 @@ public class BookRegister {
 		dto.setDateLaunch(ano.getText());
 		dto.setStatus_register("criado");
 		
+		int authr = Integer.parseInt(autor.getSelectionModel().getSelectedItem().replaceAll("\\s*-\\D*", ""));
+	    int evaluat = Integer.parseInt(avaliador.getSelectionModel().getSelectedItem().replaceAll("\\s*-\\D*", ""));
+		
         Author dto1 = new Author();
+        dto1.setId(authr);
         dto.setAuthor(dto1);
         Evaluator dto2 = new Evaluator();
+        dto2.setId(evaluat);
         dto.setEvaluator(dto2);
 		
-        bo.adicionar(dto);
-	    Telas.listBookScreen();
-		
-	    String authr = autor.getSelectionModel().getSelectedItem();
-	    String evaluat = avaliador.getSelectionModel().getSelectedItem();
-	    System.out.println(authr);
-	    System.out.println(evaluat);
-	    
-	    Pattern pattern = Pattern.compile("(\\d*)\\s*-", Pattern.CASE_INSENSITIVE);
-	    Matcher matcher = pattern.matcher(authr);
-	    
-	    System.out.println(matcher.group());
-	    matcher = pattern.matcher(evaluat);
+	    bo.adicionar(dto);
+        Telas.listBookScreen(); 
 	}
 	
 	public void initialize() {
