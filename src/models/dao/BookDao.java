@@ -187,6 +187,24 @@ public class BookDao extends BaseDao<Book> {
             return null;
         }
     }
+    
+    public ResultSet findByEvaluator(int id) {
+        String sql = "SELECT  *, ta.id as idAuhtor, ta.name as authorName, te.name as evalName FROM tb_books " +
+                    "LEFT JOIN tb_authors ta on ta.id = tb_books.id_author " +
+                    "LEFT JOIN books_evaluators eval on eval.id_book = tb_books.id " +
+                    "RIGHT JOIN tb_evaluator te on te.id = eval.id_evaluator WHERE te.id=?";
+        
+        try {
+            PreparedStatement pst = this.connection.prepareStatement(sql);
+            pst.setInt(1, id);
+            ResultSet rs = pst.executeQuery();
+            return rs;
+        } catch (SQLException ex) {
+            // TODO Auto-generated catch block
+            ex.printStackTrace();
+            return null;
+        }
+    }
 
     public Book findBySpecifiedFieldAdmin(Book book, String field) {
         String sql = "SELECT  *, ta.id as idAuhtor, ta.name as authorName, te.name as evalName, te.id as IdEval \n"

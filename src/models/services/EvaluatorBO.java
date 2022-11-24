@@ -79,7 +79,7 @@ public class EvaluatorBO {
                                 
                 EvaluatorDTO evaluator = new EvaluatorDTO();
                 evaluator.setCpf(rs.getString("taxId"));
-                evaluator.setAddress(address);
+                //evaluator.setAddress(address);
                 evaluator.setName(rs.getString("name"));
                 evaluator.setId(rs.getInt("id"));
                 

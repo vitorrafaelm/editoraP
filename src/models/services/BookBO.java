@@ -7,6 +7,7 @@ import java.util.List;
 
 import controllers.dto.BookDTO;
 import controllers.dto.EvaluatorDTO;
+import controllers.dto.UserDTO;
 import controllers.dto.AddressDTO;
 import models.dao.BookDao;
 import models.dao.BaseInterDAO;
@@ -16,7 +17,9 @@ import models.entities.Address;
 import models.entities.Author;
 
 public class BookBO{
-    BaseInterDAO<Book> dao = new BookDao();
+    BookDao dao = new BookDao();
+
+    private EvaluatorBO evaluatorBO = new EvaluatorBO();
     
     public Book adicionar(BookDTO dto) throws SQLException {
         Book book = Book.converter(dto);
@@ -27,6 +30,46 @@ public class BookBO{
     public List<BookDTO> listar(){
         List<BookDTO> books = new ArrayList<BookDTO>();
         ResultSet rs = dao.findAll();
+        try {
+            while (rs.next()) {
+                BookDTO book = new BookDTO();
+                Author author = new Author(); 
+                Evaluator eval = new Evaluator();
+                   
+                System.out.print(rs.getString("title"));
+                System.out.print(rs.getString("description"));
+                System.out.print(rs.getString("authorName"));
+                
+                book.setTitle(rs.getString("title"));
+                book.setDescription(rs.getString("description"));
+                book.setId(rs.getInt("id"));
+                book.setGender(rs.getString("gender"));
+                book.setDateLaunch(rs.getString("year"));
+                book.setStatus_register(rs.getString("status_register"));
+                
+                author.setNome(rs.getString("authorName"));
+                eval.setNome(rs.getString("evalName"));
+               
+                book.setAuthor(author);
+                book.setEvaluator(eval);
+                
+                books.add(book);
+                
+            }
+            return books;
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    public List<BookDTO> listarPorAvaliador(UserDTO user){
+        List<BookDTO> books = new ArrayList<BookDTO>();
+        
+        
+        
+        ResultSet rs = dao.findByEvaluator(2);
         try {
             while (rs.next()) {
                 BookDTO book = new BookDTO();
