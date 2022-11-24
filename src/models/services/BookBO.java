@@ -8,14 +8,11 @@ import java.util.List;
 import controllers.dto.BookDTO;
 import controllers.dto.EvaluatorDTO;
 import controllers.dto.UserDTO;
-import exceptions.AuthError;
-import exceptions.AuthenticationException;
 import controllers.dto.AddressDTO;
 import models.dao.BookDao;
 import models.dao.BaseInterDAO;
 import models.entities.Book;
 import models.entities.Evaluator;
-import views.Telas;
 import models.entities.Address;
 import models.entities.Author;
 
@@ -71,15 +68,9 @@ public class BookBO{
         List<BookDTO> books = new ArrayList<BookDTO>();
         
         
+        
+        ResultSet rs = dao.findByEvaluator(2);
         try {
-            ResultSet rs = null;
-            
-            try {
-                rs = dao.findByEvaluator(evaluatorBO.authenticate(user).getId());
-            } catch (AuthenticationException e) {
-                // TODO: handle exception
-            }
-            
             while (rs.next()) {
                 BookDTO book = new BookDTO();
                 Author author = new Author(); 
