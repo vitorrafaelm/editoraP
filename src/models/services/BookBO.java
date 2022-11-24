@@ -61,26 +61,69 @@ public class BookBO{
         }
     }
     
-    public boolean atualizar (BookDTO book) throws SQLException {
-        Book bookss = Book.converter(book);
-        
-        Book boook = dao.findById(bookss);
-        
-        if(boook.getTitle().isEmpty()) {
-            return false; 
-        } else {
-            if(dao.alterar(boook) == true)
-                return true;
-                else return false;
+    public List<BookDTO> search(String name){
+        List<BookDTO> books = new ArrayList<BookDTO>();
+        ResultSet rs = dao.searchByNameOrTitle(name);
+        try {
+            System.out.print(rs.next());
+            while (rs.next()) {
+                BookDTO book = new BookDTO();
+                Author author = new Author(); 
+                Evaluator eval = new Evaluator();
+                   
+                System.out.print(rs.getString("title"));
+                System.out.print(rs.getString("description"));
+                System.out.print(rs.getString("authorName"));
+                
+                book.setTitle(rs.getString("title"));
+                book.setDescription(rs.getString("description"));
+                book.setId(rs.getInt("id"));
+                book.setGender(rs.getString("gender"));
+                book.setDateLaunch(rs.getString("year"));
+                book.setStatus_register(rs.getString("status_register"));
+                
+                author.setNome(rs.getString("authorName"));
+                eval.setNome(rs.getString("evalName"));
+               
+                book.setAuthor(author);
+                book.setEvaluator(eval);
+                
+                books.add(book);
+                
+            }
+            return books;
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return null;
         }
     }
     
+    public boolean atualizar (BookDTO book, int id) throws SQLException {
+        Book bookss = Book.converter(book);
+        if(dao.alterar(bookss, id) == true)
+            return true;
+            else return false;
+        
+    }
     
     public boolean apagar (Book book) throws SQLException {
         
         if(dao.deletar(book) == true) {
               return true;
           } else return false;   
-    
     }
+    
+    public Book findBookUnique(Book book) {
+        try {
+            return dao.findBySpecifiedFieldAdmin(book, "tb_books.id");
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    
+    
 }

@@ -117,5 +117,13 @@ public class Book {
 		return book;
 	}
 
+    @Override
+    public String toString() {
+        return "Book [id=" + id + ", author=" + author + ", evaluator=" + evaluator + ", title=" + title
+                + ", description=" + description + ", gender=" + gender + ", dateLaunch=" + dateLaunch
+                + ", status_register=" + status_register + "]";
+    }
+    
+    
 
 }

@@ -21,6 +21,25 @@ public class BookDao extends BaseDao<Book> {
 		}
     }
 	
+	 public ResultSet searchByNameOrTitle(String name) {
+	     String sql = "SELECT  *, ta.id as idAuhtor, ta.name as authorName, te.name as evalName FROM tb_books \n"
+	             + "RIGHT JOIN tb_authors ta on ta.id = tb_books.id_author \n"
+	             + "RIGHT JOIN books_evaluators eval on eval.id_book = tb_books.id \n"
+	             + "RIGHT JOIN tb_evaluator te on te.id = eval.id_evaluator\n"
+	             + "WHERE tb_books.title LIKE '%?%';";
+	        
+	        try {
+	            PreparedStatement pst = this.connection.prepareStatement(sql);
+	            pst.setString(1, name);
+	            ResultSet rs = pst.executeQuery();
+	            return rs;
+	        } catch (SQLException ex) {
+	            // TODO Auto-generated catch block
+	            ex.printStackTrace();
+	            return null;
+	        }
+	 }
+	
 	@Override
     public ResultSet findAll() {
         String sql = "SELECT  *, ta.id as idAuhtor, ta.name as authorName, te.name as evalName FROM tb_books LEFT JOIN tb_authors ta on ta.id = tb_books.id_author LEFT JOIN books_evaluators eval on eval.id_book = tb_books.id RIGHT JOIN tb_evaluator te on te.id = eval.id_evaluator;";
@@ -90,10 +109,11 @@ public class BookDao extends BaseDao<Book> {
         }   
     }
 
-    public boolean alterar(Book book) {
+    public boolean alterar(Book book, int id) {
         // (id_evaluator,id_book) VALUES(?,?)
         String sql = "UPDATE tb_books SET title=?,description=?,gender=?,year=?, status_register=?, id_author=? WHERE id=? ";
         String sql2 = "UPDATE books_evaluators SET id_book=?, id_evaluator=? WHERE id_book=?;";
+        System.out.print(book);
         try {
             PreparedStatement pst = this.connection.prepareStatement(sql);
             pst.setString(1, book.getTitle());
@@ -102,12 +122,12 @@ public class BookDao extends BaseDao<Book> {
 			pst.setString(4, book.getDateLaunch());
             pst.setString(5, book.getStatus_register());
 			pst.setInt(6, book.getAuthor().getId());
-			pst.setInt(6, book.getId());
+			pst.setInt(7, id);
             pst.executeUpdate();
             
             PreparedStatement pst2 = this.connection.prepareStatement(sql2);
-            pst2.setInt(1, book.getId());
-            pst2.setInt(1, book.getEvaluator().getId());
+            pst2.setInt(1, id);
+            pst2.setInt(2, book.getEvaluator().getId());
             
             
             return true;        
@@ -144,7 +164,53 @@ public class BookDao extends BaseDao<Book> {
         }
     }
 
-    public ResultSet findBySpecifiedField(Book book, String field) {
-        return null;
+    public Book findBySpecifiedFieldAdmin(Book book, String field) {
+        String sql = "SELECT  *, ta.id as idAuhtor, ta.name as authorName, te.name as evalName, te.id as IdEval \n"
+                + "FROM tb_books \n"
+                + "LEFT JOIN tb_authors ta on ta.id = tb_books.id_author \n"
+                + "LEFT JOIN books_evaluators eval on eval.id_book = tb_books.id \n"
+                + "RIGHT JOIN tb_evaluator te on te.id = eval.id_evaluator \n"
+                + "WHERE tb_books.id=?;";
+        try {
+            PreparedStatement pst = getConnection().prepareStatement(sql);
+            switch (field) {
+            case "id":
+                pst.setInt(1, book.getId());
+                break;
+            default: 
+                pst.setInt(1, book.getId());
+            }
+            
+            ResultSet rs = pst.executeQuery();
+            
+            if(rs.next()) {
+                Book book2 = new Book();
+                Author author = new Author(); 
+                Evaluator eval = new Evaluator();
+                
+                author.setId(rs.getInt("idAuhtor"));
+                author.setNome(rs.getString("authorName"));
+                eval.setId(rs.getInt("IdEval"));
+                eval.setNome(rs.getString("evalName"));
+                
+                book2.setId(rs.getInt("id"));
+                book2.setTitle(rs.getString("title"));
+                book2.setDescription(rs.getString("description"));
+                book2.setGender(rs.getString("gender"));
+                book2.setDateLaunch(rs.getString("year"));
+                book2.setStatus_register(rs.getString("status_register"));
+                book2.setAuthor(author);
+                book2.setEvaluator(eval);; 
+                
+                return book2;
+            }
+            
+            return null;
+        
+        } catch (SQLException ex) {
+            // TODO Auto-generated catch block
+            ex.printStackTrace();
+            return null;
+        }
     }
 }
