@@ -21,6 +21,24 @@ public class BookDao extends BaseDao<Book> {
 		}
     }
 	
+	public ResultSet findByEvaluator(int id) {
+        String sql = "SELECT  *, ta.id as idAuhtor, ta.name as authorName, te.name as evalName FROM tb_books " +
+                    "LEFT JOIN tb_authors ta on ta.id = tb_books.id_author " +
+                    "LEFT JOIN books_evaluators eval on eval.id_book = tb_books.id " +
+                    "RIGHT JOIN tb_evaluator te on te.id = eval.id_evaluator WHERE te.id=?";
+
+        try {
+            PreparedStatement pst = this.connection.prepareStatement(sql);
+            pst.setInt(1, id);
+            ResultSet rs = pst.executeQuery();
+            return rs;
+        } catch (SQLException ex) {
+            // TODO Auto-generated catch block
+            ex.printStackTrace();
+            return null;
+        }
+    }
+	
 	 public ResultSet searchByNameOrTitle(String name) {
 	     String sql = "SELECT  *, ta.id as idAuhtor, ta.name as authorName, te.name as evalName FROM tb_books \n"
 	             + "RIGHT JOIN tb_authors ta on ta.id = tb_books.id_author \n"
@@ -125,19 +143,36 @@ public class BookDao extends BaseDao<Book> {
             pst.execute();
             
             return true;
-        
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
             return false;
         }   
     }
+	
+	public boolean atualizarStatus(Book book, int id) {
+	    String sql = "UPDATE tb_books SET status_register=? WHERE id=? ";
+      
+        try {
+            PreparedStatement pst = this.connection.prepareStatement(sql);
+            pst.setString(1, book.getStatus_register());
+            pst.setInt(2, id);
+            pst.executeUpdate();          
+            
+            return true;        
+        
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return false;
+        } 
+	}
 
     public boolean alterar(Book book, int id) {
         // (id_evaluator,id_book) VALUES(?,?)
         String sql = "UPDATE tb_books SET title=?,description=?,gender=?,year=?, status_register=?, id_author=? WHERE id=? ";
         String sql2 = "UPDATE books_evaluators SET id_book=?, id_evaluator=? WHERE id_book=?;";
-        System.out.print(book);
+       
         try {
             PreparedStatement pst = this.connection.prepareStatement(sql);
             pst.setString(1, book.getTitle());

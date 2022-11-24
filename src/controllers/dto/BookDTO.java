@@ -30,6 +30,15 @@ public class BookDTO {
     private String dateLaunch;
     private String status_register;
     private Evaluator evaluator;
+    private String created;
+    
+    public String getCreated() {
+        return created;
+    }
+
+    public void setCreated(String created) {
+        this.created = created;
+    }
 
 	public String getTitle() {
         return title;

@@ -14,8 +14,16 @@ public class Book {
     private String gender;
     private String dateLaunch;
     private String status_register; //aprovado, em analise, nao aprovado
+    private String created;
 
-    
+   
+    public String getCreated() {
+        return created;
+    }
+
+    public void setCreated(String created) {
+        this.created = created;
+    }
 
     //getters
     public String getTitle() {
@@ -76,20 +84,9 @@ public class Book {
      * @param status_register
      */
     public void setStatus_register(String status_register) {
-
         status_register = status_register.toLowerCase();
         
-        if (
-            status_register.compareTo("aprovado") == 0 ||
-            status_register.compareTo("analise") == 0 ||
-            status_register.compareTo("nao aprovado") == 0
-        ) {
-            this.status_register = status_register;
-        } else {
-            this.status_register = "em analise";
-            System.out.println("valor invalido de status");
-        }
-        
+        this.status_register = status_register; 
     }
 
     public void setTitle(String title) {

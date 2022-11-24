@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import exceptions.AuthenticationException;
+import models.entities.Book;
 
 public interface BaseInterDAO<entity> {
 
@@ -21,4 +22,6 @@ public interface BaseInterDAO<entity> {
 	public entity findBySpecifiedFieldAdmin(entity e, String field);
 	public ResultSet searchByNameOrTitle(String name);
 	public ResultSet generateRelatory(String dataIni, String dataFinal);
+	public ResultSet findByEvaluator(int id);
+	public boolean atualizarStatus(Book book, int id);
 }

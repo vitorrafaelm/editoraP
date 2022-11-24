@@ -38,15 +38,17 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Text>
-            <TableView layoutX="9.0" layoutY="117.0" prefHeight="164.0" prefWidth="408.0">
+            <TableView fx:id="tableBook" layoutX="9.0" layoutY="117.0" prefHeight="164.0" prefWidth="408.0">
                <columns>
+                  <TableColumn fx:id="id" prefWidth="77.3333740234375" text="id" />
                   <TableColumn fx:id="columnTitulo" prefWidth="77.3333740234375" text="Título" />
                   <TableColumn fx:id="columnAno" prefWidth="79.0" text="Ano" />
-                  <TableColumn fx:id="columnAvaliador" prefWidth="167.0" text="Autor" />
-                  <TableColumn fx:id="columnEndereco" prefWidth="82.0" text="Ações" />
+                  <TableColumn fx:id="autor" prefWidth="167.0" text="Autor" />
+                  <TableColumn fx:id="status" prefWidth="167.0" text="status" />
                </columns>
             </TableView>
-            <Button layoutX="9.0" layoutY="297.0" mnemonicParsing="false" onAction="#avaliar" style="-fx-background-color: #7B7B7B; -fx-font-weight: 700;" text="Avaliar" textFill="WHITE" />
+            <Button layoutX="9.0" layoutY="297.0" mnemonicParsing="false" onAction="#avaliar" style="-fx-background-color: #7B7B7B; -fx-font-weight: 700;" text="aprovar" textFill="WHITE" />
+            <Button layoutX="91.0" layoutY="297.0" mnemonicParsing="false" onAction="#avaliarRuim" style="-fx-background-color: #7B7B7B; -fx-font-weight: 700;" text="obra ruim" textFill="WHITE" />
          </children>
       </AnchorPane>
    </items>

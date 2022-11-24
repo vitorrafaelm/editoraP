@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 import controllers.dto.UserDTO;
 import exceptions.AuthenticationException;
+import models.entities.Book;
 
 public class BaseDao<entity> implements BaseInterDAO<entity> {
     private Connection con;
@@ -93,5 +94,19 @@ public class BaseDao<entity> implements BaseInterDAO<entity> {
     public ResultSet generateRelatory(String dataIni, String dataFinal) {
         // TODO Auto-generated method stub
         return null;
+    }
+
+
+    @Override
+    public ResultSet findByEvaluator(int id) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+
+    @Override
+    public boolean atualizarStatus(Book book, int id) {
+        // TODO Auto-generated method stub
+        return false;
     }
 }

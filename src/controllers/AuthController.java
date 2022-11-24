@@ -16,7 +16,7 @@ public class AuthController {
     @FXML private TextField email;
     @FXML private TextField password;
     
-    private static UserDTO loggedUser;
+    public static UserDTO loggedUser;
     private AdminBO adminBO = new AdminBO();
     private EvaluatorBO evaluatorBO = new EvaluatorBO();
     
