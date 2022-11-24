@@ -76,19 +76,11 @@ public class BookBO{
     }
     
     
-    public boolean apagar (Book book) {
-        ResultSet rs = dao.findBySpecifiedField(book, "id");
-        try {
-            if(rs!=null && rs.next() ) {
-                if(dao.deletar(book) == true)
-                    return true;
-                    else return false;
-            }
-            else return false;
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            return false;
-        }   
+    public boolean apagar (Book book) throws SQLException {
+        
+        if(dao.deletar(book) == true) {
+              return true;
+          } else return false;   
+    
     }
 }
