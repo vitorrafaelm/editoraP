@@ -9,6 +9,7 @@ module javafx {
     requires javafx.swing;
     requires javafx.web;
     requires java.base;
+    requires mysql.connector.java;
 	
 	opens views to javafx.graphics, javafx.fxml;
 	opens controllers to javafx.fxml;
