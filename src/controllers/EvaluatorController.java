@@ -59,7 +59,7 @@ public class EvaluatorController implements Initializable {
         //List<BookDTO> books = bookBO.listar();
         BookBO books = new BookBO();
         
-        List<BookDTO> Books = books.listarPorAvaliador(Evaluator.converter(AuthController.loggedUser));
+        List<BookDTO> Books = books.listarPorAvaliador(AuthController.loggedUser);
         
         
         //listBooks = FXCollections.observableArrayList(books);

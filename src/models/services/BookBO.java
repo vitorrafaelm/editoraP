@@ -7,16 +7,22 @@ import java.util.List;
 
 import controllers.dto.BookDTO;
 import controllers.dto.EvaluatorDTO;
+import controllers.dto.UserDTO;
+import exceptions.AuthError;
+import exceptions.AuthenticationException;
 import controllers.dto.AddressDTO;
 import models.dao.BookDao;
 import models.dao.BaseInterDAO;
 import models.entities.Book;
 import models.entities.Evaluator;
+import views.Telas;
 import models.entities.Address;
 import models.entities.Author;
 
 public class BookBO{
     BookDao dao = new BookDao();
+
+    private EvaluatorBO evaluatorBO = new EvaluatorBO();
     
     public Book adicionar(BookDTO dto) throws SQLException {
         Book book = Book.converter(dto);
@@ -61,10 +67,19 @@ public class BookBO{
         }
     }
     
-    public List<BookDTO> listarPorAvaliador(Evaluator eva){
+    public List<BookDTO> listarPorAvaliador(UserDTO user){
         List<BookDTO> books = new ArrayList<BookDTO>();
-        ResultSet rs = dao.findByEvaluator(eva.getId());
+        
+        
         try {
+            ResultSet rs = null;
+            
+            try {
+                rs = dao.findByEvaluator(evaluatorBO.authenticate(user).getId());
+            } catch (AuthenticationException e) {
+                // TODO: handle exception
+            }
+            
             while (rs.next()) {
                 BookDTO book = new BookDTO();
                 Author author = new Author(); 
