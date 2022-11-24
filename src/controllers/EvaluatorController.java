@@ -9,12 +9,16 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import models.entities.Book;
+import models.entities.Evaluator;
 import views.Telas;
 
 import models.services.BookBO;
@@ -35,6 +39,7 @@ public class EvaluatorController implements Initializable {
     @FXML
     private TableColumn<BookDTO, String> columnStatus;
     
+    private ObservableList<BookDTO> listBooks;
     /**
      * Initializes the controller class.
      */
@@ -44,11 +49,17 @@ public class EvaluatorController implements Initializable {
         listBooks();
     }  
     
+//    public static void main(String[] args) {
+//        EvaluatorController ev = new EvaluatorController();
+//        
+//        
+//    }
+    
     public void listBooks() {
         //List<BookDTO> books = bookBO.listar();
         BookBO books = new BookBO();
         
-        List<Book> listBooks = books.listar();
+        List<BookDTO> Books = books.listarPorAvaliador(Evaluator.converter(AuthController.loggedUser));
         
         
         //listBooks = FXCollections.observableArrayList(books);
@@ -57,6 +68,12 @@ public class EvaluatorController implements Initializable {
         //columnAvaliador.setCellValueFactory(new PropertyValueFactory<>("avaliador"));
         //columnEndereco.setCellValueFactory(new PropertyValueFactory<>("endereco"));
         //tableBook.setItems(listBooks);
+        listBooks = FXCollections.observableArrayList(Books);
+        columnTitulo.setCellValueFactory(new PropertyValueFactory<>("title"));
+        columnAno.setCellValueFactory(new PropertyValueFactory<>("dateLaunch"));
+        columnAvaliador.setCellValueFactory(new PropertyValueFactory<>("evaluator"));
+        columnStatus.setCellValueFactory(new PropertyValueFactory<>("status_register"));
+        tableBook.setItems(listBooks);
     }
     
     @FXML
