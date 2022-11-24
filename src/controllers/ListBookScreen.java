@@ -42,19 +42,19 @@ public class ListBookScreen {
     
     public void deleteBook() {
         try {
-            //Book book = new Book(); 
+            Book book = new Book(); 
             
-            //String titulo = tableBook.getSelectionModel().getSelectedItem().getCpf();
-            //book.setTitle(titulo);
-            //BookBO.deletar(book); 
+            int id = tableBook.getSelectionModel().getSelectedItem().getId();
+            book.setId(id);
+            bookBO.apagar(book);
             
-            //tableBook.getItems().removeAll(
-                    //tableBook.getSelectionModel().getSelectedItems()
-            //);
+            tableBook.getItems().removeAll(
+                    tableBook.getSelectionModel().getSelectedItems()
+            );
         } catch (Exception e) {
-            // TODO: handle exception
         }
     }
+    
     
     public void navigateToRegisterScreen() {
         Telas.registerBookScreen();
