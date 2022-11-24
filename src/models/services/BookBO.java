@@ -15,7 +15,7 @@ import models.entities.Evaluator;
 import models.entities.Address;
 
 public class BookBO{
-    BaseInterDAO<Book> dao = new BookDao();
+    BookDao dao = new BookDao();
     
     public Book adicionar(BookDTO dto) throws SQLException {
         Book book = Book.converter(dto);
@@ -26,6 +26,30 @@ public class BookBO{
     public List<Book> listar(){
         List<Book> books = new ArrayList<Book>();
         ResultSet rs = dao.findAll();
+        try {   
+            while(rs.next()) {
+                Book book = new Book();
+                book.getTitle();
+                book.getDescription();
+                book.getGender();
+                book.getDateLaunch();
+                book.getStatus_register();
+                book.getAuthor().getId();
+                book.getEvaluator().getId();
+                book.getId();
+                
+            }
+            return books;
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    public List<Book> listPerEvaluator( Evaluator eva ){
+        List<Book> books = new ArrayList<Book>();
+        ResultSet rs = dao.findByEvaluator(eva.getId());
         try {   
             while(rs.next()) {
                 Book book = new Book();

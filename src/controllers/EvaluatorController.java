@@ -4,14 +4,20 @@
  */
 package controllers;
 
+import controllers.dto.BookDTO;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import models.entities.Book;
 import views.Telas;
+
+import models.services.BookBO;
 /**
  * FXML Controller class
  *
@@ -19,25 +25,43 @@ import views.Telas;
  */
 public class EvaluatorController implements Initializable {
 
-
+    @FXML private TableView<BookDTO> tableBook;
     @FXML
-    private TableColumn<?, ?> columnTitulo;
+    private TableColumn<BookDTO, String> columnTitulo;
     @FXML
-    private TableColumn<?, ?> columnAno;
+    private TableColumn<BookDTO, String> columnAno;
     @FXML
-    private TableColumn<?, ?> columnAvaliador;
+    private TableColumn<BookDTO, String> columnAvaliador;
     @FXML
-    private TableColumn<?, ?> columnEndereco;
+    private TableColumn<BookDTO, String> columnStatus;
+    
     /**
      * Initializes the controller class.
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(URL url, ResourceBundle rb ) {
         // TODO
-    }    
+        listBooks();
+    }  
+    
+    public void listBooks() {
+        //List<BookDTO> books = bookBO.listar();
+        BookBO books = new BookBO();
+        
+        List<Book> listBooks = books.listar();
+        
+        
+        //listBooks = FXCollections.observableArrayList(books);
+        //columnTitulo.setCellValueFactory(new PropertyValueFactory<>("titulo"));
+        //columnAno.setCellValueFactory(new PropertyValueFactory<>("ano"));
+        //columnAvaliador.setCellValueFactory(new PropertyValueFactory<>("avaliador"));
+        //columnEndereco.setCellValueFactory(new PropertyValueFactory<>("endereco"));
+        //tableBook.setItems(listBooks);
+    }
     
     @FXML
     private void navigateToHomePage(ActionEvent event) {
+        
     }
     
     public void logout() {
