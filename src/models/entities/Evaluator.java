@@ -52,7 +52,7 @@ public class Evaluator {
      //   if(!address.getId().isEmpty()) {
             this.address = address;
  //       }else { 
-    //.out.println("Endereço Invalido");
+    //.out.println("EndereÃ§o Invalido");
       //  }
     }
 
@@ -78,7 +78,7 @@ public class Evaluator {
 
     @Override
     public String toString() {
-        return "Evaluator [name=" + nome + ", CPF=" + CPF + ", address=" + address + "]";
+        return nome;
     }
     public static Evaluator converter(EvaluatorDTO dto) {
         Evaluator evaluator = new Evaluator();
@@ -86,6 +86,8 @@ public class Evaluator {
         evaluator.setId(dto.getId());
         evaluator.setCPF(dto.getCpf());
         evaluator.setAddress(dto.getAddress());
+        evaluator.setEmail(dto.getEmail());
+        evaluator.setPassword(dto.getSenha());
         return evaluator;
     }
     
@@ -95,6 +97,5 @@ public class Evaluator {
         evaluator.setPassword(dto.getPassword());
         return evaluator;
     }
-    
 }
 

@@ -12,7 +12,6 @@ import exceptions.AuthenticationException;
 import models.dao.BaseInterDAO;
 import models.dao.EvaluatorDao;
 import models.entities.Address;
-import models.entities.Admin;
 import models.entities.Evaluator;
 
 public class EvaluatorBO {
@@ -65,16 +64,11 @@ public class EvaluatorBO {
         }
     }
 
-    public boolean atualizar (Evaluator evaluator) {
-        ResultSet rs = dao.findBySpecifiedField(evaluator, "cpf");
+    public boolean atualizar (EvaluatorDTO evaluator, String cpf) {
+        Evaluator eva = Evaluator.converter(evaluator);
         try {
-            if(rs!=null && rs.next() ) {
-                if(dao.alterar(evaluator) == true)
-                    return true;
-                    else return false;
-            }
-            else return false;
-        } catch (SQLException e) {
+            return dao.alterar(eva, cpf);
+        } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
             return false;
@@ -90,37 +84,14 @@ public class EvaluatorBO {
             return false;
         }
     }
-
+    
+    
+    public Evaluator findEvaluatorUnique(Evaluator evaluator) {
+        try {
+            return dao.findById(evaluator);
+        }catch(Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }
-/* public boolean adicionar (EvaluatorDTO dto) {
-Evaluator evaluator = Evaluator.converter(dto);
-ResultSet rs = dao.findBySpecifiedField(evaluator, "cpf");
-try {
-    if(rs==null || !(rs.next()) ) {
-        if(dao.inserir(evaluator) == true)
-            return true;
-            else return false;
-    }
-    else return false;
-} catch (SQLException e) {
-    // TODO Auto-generated catch block
-    e.printStackTrace();
-    return false;
-}   
-}*/
-
-/*    public boolean apagar (Evaluator evaluator) {
-ResultSet rs = dao.findBySpecifiedField(evaluator, "cpf");
-try {
-    if(rs!=null && rs.next() ) {
-        if(dao.deletar(evaluator) == true)
-            return true;
-            else return false;
-    }
-    else return false;
-} catch (SQLException e) {
-    // TODO Auto-generated catch block
-    e.printStackTrace();
-    return false;
-}   
-}*/

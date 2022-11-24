@@ -66,10 +66,11 @@
             </Button>
             <TableView fx:id="tableBook" layoutX="9.0" layoutY="99.0" prefHeight="164.0" prefWidth="408.0">
               <columns>
-                <TableColumn fx:id="columnTitulo" prefWidth="77.3333740234375" text="Título" />
+                  <TableColumn fx:id="columnId" prefWidth="49.0" text="id" />
+                <TableColumn fx:id="columnTitulo" prefWidth="107.0" text="Título" />
                 <TableColumn fx:id="columnAno" prefWidth="37.33331298828125" text="Ano" />
-                  <TableColumn fx:id="columnAvaliador" prefWidth="90.00006103515625" text="Avaliador" />
-                  <TableColumn fx:id="columnEndereco" prefWidth="198.66668701171875" text="Endereço" />
+                  <TableColumn fx:id="columnAvaliador" minWidth="0.0" prefWidth="112.0" text="Avaliador" />
+                  <TableColumn fx:id="columnEndereco" prefWidth="99.0" text="Endereço" />
               </columns>
             </TableView>
             <Button layoutX="9.0" layoutY="291.0" mnemonicParsing="false" onAction="#navigateToRegisterScreen" style="-fx-background-color: #7B7B7B; -fx-font-weight: 700;" text="Cadastrar" textFill="WHITE" />

@@ -73,4 +73,18 @@ public class BaseDao<entity> implements BaseInterDAO<entity> {
         // TODO Auto-generated method stub
         return null;
     }
+
+
+    @Override
+    public boolean alterar(entity e, int search) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+
+    @Override
+    public ResultSet searchByNameOrTitle(String name) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 }

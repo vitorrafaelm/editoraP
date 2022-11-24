@@ -65,11 +65,11 @@
                   <Font size="10.0" />
                </font>
             </Button>
-            <TableView fx:id="tableAuthor" layoutX="12.0" layoutY="89.0" prefHeight="164.0" prefWidth="408.0">
+            <TableView fx:id="tabelaAvaliadores" layoutX="9.0" layoutY="97.0" prefHeight="164.0" prefWidth="408.0">
               <columns>
-                <TableColumn fx:id="columnName" prefWidth="75.0" text="Nome" />
+                <TableColumn fx:id="columnNome" prefWidth="75.0" text="Nome" />
                 <TableColumn fx:id="columnCpf" prefWidth="85.0" text="CPF" />
-                  <TableColumn fx:id="columnAddress" minWidth="0.5" prefWidth="246.0" text="endereço" />
+                  <TableColumn fx:id="columnEndereco" minWidth="0.5" prefWidth="246.0" text="endereço" />
               </columns>
             </TableView>
             <Button layoutX="88.0" layoutY="271.0" mnemonicParsing="false" onAction="#navigateToEditScreen" style="-fx-background-color: #7B7B7B; -fx-font-weight: 700;" text="Editar" textFill="WHITE">

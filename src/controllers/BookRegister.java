@@ -8,12 +8,16 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import controllers.dto.BookDTO;
 import controllers.dto.AuthorDTO;
 import models.entities.Book;
+import models.entities.Evaluator;
 import models.services.BookBO;
 import models.services.EvaluatorBO;
+import controllers.dto.EvaluatorDTO;
 import models.entities.Author;
 import models.services.AuthorBO;
 import views.Telas;
@@ -32,16 +36,25 @@ public class BookRegister {
 	private EvaluatorBO boevaluator = new EvaluatorBO();
 	
 	public void cadastrar() throws SQLException {
-		//BookDTO dto = new BookDTO();
-		//dto.setTitle(titulo.getText());
-		//dto.setNeightboohood(descricao.getText());
-		//dto.setNumber(genero.getText());
-		//dto.setZipcode(ano.getText());
+		BookDTO dto = new BookDTO();
+		dto.setTitle(titulo.getText());
+		dto.setDescription(descricao.getText());
+		dto.setGender(genero.getText());
+		dto.setDateLaunch(ano.getText());
+		dto.setStatus_register("criado");
 		
-        //Sem autor e avaliador por enquanto :(
-		//bo.adicionar(dto); 
-	    Telas.listBookScreen();
+		int authr = Integer.parseInt(autor.getSelectionModel().getSelectedItem().replaceAll("\\s*-\\D*", ""));
+	    int evaluat = Integer.parseInt(avaliador.getSelectionModel().getSelectedItem().replaceAll("\\s*-\\D*", ""));
 		
+        Author dto1 = new Author();
+        dto1.setId(authr);
+        dto.setAuthor(dto1);
+        Evaluator dto2 = new Evaluator();
+        dto2.setId(evaluat);
+        dto.setEvaluator(dto2);
+		
+	    bo.adicionar(dto);
+        Telas.listBookScreen(); 
 	}
 	
 	public void initialize() {
@@ -58,6 +71,15 @@ public class BookRegister {
 	   }
 	   
 	   autor.setItems(FXCollections.observableArrayList(authors.values()));
+	   
+	   List<EvaluatorDTO> dtoEvaluator = boevaluator.listar();
+       Map<Integer, String> evaluators = new HashMap<Integer, String>();
+       
+       for (int i = 0; i < dtoEvaluator.size(); i++) {
+           evaluators.put(i , dtoEvaluator.get(i).getId() + " - " + dtoEvaluator.get(i).getName());
+       }
+       
+       avaliador.setItems(FXCollections.observableArrayList(evaluators.values()));
 	   
 	   // falta adicionar os avaliadores, segue o mesmo padrão
 	}

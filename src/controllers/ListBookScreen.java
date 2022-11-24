@@ -8,17 +8,26 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import models.entities.Author;
 import models.entities.Book;
 import models.services.BookBO;
 import views.Telas;
 
 public class ListBookScreen {
+    
+    public static Book currentBookToEdit; 
+    
     @FXML private TableView<BookDTO> tableBook;
+    @FXML private TableColumn<BookDTO, String> columnId;
     @FXML private TableColumn<BookDTO, String> columnTitulo;
     @FXML private TableColumn<BookDTO, String> columnAno;
     @FXML private TableColumn<BookDTO, String> columnAvaliador;
     @FXML private TableColumn<BookDTO, String> columnEndereco;
+    
+    @FXML private TextField buscar;
+    
     private BookBO bookBO = new BookBO();
     private ObservableList<BookDTO> listBooks;
     
@@ -28,42 +37,57 @@ public class ListBookScreen {
     }
     
     public void listBooks() {
-        //List<BookDTO> books = bookBO.listar();
-        
-        //listBooks = FXCollections.observableArrayList(books);
-        //columnTitulo.setCellValueFactory(new PropertyValueFactory<>("titulo"));
-        //columnAno.setCellValueFactory(new PropertyValueFactory<>("ano"));
-        //columnAvaliador.setCellValueFactory(new PropertyValueFactory<>("avaliador"));
-        //columnEndereco.setCellValueFactory(new PropertyValueFactory<>("endereco"));
-        //tableBook.setItems(listBooks);
+        List<BookDTO> books = bookBO.listar();
+             
+        listBooks = FXCollections.observableArrayList(books);
+        columnId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        columnTitulo.setCellValueFactory(new PropertyValueFactory<>("title"));
+        columnAno.setCellValueFactory(new PropertyValueFactory<>("dateLaunch"));
+        columnAvaliador.setCellValueFactory(new PropertyValueFactory<>("evaluator"));
+        columnEndereco.setCellValueFactory(new PropertyValueFactory<>("author"));
+        tableBook.setItems(listBooks);
     }
     
     public void deleteBook() {
         try {
-            //Book book = new Book(); 
+            Book book = new Book(); 
             
-            //String titulo = tableBook.getSelectionModel().getSelectedItem().getCpf();
-            //book.setTitle(titulo);
-            //BookBO.deletar(book); 
+            int id = tableBook.getSelectionModel().getSelectedItem().getId();
+            book.setId(id);
+            bookBO.apagar(book);
             
-            //tableBook.getItems().removeAll(
-                    //tableBook.getSelectionModel().getSelectedItems()
-            //);
+            tableBook.getItems().removeAll(
+                    tableBook.getSelectionModel().getSelectedItems()
+            );
         } catch (Exception e) {
-            // TODO: handle exception
         }
     }
+    
     
     public void navigateToRegisterScreen() {
         Telas.registerBookScreen();
     }
     
     public void navigateToEditScreen() {
+        Book book = new Book(); 
+        
+        int id = tableBook.getSelectionModel().getSelectedItem().getId();
+        book.setId(id);
+        
+        currentBookToEdit = book;  
         Telas.editBookScreen();
     }
     
     public void pesquisarObra() {
+        List<BookDTO> books = bookBO.search(buscar.getText());
         
+        listBooks = FXCollections.observableArrayList(books);
+        columnId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        columnTitulo.setCellValueFactory(new PropertyValueFactory<>("title"));
+        columnAno.setCellValueFactory(new PropertyValueFactory<>("dateLaunch"));
+        columnAvaliador.setCellValueFactory(new PropertyValueFactory<>("evaluator"));
+        columnEndereco.setCellValueFactory(new PropertyValueFactory<>("author"));
+        tableBook.setItems(listBooks);
     }
     
     public void navigateToHomeScreen() {

@@ -78,7 +78,7 @@ public class Book {
     public void setStatus_register(String status_register) {
 
         status_register = status_register.toLowerCase();
-
+        
         if (
             status_register.compareTo("aprovado") == 0 ||
             status_register.compareTo("analise") == 0 ||
@@ -110,13 +110,20 @@ public class Book {
 		book.setGender(dto.getGender());
         book.setDateLaunch(dto.getDateLaunch());
         book.setId(dto.getId());
+        book.setStatus_register(dto.getStatus_register());
         book.setAuthor(dto.getAuthor());
         book.setEvaluator(dto.getEvaluator());
-        
-        dto.getAuthor();
         
 		return book;
 	}
 
+    @Override
+    public String toString() {
+        return "Book [id=" + id + ", author=" + author + ", evaluator=" + evaluator + ", title=" + title
+                + ", description=" + description + ", gender=" + gender + ", dateLaunch=" + dateLaunch
+                + ", status_register=" + status_register + "]";
+    }
+    
+    
 
 }

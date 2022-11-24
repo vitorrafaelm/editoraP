@@ -14,8 +14,10 @@ public interface BaseInterDAO<entity> {
 	public boolean deletar(entity e);
 	public boolean alterar(entity e);
 	public boolean alterar(entity e, String search);
+	public boolean alterar(entity e, int search);
 	public entity findById(entity e);
 	public ResultSet findAll();
 	public ResultSet findBySpecifiedField(entity e, String field);
 	public entity findBySpecifiedFieldAdmin(entity e, String field);
+	public ResultSet searchByNameOrTitle(String name);
 }
