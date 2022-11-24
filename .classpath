@@ -11,47 +11,12 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/home/vitor/Downloads/javafx-sdk-19/lib/javafx.base.jar">
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/javafx">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/home/vitor/Downloads/javafx-sdk-19/lib/javafx.controls.jar">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="/home/vitor/Downloads/javafx-sdk-19/lib/javafx.fxml.jar">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="/home/vitor/Downloads/javafx-sdk-19/lib/javafx.graphics.jar">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="/home/vitor/Downloads/javafx-sdk-19/lib/javafx.media.jar">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="/home/vitor/Downloads/javafx-sdk-19/lib/javafx.swing.jar">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="/home/vitor/Downloads/javafx-sdk-19/lib/javafx.web.jar">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="/home/vitor/Downloads/javafx-sdk-19/lib/javafx-swt.jar">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="/home/vitor/Downloads/mysql-connector-java-8.0.30.jar">
+	<classpathentry kind="lib" path="C:/Users/nicko/Desktop/jars/mysql-connector-java-8.0.29.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
