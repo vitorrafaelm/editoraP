@@ -34,6 +34,35 @@ public class EvaluatorBO {
         Evaluator evaluator = Evaluator.converter(dto);
         return dao.inserir(evaluator);
     }
+   
+   public List<EvaluatorDTO> search(String name){
+       List<EvaluatorDTO> evaluators = new ArrayList<EvaluatorDTO>();
+       ResultSet rs = dao.searchByNameOrTitle(name);
+       try {
+           while(rs.next()) {
+               Address address = new Address();
+               
+               address.setStreet(rs.getString("street"));
+               address.setNeightboohood(rs.getString("neightboohood"));
+               address.setNumber(rs.getString("number_house"));
+               address.setCity(rs.getString("city"));
+               address.setZipcode(rs.getString("zipcode"));
+                               
+               EvaluatorDTO evaluator = new EvaluatorDTO();
+               evaluator.setCpf(rs.getString("taxId"));
+               evaluator.setAddress(address);
+               evaluator.setName(rs.getString("name"));
+               evaluator.setId(rs.getInt("id"));
+               
+               evaluators.add(evaluator);
+           }
+           return evaluators;
+       } catch (SQLException e) {
+           // TODO Auto-generated catch block
+           e.printStackTrace();
+           return null;
+       }
+   }
     
     public List<EvaluatorDTO> listar(){
         List<EvaluatorDTO> evaluators = new ArrayList<EvaluatorDTO>();

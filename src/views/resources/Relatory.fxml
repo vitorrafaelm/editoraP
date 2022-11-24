@@ -10,10 +10,11 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<SplitPane dividerPositions="0.2843" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ListAuthorScreen">
+<SplitPane dividerPositions="0.2843" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.relatory">
   <items>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #FFFFFF;">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="471.0" prefWidth="265.0" style="-fx-background-color: #FFFFFF;">
          <children>
             <ImageView disable="true" fitHeight="67.0" fitWidth="70.0" layoutX="49.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -40,48 +41,51 @@
                   <Font size="10.0" />
                </font>
             </Button>
-            <Button layoutX="8.0" layoutY="215.0" mnemonicParsing="false" onAction="#navigateToListRelatoryScreen" style="-fx-pref-width: 150px; -fx-border-width: 0px; -fx-background-color: #D6D1B3;" text="Relatorios" textFill="WHITE">
+            <Button layoutX="8.0" layoutY="216.0" mnemonicParsing="false" onAction="#navigateToListRelatoryScreen" style="-fx-pref-width: 150px; -fx-border-width: 0px; -fx-background-color: #D6D1B3;" text="Relatorios" textFill="WHITE">
                <font>
                   <Font size="10.0" />
                </font>
             </Button>
-            <Button layoutX="8.0" layoutY="245.0" mnemonicParsing="false" onAction="#logout" style="-fx-pref-width: 150px; -fx-border-width: 0px; -fx-background-color: #7B7B7B;" text="Sair" textFill="WHITE">
+            <Button layoutX="8.0" layoutY="247.0" mnemonicParsing="false" onAction="#logout" style="-fx-pref-width: 150px; -fx-border-width: 0px; -fx-background-color: #7B7B7B;" text="Sair" textFill="WHITE">
                <font>
                   <Font size="10.0" />
                </font>
             </Button>
          </children></AnchorPane>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="481.0" prefWidth="525.0" style="-fx-background-color: #D6D1B3;">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="493.0" prefWidth="526.0" style="-fx-background-color: #D6D1B3;">
          <children>
-            <TextField fx:id="buscar" layoutX="9.0" layoutY="51.0" style="-fx-pref-width: 350;" />
-            <Label layoutX="160.0" layoutY="19.0" style="-fx-font-weight: 700;" text="Listar autores" textFill="WHITE" />
-            <Button layoutX="362.0" layoutY="53.0" mnemonicParsing="false" onAction="#pesquisarObra" text="Pesquisar">
+            <Text fill="WHITE" layoutX="162.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Relatorios">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Text>
+            <TextField fx:id="buscar" layoutX="9.0" layoutY="67.0" prefHeight="26.0" prefWidth="120.0" style="-fx-pref-width: 100;" />
+            <Button layoutX="243.0" layoutY="69.0" mnemonicParsing="false" onAction="#pesquisarObra" text="Pesquisar">
                <font>
                   <Font size="10.0" />
                </font>
             </Button>
-            <Button layoutX="14.0" layoutY="271.0" mnemonicParsing="false" onAction="#navigateToRegisterScreen" style="-fx-background-color: #7B7B7B; -fx-font-weight: 700;" text="Cadastrar" textFill="WHITE">
-               <font>
-                  <Font size="10.0" />
-               </font>
-            </Button>
-            <TableView fx:id="tableAuthor" layoutX="12.0" layoutY="89.0" prefHeight="164.0" prefWidth="408.0">
+            <TableView fx:id="tableBook" layoutX="8.0" layoutY="109.0" prefHeight="164.0" prefWidth="408.0">
               <columns>
-                <TableColumn fx:id="columnName" prefWidth="75.0" text="Nome" />
-                <TableColumn fx:id="columnCpf" prefWidth="85.0" text="CPF" />
-                  <TableColumn fx:id="columnAddress" minWidth="0.5" prefWidth="246.0" text="endereço" />
+                  <TableColumn fx:id="columnId" prefWidth="49.0" text="id" />
+                <TableColumn fx:id="columnTitulo" prefWidth="107.0" text="Título" />
+                <TableColumn fx:id="columnAno" prefWidth="37.33331298828125" text="Ano" />
+                  <TableColumn fx:id="columnAvaliador" minWidth="0.0" prefWidth="112.0" text="Avaliador" />
+                  <TableColumn fx:id="columnEndereco" prefWidth="99.0" text="Autor" />
+                  <TableColumn fx:id="columnEndereco1" prefWidth="99.0" text="Criado" />
               </columns>
             </TableView>
-            <Button layoutX="88.0" layoutY="271.0" mnemonicParsing="false" onAction="#navigateToEditScreen" style="-fx-background-color: #7B7B7B; -fx-font-weight: 700;" text="Editar" textFill="WHITE">
+            <Label layoutX="10.0" layoutY="52.0" text="Data inicial">
                <font>
                   <Font size="10.0" />
                </font>
-            </Button>
-            <Button layoutX="142.0" layoutY="271.0" mnemonicParsing="false" onAction="#deleteAuthor" style="-fx-background-color: #7B7B7B; -fx-font-weight: 700;" text="Ecluir" textFill="WHITE">
+            </Label>
+            <TextField fx:id="buscar1" layoutX="131.0" layoutY="67.0" prefHeight="26.0" prefWidth="120.0" style="-fx-pref-width: 100;" />
+            <Label layoutX="132.0" layoutY="52.0" text="Data final">
                <font>
                   <Font size="10.0" />
                </font>
-            </Button>
+            </Label>
          </children></AnchorPane>
   </items>
 </SplitPane>

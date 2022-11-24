@@ -26,11 +26,11 @@ public class BookDao extends BaseDao<Book> {
 	             + "RIGHT JOIN tb_authors ta on ta.id = tb_books.id_author \n"
 	             + "RIGHT JOIN books_evaluators eval on eval.id_book = tb_books.id \n"
 	             + "RIGHT JOIN tb_evaluator te on te.id = eval.id_evaluator\n"
-	             + "WHERE tb_books.title LIKE '%?%';";
+	             + "WHERE tb_books.title LIKE ?;";
 	        
 	        try {
 	            PreparedStatement pst = this.connection.prepareStatement(sql);
-	            pst.setString(1, name);
+	            pst.setString(1, "%"+name+"%");
 	            ResultSet rs = pst.executeQuery();
 	            return rs;
 	        } catch (SQLException ex) {
@@ -39,10 +39,34 @@ public class BookDao extends BaseDao<Book> {
 	            return null;
 	        }
 	 }
+	 
+	 public ResultSet generateRelatory(String dataIni, String dataFinal) {
+	     String sql = "SELECT  *, ta.id as idAuhtor, ta.name as authorName, te.name as evalName FROM tb_books\n"
+	             + "LEFT JOIN tb_authors ta on ta.id = tb_books.id_author \n"
+	             + "LEFT JOIN books_evaluators eval on eval.id_book = tb_books.id \n"
+	             + "RIGHT JOIN tb_evaluator te on te.id = eval.id_evaluator\n"
+	             + "where tb_books.id is not null and tb_books.created_at BETWEEN ? AND ?";
+            
+            try {
+                PreparedStatement pst = this.connection.prepareStatement(sql);
+                pst.setString(1, dataIni);
+                pst.setString(2, dataFinal);
+                ResultSet rs = pst.executeQuery();
+                return rs;
+            } catch (SQLException ex) {
+                // TODO Auto-generated catch block
+                ex.printStackTrace();
+                return null;
+            }
+	 }
 	
 	@Override
     public ResultSet findAll() {
-        String sql = "SELECT  *, ta.id as idAuhtor, ta.name as authorName, te.name as evalName FROM tb_books LEFT JOIN tb_authors ta on ta.id = tb_books.id_author LEFT JOIN books_evaluators eval on eval.id_book = tb_books.id RIGHT JOIN tb_evaluator te on te.id = eval.id_evaluator;";
+        String sql = "SELECT  *, ta.id as idAuhtor, ta.name as authorName, te.name as evalName FROM tb_books\n"
+                + "LEFT JOIN tb_authors ta on ta.id = tb_books.id_author \n"
+                + "LEFT JOIN books_evaluators eval on eval.id_book = tb_books.id \n"
+                + "RIGHT JOIN tb_evaluator te on te.id = eval.id_evaluator\n"
+                + "where tb_books.id is not null;";
         
         try {
             PreparedStatement pst = this.connection.prepareStatement(sql);

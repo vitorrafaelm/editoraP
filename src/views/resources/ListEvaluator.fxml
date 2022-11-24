@@ -53,9 +53,9 @@
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="481.0" prefWidth="525.0" style="-fx-background-color: #D6D1B3;">
          <children>
-            <TextField layoutX="9.0" layoutY="51.0" style="-fx-pref-width: 350;" />
+            <TextField fx:id="buscar" layoutX="9.0" layoutY="51.0" style="-fx-pref-width: 350;" />
             <Label layoutX="160.0" layoutY="19.0" style="-fx-font-weight: 700;" text="Listar Avaliadores" textFill="WHITE" />
-            <Button layoutX="362.0" layoutY="53.0" mnemonicParsing="false" text="Pesquisar">
+            <Button layoutX="362.0" layoutY="53.0" mnemonicParsing="false" onAction="#pesquisarObra" text="Pesquisar">
                <font>
                   <Font size="10.0" />
                </font>

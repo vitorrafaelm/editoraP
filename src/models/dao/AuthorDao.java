@@ -20,6 +20,22 @@ public class AuthorDao extends BaseDao<Author> {
 		}
     }
 	
+	public ResultSet searchByNameOrTitle(String name) {
+        String sql = "SELECT * FROM tb_authors ta LEFT JOIN tb_address ta2 ON ta2.id = ta.address_id\n"
+                + "WHERE ta.name LIKE ?; ";
+        
+        try {
+            PreparedStatement pst = this.connection.prepareStatement(sql);
+            pst.setString(1, "%"+name+"%");
+            ResultSet rs = pst.executeQuery();
+            return rs;
+        } catch (SQLException ex) {
+            // TODO Auto-generated catch block
+            ex.printStackTrace();
+            return null;
+        }
+    }
+	
 	@Override
     public ResultSet findAll() {
         String sql = "SELECT * FROM tb_authors ta LEFT JOIN tb_address ta2 ON ta2.id = ta.address_id;";

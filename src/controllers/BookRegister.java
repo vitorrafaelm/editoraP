@@ -101,7 +101,7 @@ public class BookRegister {
     }
     
     public void navigateToListRelatoryScreen() {
-        // adicionar tela de relatório
+        Telas.relatoryScreen(); 
     }
     
     public void logout() {

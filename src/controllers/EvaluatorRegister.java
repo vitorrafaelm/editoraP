@@ -65,7 +65,7 @@ public class EvaluatorRegister {
     }
     
     public void navigateToListRelatoryScreen() {
-        // adicionar tela de relatÃ³rios
+        Telas.relatoryScreen(); 
     }
     
     

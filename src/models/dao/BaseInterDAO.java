@@ -20,4 +20,5 @@ public interface BaseInterDAO<entity> {
 	public ResultSet findBySpecifiedField(entity e, String field);
 	public entity findBySpecifiedFieldAdmin(entity e, String field);
 	public ResultSet searchByNameOrTitle(String name);
+	public ResultSet generateRelatory(String dataIni, String dataFinal);
 }

@@ -43,7 +43,7 @@ public class AddressRegister {
     }
     
     public void navigateToListRelatoryScreen() {
-        // adicionar tela de relatório
+        Telas.relatoryScreen(); 
     }
     
     public void logout() {

@@ -65,15 +65,10 @@ public class BookBO{
         List<BookDTO> books = new ArrayList<BookDTO>();
         ResultSet rs = dao.searchByNameOrTitle(name);
         try {
-            System.out.print(rs.next());
             while (rs.next()) {
                 BookDTO book = new BookDTO();
                 Author author = new Author(); 
                 Evaluator eval = new Evaluator();
-                   
-                System.out.print(rs.getString("title"));
-                System.out.print(rs.getString("description"));
-                System.out.print(rs.getString("authorName"));
                 
                 book.setTitle(rs.getString("title"));
                 book.setDescription(rs.getString("description"));
@@ -89,7 +84,38 @@ public class BookBO{
                 book.setEvaluator(eval);
                 
                 books.add(book);
+            }
+            return books;
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    public List<BookDTO> relatory(String dataI, String dataF){
+        List<BookDTO> books = new ArrayList<BookDTO>();
+        ResultSet rs = dao.generateRelatory(dataI, dataF);
+        try {
+            while (rs.next()) {
+                BookDTO book = new BookDTO();
+                Author author = new Author(); 
+                Evaluator eval = new Evaluator();
                 
+                book.setTitle(rs.getString("title"));
+                book.setDescription(rs.getString("description"));
+                book.setId(rs.getInt("id"));
+                book.setGender(rs.getString("gender"));
+                book.setDateLaunch(rs.getString("year"));
+                book.setStatus_register(rs.getString("status_register"));
+                
+                author.setNome(rs.getString("authorName"));
+                eval.setNome(rs.getString("evalName"));
+               
+                book.setAuthor(author);
+                book.setEvaluator(eval);
+                
+                books.add(book);
             }
             return books;
         } catch (SQLException e) {

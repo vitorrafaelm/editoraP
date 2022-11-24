@@ -2,12 +2,14 @@ package controllers;
 
 import java.util.List;
 
+import controllers.dto.AuthorDTO;
 import controllers.dto.EvaluatorDTO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import models.entities.Evaluator;
 import models.services.EvaluatorBO;
@@ -20,6 +22,9 @@ public class ListEvaluatorScreen {
     @FXML private TableColumn<EvaluatorDTO, String> columnNome;
     @FXML private TableColumn<EvaluatorDTO, String> columnCpf;
     @FXML private TableColumn<EvaluatorDTO, String> columnEndereco;
+    
+    @FXML private TextField buscar;
+    
     private EvaluatorBO bo = new EvaluatorBO();
     private ObservableList<EvaluatorDTO> listaDeAvaliadores;
    
@@ -66,6 +71,15 @@ public class ListEvaluatorScreen {
         }
     }
     
+    public void pesquisarObra() {
+        List<EvaluatorDTO> evaluators = bo.search(buscar.getText());
+        listaDeAvaliadores = FXCollections.observableArrayList(evaluators);
+        columnCpf.setCellValueFactory(new PropertyValueFactory<>("cpf"));
+        columnNome.setCellValueFactory(new PropertyValueFactory<>("name"));
+        columnEndereco.setCellValueFactory(new PropertyValueFactory<>("address"));
+        tabelaAvaliadores.setItems(listaDeAvaliadores);
+    }
+    
     public void navigateToHomeScreen() {
         Telas.telaHomePage();
     }
@@ -83,7 +97,7 @@ public class ListEvaluatorScreen {
     }
     
     public void navigateToListRelatoryScreen() {
-        // adicionar tela de relatÅ•oio
+        Telas.relatoryScreen(); 
     }
     
     

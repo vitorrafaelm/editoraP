@@ -87,4 +87,11 @@ public class BaseDao<entity> implements BaseInterDAO<entity> {
         // TODO Auto-generated method stub
         return null;
     }
+
+
+    @Override
+    public ResultSet generateRelatory(String dataIni, String dataFinal) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 }

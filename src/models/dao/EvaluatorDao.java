@@ -18,6 +18,22 @@ public class EvaluatorDao extends BaseDao<Evaluator> {
             e.printStackTrace();
         }
 	}
+	
+	public ResultSet searchByNameOrTitle(String name) {
+        String sql = "SELECT * FROM tb_evaluator ta LEFT JOIN tb_address ta2 ON ta2.id = ta.address_id\n"
+                + "WHERE ta.name LIKE ?;";
+        
+        try {
+            PreparedStatement pst = this.connection.prepareStatement(sql);
+            pst.setString(1, "%"+name+"%");
+            ResultSet rs = pst.executeQuery();
+            return rs;
+        } catch (SQLException ex) {
+            // TODO Auto-generated catch block
+            ex.printStackTrace();
+            return null;
+        }
+    }
 
 	public ResultSet findAll() {
         String sql = "SELECT * FROM tb_evaluator ta LEFT JOIN tb_address ta2 ON ta2.id = ta.address_id;";

@@ -21,6 +21,36 @@ public class AuthorBO {
 		return dao.inserir(author);	
 	}
 	
+	public List<AuthorDTO> search(String name) {
+        List<AuthorDTO> authors = new ArrayList<AuthorDTO>();
+        ResultSet rs = dao.searchByNameOrTitle(name);
+        
+        try {
+            while(rs.next()) {
+                AuthorDTO author = new AuthorDTO();
+                Address address = new Address();
+                
+                address.setCity(rs.getString("city"));
+                address.setNeightboohood(rs.getString("neightboohood"));
+                address.setNumber(rs.getString("number_house"));
+                address.setStreet(rs.getString("street"));
+                address.setZipcode(rs.getString("zipcode"));
+                
+                author.setCpf(rs.getString("taxId"));
+                author.setAddress(address);
+                author.setName(rs.getString("name"));
+                author.setId(rs.getInt("id"));
+                
+                authors.add(author);
+            }
+            return authors;
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return null;
+        }
+    }
+	
 	public List<AuthorDTO> listar() {
 	    List<AuthorDTO> authors = new ArrayList<AuthorDTO>();
         ResultSet rs = dao.findAll();

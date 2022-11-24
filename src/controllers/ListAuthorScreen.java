@@ -3,11 +3,13 @@ package controllers;
 import java.util.List;
 
 import controllers.dto.AuthorDTO;
+import controllers.dto.BookDTO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import models.entities.Author;
 import models.services.AuthorBO;
@@ -21,6 +23,9 @@ public class ListAuthorScreen {
     @FXML private TableColumn<AuthorDTO, String> columnName;
     @FXML private TableColumn<AuthorDTO, String> columnCpf;
     @FXML private TableColumn<AuthorDTO, String> columnAddress;
+    
+    @FXML private TextField buscar;
+    
     private AuthorBO authorBO = new AuthorBO();
     private ObservableList<AuthorDTO> listAuthors;
     
@@ -55,8 +60,16 @@ public class ListAuthorScreen {
         } catch (Exception e) {
             // TODO: handle exception
         }
+    }
+    
+    public void pesquisarObra() {
+        List<AuthorDTO> authors = authorBO.search(buscar.getText());
         
-      
+        listAuthors = FXCollections.observableArrayList(authors);
+        columnCpf.setCellValueFactory(new PropertyValueFactory<>("cpf"));
+        columnName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        columnAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
+        tableAuthor.setItems(listAuthors);
     }
     
     
@@ -92,7 +105,7 @@ public class ListAuthorScreen {
     }
     
     public void navigateToListRelatoryScreen() {
-        // adicionar tela de relatório
+        Telas.relatoryScreen(); 
     }
     
     public void logout() {

@@ -92,7 +92,7 @@ public class UpdateAuthor {
     }
     
     public void navigateToListRelatoryScreen() {
-        // adicionar telas de relatorio
+        Telas.relatoryScreen(); 
     }
     
     public void logout() {

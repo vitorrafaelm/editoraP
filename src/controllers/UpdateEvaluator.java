@@ -88,9 +88,8 @@ public class UpdateEvaluator {
     }
     
     public void navigateToListRelatoryScreen() {
-        // adicionar tela de relatÃ³rio
+        Telas.relatoryScreen(); 
     }
-    
     
     public void logout() {
         Telas.telaLogin();

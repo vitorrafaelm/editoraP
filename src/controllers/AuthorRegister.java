@@ -63,7 +63,7 @@ public class AuthorRegister {
     }
     
     public void navigateToListRelatoryScreen() {
-        // adicionar tela de relatorio
+        Telas.relatoryScreen(); 
     }
     
     public void logout() {

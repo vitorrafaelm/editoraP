@@ -107,7 +107,7 @@ public class UpdateBook {
     }
     
     public void navigateToListRelatoryScreen() {
-        // adicionar tela de relatorios
+        Telas.relatoryScreen(); 
     }
     
     public void logout() {

@@ -180,6 +180,19 @@ public class Telas extends Application {
         }
     }
     
+    public static void relatoryScreen() {
+        try {
+            Parent root = FXMLLoader.load(Telas.class.getResource("resources/Relatory.fxml"));
+            Scene scene = new Scene (root);
+            stage.setScene(scene);
+            stage.setTitle("Tela Relatórios");
+            stage.show();
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
     
 
 }
