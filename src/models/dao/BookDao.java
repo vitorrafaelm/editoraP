@@ -127,7 +127,8 @@ public class BookDao extends BaseDao<Book> {
                 pstSelect1.execute();
             }
             
-			return book;		
+			return book;		interface BaseInterDAO<entity> {
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
